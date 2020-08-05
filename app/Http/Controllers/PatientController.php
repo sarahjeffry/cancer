@@ -3,22 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Patient;
-use App\User;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
-class AdminController extends Controller
+class PatientController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(request $request)
     {
-        $patientsCount = Patient::count();
-        $usersCount = User::count();
+        if($request->ajax()) {
+            $data = Patient::latest()->get();
+            return  DataTables::of($data)
+                ->addColumn('action', function ($data){
+                    $button = '<button type="button" name="edit"
+                    id="'.$data->id.'" class="edit btn btn-primary btn-sm">Edit</button>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="edit"
+                    id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</button>';
+                    return $button;
+                })
+                ->rawColumns(['actions'])
+                ->make(true);
+        }
 
-        return view('home', compact('patientsCount', 'usersCount'));
+        $patients = Patient::select('select * from patients where status = "yes"');
+
+        return view('patient.index', ['patients' => $patients]);
+
     }
 
     /**

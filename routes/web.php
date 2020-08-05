@@ -2,17 +2,13 @@
 
 use App\Patient;
 use App\User;
+use App\StatDoses;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
 //Route::get('/', function () {
@@ -38,18 +34,23 @@ Route::get('/', 'HomeController@index')->name('home');
 //});
 
 Route::get('/home', function () {
-    return view('admin.index');
+    return view('home');
 });
 
 Route::get('/admin', function () {
     return view('admin.index');
 });
 
+
 Route::get('/patients', function () {
     $patients = Patient::all();
-    return view('patient.index', compact('patients'));
-//    return view('patient.index', ['patients' => $patients]);
-//    return view('patient.index');
+    if(Auth::check()) {
+        $users = User::all();
+        return view('patient.index', compact('patients'));
+    }
+    else {
+        return view('auth.login');
+    }
 });
 
 //Route::get('/view_patients', function () {
@@ -71,4 +72,28 @@ Route::get('/report', function () {
     }
 });
 
-Route::resource('/editpatient','PatientController@edit');
+//Route::resource('/editpatient','PatientController@edit');
+//Route::resource('patients', 'PatientController');
+//Route::resource('patients', 'PatientController')->names('addPatient'); //plural. addPatient -> ada kat view
+//Route::resource('treatment', 'TreatmentController')->names('addTreatment'); //plural. addPatient -> ada kat view
+
+/*
+|--------------------------------------------------------------------------
+| Form Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/forms', function () {
+    $patients = Patient::all();
+    if(Auth::check()) {
+        $users = User::all();
+        return view('forms.index', compact('patients'));
+    }
+
+    else {
+        return view('auth.login');
+    }
+});
+
+
+Route::get('/statdoses', 'StatDoses@index')->name('stat_doses');

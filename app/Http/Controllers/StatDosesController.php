@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Patient;
+use App\User;
 use Illuminate\Http\Request;
 
-class PatientsController extends Controller
+class StatDosesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('forms.stat_doses');
     }
 
     /**
@@ -42,12 +43,11 @@ class PatientsController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $patients = Patient::all();
-        return view('report', compact('patients'));
+        //
     }
 
     /**

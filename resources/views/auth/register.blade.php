@@ -1,12 +1,79 @@
-@extends('layouts.app')
+{{--@extends('layouts.blankapp')--}}
 
-@section('content')
+{{--@section('content')--}}
+
+    <!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'iCancer') }}</title>
+
+{{--@yield('style')--}}
+<!-- Custom fonts for this template-->
+    <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i')}}" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+
+    <style>
+        html, body {
+            /*background-color:#3b5998;*/
+            background: url('https://scontent.fkul4-1.fna.fbcdn.net/v/t31.0-8/20863580_1612099285528164_3282369048990331420_o.jpg?_nc_cat=106&_nc_sid=cdbe9c&_nc_ohc=14-E7_NHwGYAX_0JMnd&_nc_ht=scontent.fkul4-1.fna&oh=4d95debca33ce5c4028d9e1d2ddb6a59&oe=5F4F9E0B');
+            background-size: 100%;
+            font-size: 18px;
+        }
+
+
+
+        .login-btn {
+            color: whitesmoke;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .login-btn:hover {
+            color: royalblue;
+            border-radius: 5px;
+            padding: 4px 7px;
+            width: 60px;
+            background-color: whitesmoke;
+        }
+
+        .form-control {
+            border-radius: 25px;
+            padding-right: 5px;
+        }
+
+    </style>
+
+{{--@section('content')--}}
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <br>
+            <a href="\login" class="offset-md-10 offset-md-4 row-cols-md-3 login-btn">
+                    {{ __('Login') }}
+            </a>
+        </li>
+    </ul>
+<body>
+<div >
+    <br>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
+        <div class="col-md-8 ">
+            <div class="card  shadow">
+                <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4" style="padding-top: 20px;">Register to iCancer</h1>
+                    <img src="https://i.imgur.com/DxiSrK9.png" width="11%" height="11%" alt="Clinic logo">
+                </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -29,10 +96,10 @@
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
                             <br>
                             <div class="col-md-6">
-                                <select required class="col-md-8 col-form-label text-md-right" name="Role" style="width: 60%;">
-                                    <option value="Admin">Admin</option>
-                                    <option value="Consultant">Consultant</option>
-                                    <option value="Nurse">Nurse</option>
+                                <select required class="form-control animated--fade-in" name="Role" style="width: 60%;">
+                                    <option class="dropdown-item" value="Admin">Admin</option>
+                                    <option class="dropdown-item" value="Consultant">Consultant</option>
+                                    <option class="dropdown-item" value="Nurse">Nurse</option>
                                 </select>
                             </div>
                         </div>
@@ -82,9 +149,15 @@
                             </div>
                         </div>
                     </form>
+                    <br>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
+{{--@endsection--}}
+{{--@endsection--}}
+<!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+</body>
+</html>

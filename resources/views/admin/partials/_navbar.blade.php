@@ -22,7 +22,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Nav Item - Tables -->
+    <!-- Nav Item - Patients -->
     <li class="nav-item">
         <a class="nav-link" href="\patients">
             <i class="fas fa-fw fa-person-booth"></i>
@@ -32,7 +32,17 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Nav Item - Tables -->
+    <!-- Nav Item - Forms -->
+    <li class="nav-item">
+        <a class="nav-link" href="\forms">
+            <i class="fas fa-fw fa-pen-alt"></i>
+            <span>Forms</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Report -->
     <li class="nav-item">
         <a class="nav-link" href="\report">
             <i class="fas fa-fw fa-table"></i>

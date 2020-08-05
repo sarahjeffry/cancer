@@ -24,17 +24,13 @@
         font-size: 18px;
     }
 
-    .bg-login-image {
-        background: url('https://i.imgur.com/HVkwOjV.jpg');
-        width: 80%;
-        height: 80%;
-    }
+
 </style>
 
 {{--@section('content')--}}
 
 <body>
-<div style="background-color:#3b5998;">
+<div>
     <div class="container">
 
         <!-- Outer Row -->
@@ -46,7 +42,9 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+{{--                            <div class="col-lg-6 bg-login-image"></div>--}}
+                            <div class="col-lg-6" style="background: url('https://i.imgur.com/tkPgXMk.jpg/600x800'); background-size: cover;"></div>
+{{--                            https://images.pexels.com/photos/4386464/pexels-photo-4386464.jpeg/--}}
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -110,7 +108,7 @@
                                       <a class="small" href="register.html">Create an Account!</a>
                                     </div> -->
                                 </div>
-                            </div>
+{{--                            </div>--}}
                         </div>
                     </div>
                 </div>
