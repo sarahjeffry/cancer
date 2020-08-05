@@ -7,7 +7,7 @@ Laravel framework 7.22.4
 
 PHP 7.4.7
 
-1. Install this project.
+1. Clone this project.
 
 2. Open terminal and run these commands:
 
