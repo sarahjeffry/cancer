@@ -26,7 +26,7 @@
                             <canvas id="myAreaChart"></canvas>
                         </div>
                         <hr>
-                        <center>Number of cancer occurences by year</center>
+                        <center>Rate of cancer deaths</center>
 {{--                        Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.--}}
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                 <!-- Bar Chart -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Correlation</h6>
                     </div>
                     <div class="card-body">
                         <div class="chart-bar">
@@ -60,7 +60,7 @@
                             <canvas id="myPieChart"></canvas>
                         </div>
                         <hr>
-                        <center>Rate of cancer deaths</center>
+                        <center>Number of cancer occurences in 2020</center>
 {{--                        Styling for the donut chart can be found in the <code>/js/demo/chart-pie-demo.js</code> file.--}}
                     </div>
                 </div>

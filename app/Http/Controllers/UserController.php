@@ -2,24 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Patient;
+use App\User;
 use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables;
 
-class PatientController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(request $request)
+    public function index(Request $id)
     {
-
-        $patients = Patient::select('select * from patients where status = "yes"');
-
-        return view('patient.index', ['patients' => $patients]);
-
+        $user = User::all();
+//        $user = User::find($id);
+        return view('settings', compact('user'));
     }
 
     /**
@@ -58,11 +55,13 @@ class PatientController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+//        $user = User::find($id);
+        $arr['user'] = $user;
+        return view('settings_edit', compact('user'));
     }
 
     /**

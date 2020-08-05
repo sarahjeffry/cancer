@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Patient;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -15,17 +16,20 @@ class StatDosesController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('forms.stat_doses');
+        $patients = Patient::all();
+        return view('forms.stat_doses', ['patients' => $patients]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(Request $mrn)
     {
-        //
+        $patient = Patient::find($mrn);
+//        $arr['patient'] = $patient;
+        return view('forms.stat_doses_create', compact('patient'));
     }
 
     /**

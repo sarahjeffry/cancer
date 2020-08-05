@@ -19,28 +19,13 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-
-//Route::get('/', function () {
-//
-//    if(Auth::check()) {
-//        $users = User::all();
-//        return view('admin.index');
-//    }
-//
-//    else {
-//        return view('auth.login');
-//    }
-////    return view('admin.index');
-//});
-
 Route::get('/home', function () {
-    return view('home');
+    return view('admin.index');
 });
 
 Route::get('/admin', function () {
     return view('admin.index');
 });
-
 
 Route::get('/patients', function () {
     $patients = Patient::all();
@@ -72,10 +57,19 @@ Route::get('/report', function () {
     }
 });
 
-//Route::resource('/editpatient','PatientController@edit');
-//Route::resource('patients', 'PatientController');
-//Route::resource('patients', 'PatientController')->names('addPatient'); //plural. addPatient -> ada kat view
-//Route::resource('treatment', 'TreatmentController')->names('addTreatment'); //plural. addPatient -> ada kat view
+Route::resource('/patients', 'PatientController')->names('patients');
+Route::resource('settings', 'UserController')->names('setting');
+
+//Route::get('/settings', function () {
+//    if(Auth::check()) {
+//        $users = User::all();
+//        return view('settings', compact('users'));
+//    }
+//
+//    else {
+//        return view('auth.login');
+//    }
+//});
 
 /*
 |--------------------------------------------------------------------------
@@ -94,6 +88,3 @@ Route::get('/forms', function () {
         return view('auth.login');
     }
 });
-
-
-Route::get('/statdoses', 'StatDoses@index')->name('stat_doses');

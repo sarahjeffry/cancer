@@ -55,7 +55,9 @@
                                 <th style="text-transform: capitalize;">{{$patient->status}}</th>
                                 <th style="text-transform: capitalize;">{{$patient->live}}</th>
                                 <th>{{$patient->year}}</th>
-                                <th></th>
+                                <a href="{{ route('patients.index', $patient->mrn) }}">
+                                    <button type="submit" class="btn btn-info">VIEW</button>
+                                </a>
                             </tr>
                         @endforeach
                         </tbody>

@@ -51,14 +51,14 @@
             border-radius: 25px;
             padding-right: 5px;
         }
-
     </style>
 
 {{--@section('content')--}}
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
             <br>
-            <a href="\login" class="offset-md-10 offset-md-4 row-cols-md-3 login-btn">
+{{--            <a href="\login" class="offset-md-10 offset-md-4 row-cols-md-3 login-btn">--}}
+            <a href="\login" class="offset-md-10 offset-md-4 row-cols-md-3 btn btn-light">
                     {{ __('Login') }}
             </a>
         </li>
@@ -97,9 +97,11 @@
                             <br>
                             <div class="col-md-6">
                                 <select required class="form-control animated--fade-in" name="Role" style="width: 60%;">
-                                    <option class="dropdown-item" value="Admin">Admin</option>
-                                    <option class="dropdown-item" value="Consultant">Consultant</option>
-                                    <option class="dropdown-item" value="Nurse">Nurse</option>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <option class="dropdown-item" value="Admin">Admin</option>
+                                        <option class="dropdown-item" value="Consultant">Consultant</option>
+                                        <option class="dropdown-item" value="Nurse">Nurse</option>
+                                    </div>
                                 </select>
                             </div>
                         </div>
