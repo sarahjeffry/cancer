@@ -1,5 +1,5 @@
-# Cancer
-New version of my fyp
+# Cancer - Final Year Project
+Still in development (Estimated to deliver by the end of August)
 
 <strong>Decription of project:</strong>
 
