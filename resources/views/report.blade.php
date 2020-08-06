@@ -15,18 +15,18 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Records</h1>
-        <p class="mb-4">Records of patients</p>
+        <h1 class="h3 mb-2 text-gray-800">Report</h1>
+        <p class="mb-4">History of all patients</p>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Patients Record</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Patients List</h6>
             </div>
-            <div class="card-body">
+            <div class="card-body col-sm-11 ml-lg-5">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                        <thead class="text-md-center">
                         <tr>
                             <th>Name</th>
                             <th>Gender</th>
@@ -35,9 +35,10 @@
                             <th>Active</th>
                             <th>Status</th>
                             <th>Year admitted</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
-                        <tfoot>
+                        <tfoot class="text-md-center">
                         <tr>
                             <th>Name</th>
                             <th>Gender</th>
@@ -46,18 +47,22 @@
                             <th>Active</th>
                             <th>Status</th>
                             <th>Year admitted</th>
+                            <th>Action</th>
                         </tr>
                         </tfoot>
                         <tbody>
                         @foreach($patients as $patient)
                             <tr>
                                 <td>{{$patient->name}}</td>
-                                <td style="text-transform: capitalize;">{{$patient->gender}}</td>
-                                <td style="text-transform: uppercase;">{{$patient->mrn}}</td>
-                                <td style="text-transform: capitalize;">{{$patient->type}}</td>
-                                <td style="text-transform: capitalize;">{{$patient->status}}</td>
-                                <td style="text-transform: capitalize;">{{$patient->live}}</td>
-                                <td>{{$patient->year}}</td>
+                                <td class="text-md-center" style="text-transform: capitalize;">{{$patient->gender}}</td>
+                                <td class="text-md-center" style="text-transform: uppercase;">{{$patient->mrn}}</td>
+                                <td class="text-md-center" style="text-transform: capitalize;">{{$patient->type}}</td>
+                                <td class="text-md-center" style="text-transform: capitalize;">{{$patient->status}}</td>
+                                <td class="text-md-center" style="text-transform: capitalize;">{{$patient->live}}</td>
+                                <td class="text-md-center" >{{$patient->year}}</td>
+                                <td class="text-md-center" ><a href="{{ route('patients.show', $patient->mrn) }}">
+                                        <button type="submit" class="btn btn-info">VIEW</button>
+                                    </a></td>
                             </tr>
                         @endforeach
                         </tbody>

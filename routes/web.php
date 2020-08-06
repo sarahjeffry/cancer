@@ -90,6 +90,8 @@ Route::get('/forms', function () {
     }
 });
 
+Route::resource('/statdoses', 'StatDosesController')->names('stat_doses');
+
 Route::get('insert', function (){
     $patient = Patient::findOrFail(1);
     $treatment = new Treatment(['name'=>'New treatment for patient']);

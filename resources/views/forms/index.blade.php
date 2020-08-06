@@ -43,7 +43,7 @@
         <div class="row offset-sm-3">
             <!-- Stat Doses -->
             <div class="row-cols-xl-4 col-md-4 mb-3">
-                <a href="\statdoses">
+                <a href="{{ route('stat_doses.index') }}">
                     <div class="card forms h-100 py-2 bg-gradient-info">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">

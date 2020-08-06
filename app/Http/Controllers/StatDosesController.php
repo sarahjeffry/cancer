@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Patient;
+use App\StatDoses;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class StatDosesController extends Controller
     {
         $users = User::all();
         $patients = Patient::all();
-        return view('forms.stat_doses', ['patients' => $patients]);
+        return view('forms.stat_doses.index', ['patients' => $patients]);
     }
 
     /**
@@ -25,11 +26,24 @@ class StatDosesController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create(Request $mrn)
+    protected function create(array $data, Request $mrn)
     {
-        $patient = Patient::find($mrn);
-//        $arr['patient'] = $patient;
-        return view('forms.stat_doses_create', compact('patient'));
+
+        $statdose = StatDoses::create([
+            'name' => $data['name'],
+            'gender' => $data['gender'],
+            'mrn'  => $mrn,
+            'type' => $data['type'],
+            'height' => $data['height'],
+            'weight' => $data['weight'],
+            'smoking' => $data['smoking'],
+            'status' => $data['status'],
+            'live' => $data['live'],
+            'year' => 2020
+
+        ]);
+
+        return view('forms.stat_doses.show', compact('statdose'));
     }
 
     /**
@@ -70,11 +84,12 @@ class StatDosesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function update(Request $request, $id)
+    protected function update(Request $mrn)
     {
-        //
+        $arr['patient'] = $mrn;
+        return view('forms.stat_doses.create', compact('patient'));
     }
 
     /**
