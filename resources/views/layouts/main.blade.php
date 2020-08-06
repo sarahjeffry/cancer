@@ -24,6 +24,8 @@
     <!-- Your custom styles-->
     @yield('styles')
 
+    <link rel="shortcut icon" href="{{ asset('https://i.imgur.com/DxiSrK9.png') }}">
+
 </head>
 
 <body id="page-top">

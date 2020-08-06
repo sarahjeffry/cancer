@@ -3,6 +3,7 @@
 use App\Patient;
 use App\User;
 use App\StatDoses;
+use App\Treatment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,7 +59,7 @@ Route::get('/report', function () {
 });
 
 Route::resource('/patients', 'PatientController')->names('patients');
-Route::resource('settings', 'UserController')->names('setting');
+Route::resource('/settings', 'UserController')->names('setting');
 
 //Route::get('/settings', function () {
 //    if(Auth::check()) {
@@ -87,4 +88,12 @@ Route::get('/forms', function () {
     else {
         return view('auth.login');
     }
+});
+
+Route::get('insert', function (){
+    $patient = Patient::findOrFail(1);
+    $treatment = new Treatment(['name'=>'New treatment for patient']);
+
+    $patient->treatment()->save($treatment);
+    return view('');
 });

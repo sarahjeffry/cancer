@@ -15,7 +15,7 @@ class CreateStatdosesTable extends Migration
     {
         Schema::create('statdoses', function (Blueprint $table) {
             $table->id();
-            $table->foreign('mrn')->references('mrn')->on('patients');
+//            $table->foreign('id')->references('id')->on('patients');
             $table->timestamps();
             $table->date('date')->nullable();
             $table->time('time')->nullable();

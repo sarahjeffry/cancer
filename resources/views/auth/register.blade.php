@@ -69,7 +69,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 ">
-            <div class="card  shadow">
+            <div class="card shadow">
                 <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4" style="padding-top: 20px;">Register to iCancer</h1>
                     <img src="https://i.imgur.com/DxiSrK9.png" width="11%" height="11%" alt="Clinic logo">
@@ -96,11 +96,11 @@
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
                             <br>
                             <div class="col-md-6">
-                                <select required class="form-control animated--fade-in" name="Role" style="width: 60%;">
+                                <select required class="form-control animated--fade-in" name="role" id="role" style="width: 60%;">
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <option class="dropdown-item" value="Admin">Admin</option>
-                                        <option class="dropdown-item" value="Consultant">Consultant</option>
-                                        <option class="dropdown-item" value="Nurse">Nurse</option>
+                                        <option class="dropdown-item" value="admin">Admin</option>
+                                        <option class="dropdown-item" value="consultant">Consultant</option>
+                                        <option class="dropdown-item" value="nurse">Nurse</option>
                                     </div>
                                 </select>
                             </div>

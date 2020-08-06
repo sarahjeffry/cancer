@@ -15,7 +15,7 @@
         <h1 class="h3 mb-2 text-gray-800">Settings</h1>
         <p class="mb-4">Edit {{ Auth::user()->name }} Details</p>
 
-        <form action="{{route('setting.update', Auth::user()->id)}}" method="PATCH" class="form-horizontal">
+        <form action="{{route('setting.update', Auth::user()->id)}}" method="PUT" class="form-horizontal">
             {{ csrf_field() }}
             <div class="card shadow">
                 <div class="row ml-sm-3 justify-content-center col col-md-11 ">
@@ -26,7 +26,13 @@
 
                     <div class="form-inline offset-md-2 row ml-sm-3 my-sm-3 m-4" >
                         <label for="role" class="text-md-right mr-lg-3">{{ __('Role') }}</label>
-                        <input id="role" type="text" class="form-control input-group" name="role" style="text-transform: capitalize;" value="{{ Auth::user()->role }}" required>
+                        <div class="col-md-6">
+                            <select required class="dropdown-select form-control input-group text-md-right mr-lg-3" name="role" value="{{ Auth::user()->role }}"  required>
+                                <option value="Consultant">Consultant</option>
+                                <option value="Nurse">Nurse</option>
+                            </select>
+                        </div>
+{{--                        <input id="role" type="text" class="form-control input-group" name="role" style="text-transform: capitalize;" value="{{ Auth::user()->role }}" required>--}}
                     </div>
 
                     <div class="form-inline offset-md-2 row ml-sm-3 my-sm-3">
@@ -36,7 +42,7 @@
                 </div>
                 <div class="m-3 ml-3 mt-4 m-auto mb-4">
                     <input type="submit" value="UPDATE" class="btn btn-primary mr-4"/>
-                    <a href="{{ route('setting.edit', Auth::user()->id) }}">
+                    <a href="/settings">
                         <button type="submit" class="btn btn-light">CANCEL</button>
                     </a>
 

@@ -3,7 +3,11 @@
 @yield('style')
 <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-
+<style>
+    th {
+        color: #3d3e47 !important;
+    }
+</style>
 @section('content')
 
     <!-- Begin Page Content -->
@@ -48,16 +52,16 @@
                         <tbody>
                         @foreach($patients as $patient)
                             <tr>
-                                <th>{{$patient->name}}</th>
-                                <th style="text-transform: capitalize;">{{$patient->gender}}</th>
-                                <th style="text-transform: uppercase;">{{$patient->mrn}}</th>
-{{--                                <th style="text-transform: capitalize;">{{$patient->type}}</th>--}}
-                                <th style="text-transform: capitalize;">{{$patient->status}}</th>
-                                <th style="text-transform: capitalize;">{{$patient->live}}</th>
-                                <th>{{$patient->year}}</th>
-                                <a href="{{ route('patients.index', $patient->mrn) }}">
-                                    <button type="submit" class="btn btn-info">VIEW</button>
-                                </a>
+                                <td>{{$patient->name}}</td>
+                                <td style="text-transform: capitalize;">{{$patient->gender}}</td>
+                                <td style="text-transform: uppercase;">{{$patient->mrn}}</td>
+                                {{--                                <th style="text-transform: capitalize;">{{$patient->type}}</th>--}}
+                                <td style="text-transform: capitalize;">{{$patient->status}}</td>
+                                <td style="text-transform: capitalize;">{{$patient->live}}</td>
+                                <td>{{$patient->year}}</td>
+                                <td><a href="{{ route('patients.index', $patient->mrn) }}">
+                                        <button type="submit" class="btn btn-info">VIEW</button>
+                                    </a></td>
                             </tr>
                         @endforeach
                         </tbody>

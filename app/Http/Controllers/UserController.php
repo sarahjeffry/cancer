@@ -69,21 +69,38 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $user->update([
+            'name'      => $request->name, //'view'  => $request->column in database
+            'role'      => $request->role,
+            'email'     => $request->email
+        ]);
+
+//        $patient = Patient::all();
+//        return redirect()->route('patients.new_patient', compact('patient'));
+        return view('settings', compact('user'));
+        //return redirect('task');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id); //object
+
+        //dd($task); //--> for debugging
+
+        $user -> delete();
+
+        return redirect()->back();
     }
 }

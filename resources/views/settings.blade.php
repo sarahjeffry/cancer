@@ -25,12 +25,12 @@
         <p class="mb-4">My Details</p>
 
         <div class="boxes">
-            <div class="row ml-sm-3 justify-content-center col col-md-11 ">
+            <div class="row ml-sm-3 justify-content-center col-md-11 ">
                 <div class="form-inline offset-md-2 row ml-sm-3 my-sm-3 m-4">
                     <label for="name" class="text-md-right mr-lg-3">{{ __('Name') }}</label>
                     <input id="name" type="text" class="form-control input-group" name="name" value="{{ Auth::user()->name }}" disabled>
                 </div>
-
+                <br>
                 <div class="form-inline offset-md-2 row ml-sm-3 my-sm-3 m-4" >
                     <label for="role" class="text-md-right mr-lg-3">{{ __('Role') }}</label>
                     <input id="role" type="text" class="form-control input-group" name="role" style="text-transform: capitalize;" value="{{ Auth::user()->role }}" disabled>

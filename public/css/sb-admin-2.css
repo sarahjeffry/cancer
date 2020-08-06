@@ -3078,7 +3078,7 @@ input[type="button"].btn-block {
   color: #2e2f37;
   text-decoration: none;
   background-color: #f8f9fc;
-}
+  }
 
 .dropdown-item.active, .dropdown-item:active {
   color: #fff;
