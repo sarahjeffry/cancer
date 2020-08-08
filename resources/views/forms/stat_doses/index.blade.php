@@ -59,9 +59,6 @@
                                     <a href="{{ route('stat_doses.update', $patient->mrn) }}">
                                         <button type="submit" class="btn btn-success">SELECT</button>
                                     </a>
-                                    <a href="{{ route('setting.edit', Auth::user()->id) }}">
-                                        <button type="submit" class="btn btn-primary">EDIT</button>
-                                    </a>
                                 </td>
                             </tr>
                         @endforeach

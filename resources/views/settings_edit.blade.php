@@ -43,7 +43,7 @@
                         <div class="offset-md-6 form-inline my-sm-3 m-4" >
                             <label for="role" class="text-md-right mr-lg-3">{{ __('Role') }}</label>
                             <div class="col-md-6">
-                                <select required class="dropdown-select form-control input-group text-md-right mr-lg-3" name="role" value="{{ Auth::user()->role }}"  required>
+                                <select id="role" class="dropdown-select form-control input-group text-md-right mr-lg-3" name="role" value="{{ Auth::user()->role }}"  required>
                                     <option value="Consultant">Consultant</option>
                                     <option value="Nurse">Nurse</option>
                                 </select>

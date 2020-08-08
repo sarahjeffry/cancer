@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('patient.partials.main')
 
 @yield('style')
 <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
@@ -6,6 +6,9 @@
 <style>
     th {
         color: #3d3e47 !important;
+    }
+    a:hover {
+        text-decoration: none !important;
     }
 </style>
 @section('content')
@@ -15,7 +18,7 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Patients</h1>
-        <p class="mb-4">List of active patients</p>
+        <p class="mb-4">Active patients</p>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
@@ -59,9 +62,14 @@
                                 <td class="text-md-center" style="text-transform: capitalize;">{{$patient->status}}</td>
                                 <td class="text-md-center" style="text-transform: capitalize;">{{$patient->live}}</td>
                                 <td class="text-md-center">{{$patient->year}}</td>
-                                <td class="text-md-center"><a href="{{ route('patients.index', $patient->mrn) }}">
+                                <td class="text-md-center">
+                                    <a href="{{ route('patients.show', $patient->mrn) }}" class="mr-sm-3">
                                         <button type="submit" class="btn btn-info">VIEW</button>
-                                    </a></td>
+                                    </a>
+                                    <a href="{{ route('patients.edit', $patient->id) }}">
+                                        <button type="submit" class="btn btn-primary">EDIT</button>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

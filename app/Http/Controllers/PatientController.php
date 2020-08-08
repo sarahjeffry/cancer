@@ -16,8 +16,8 @@ class PatientController extends Controller
     public function index(request $request)
     {
 
-        $patients = Patient::select('select * from patients where status = "yes"');
-
+//        $patients = Patient::select('select * from patients where status = "yes"');
+        $patients = Patient::all();
         return view('patient.index', ['patients' => $patients]);
 
     }
@@ -47,11 +47,13 @@ class PatientController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show($mrn)
     {
-        //
+        $patient = Patient::findOrFail($mrn);
+//        $patient['patient'] = Patient::find($mrn);
+        return View('patient.show', compact('patient'));
     }
 
     /**
