@@ -62,7 +62,7 @@
 
             <!-- Premedication -->
             <div class="row-cols-xl-4 col-md-4 mb-3">
-                <a href="#">
+                <a href="premedication">
                     <div class="card forms h-100 py-2 bg-gradient-info">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -83,7 +83,7 @@
         <div class="row offset-sm-3">
             <!-- Oral -->
             <div class="row-cols-xl-4 col-md-4 mb-3">
-                <a href="#">
+                <a href="{{ route('oral.index') }}">
                     <div class="card forms h-100 py-2 bg-gradient-info">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -102,7 +102,7 @@
 
             <!-- Infusion -->
             <div class="row-cols-xl-4 col-md-4 mb-3">
-                <a href="#">
+                <a href="infusion">
                     <div class="card forms h-100 py-2 bg-gradient-info">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -125,7 +125,7 @@
     <div class="row offset-sm-3">
         <!-- Injection -->
         <div class="row-cols-xl-4 col-md-4 mb-3">
-            <a href="#">
+            <a href="injections">
                 <div class="card forms h-100 py-2 bg-gradient-info">
                     <div class="btn card-body">
                         <div class="row no-gutters align-items-center">
@@ -144,7 +144,7 @@
 
         <!-- Operation Procedure -->
         <div class="row-cols-xl-4 col-md-4 mb-3">
-            <a href="#">
+            <a href="operation">
                 <div class="card forms h-100 py-2 bg-gradient-info">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -168,7 +168,7 @@
     <div class="row offset-sm-3 ">
         <!-- Treatment Changes Chart -->
         <div class="row-cols-xl-4 col-md-4 mb-3">
-            <a href="#">
+            <a href="charts">
                 <div class="card forms h-100 py-2 bg-gradient-info">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -187,7 +187,7 @@
 
         <!-- Inhalation -->
         <div class="row-cols-xl-4 col-md-4 mb-3">
-            <a href="#">
+            <a href="inhalation">
                 <div class="card forms h-100 py-2 bg-gradient-info">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">

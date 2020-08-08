@@ -10,7 +10,7 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Dashboard</h1>
         <p class="mb-4">Visualizations of patients recorded in iCancer</p>
-
+{{--        <p>{{$breast17}}, {{$breast18}}, {{$breast19}}, {{$breast20}}</p>--}}
         <!-- Content Row -->
         <div class="row">
 
@@ -98,7 +98,7 @@
                     datasets: [
                         {
                             label: 'Breast',
-                            data: [22, 26, 25, 32],
+                            data: [32,23,36,28],
                             backgroundColor: '#FF8DCC',
                             borderColor: '#E555A4',
                             fill: false,
@@ -106,21 +106,19 @@
                         },
                         {
                             label: 'Lung',
-                            data: [25, 39, 45, 43],
+                            data: [25, 39, 35, 24],
                             fill: false,
                             backgroundColor: '#6C8DFC',
                             borderColor: '#3B60DC',
-                            borderWidth: 2,
-                            lineTension:0.1
+                            borderWidth: 2
                         },
                         {
                             label: 'Pancreas',
-                            data: [12, 29, 25, 15],
+                            data: [12, 29, 25, 35],
                             fill: false,
                             backgroundColor: '#FF693C',
                             borderColor: '#B13C19',
-                            borderWidth: 2,
-                            lineTension:0.1
+                            borderWidth: 2
                         },
                         {
                             label: 'Skin',
@@ -128,8 +126,7 @@
                             fill: false,
                             backgroundColor: '#70BE86',
                             borderColor: '#44B264',
-                            borderWidth: 2,
-                            lineTension:0.1
+                            borderWidth: 2
                         }]
                 },
             options: {
@@ -166,12 +163,9 @@
                 }]
             },
             options: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-
+                tooltips: {
+                    mode: 'index',
+                }
             }
         });
     </script>
@@ -256,9 +250,7 @@
             options: {
                 tooltips: {
                     mode: 'index',
-                }
-            },
-            options: {
+                },
                 scales: {
                     yAxes: [{
                         ticks: {

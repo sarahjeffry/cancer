@@ -1,14 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Patient;
-use App\StatDoses;
-use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
-class StatDosesController extends Controller
+class InjectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,26 +26,11 @@ class StatDosesController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
-    protected function create(array $data, Request $mrn)
+    public function create()
     {
-
-        $statdose = StatDoses::create([
-            'name' => $data['name'],
-            'gender' => $data['gender'],
-            'mrn'  => $mrn,
-            'type' => $data['type'],
-            'height' => $data['height'],
-            'weight' => $data['weight'],
-            'smoking' => $data['smoking'],
-            'status' => $data['status'],
-            'live' => $data['live'],
-            'year' => 2020
-
-        ]);
-
-        return view('forms.stat_doses.show', compact('statdose'));
+        //
     }
 
     /**
@@ -90,26 +71,21 @@ class StatDosesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
-    protected function update(Request $mrn)
+    public function update(Request $request, $id)
     {
-        $arr['patient'] = $mrn;
-        return view('forms.stat_doses.create', compact('patient'));
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $statdose = StatDoses::find($id);
-
-        //dd($task); //--> for debugging
-        $statdose -> delete();
-        return redirect()->back();
+        //
     }
 }

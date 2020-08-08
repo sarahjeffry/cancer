@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Patient;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
+
 
 class PatientController extends Controller
 {
@@ -15,9 +17,13 @@ class PatientController extends Controller
      */
     public function index(request $request)
     {
+        $patients = DB::table('patients')
+            ->where('status', '=', 'yes')
+            ->where(function ($query) {
+                $query->where('live', '=', 'alive');
+            })
+            ->get();
 
-//        $patients = Patient::select('select * from patients where status = "yes"');
-        $patients = Patient::all();
         return view('patient.index', ['patients' => $patients]);
 
     }

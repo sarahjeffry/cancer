@@ -40,18 +40,6 @@
                             <th>Action</th>
                         </tr>
                         </thead>
-                        <tfoot class="text-md-center">
-                        <tr>
-                            <th>Name</th>
-                            <th>Gender</th>
-                            <th>MRN</th>
-{{--                            <th>Type</th>--}}
-                            <th>Active</th>
-                            <th>Status</th>
-                            <th>Year admitted</th>
-                            <th>Action</th>
-                        </tr>
-                        </tfoot>
                         <tbody>
                         @foreach($patients as $patient)
                             <tr>

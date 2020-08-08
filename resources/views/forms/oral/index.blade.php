@@ -17,7 +17,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Stat Doses</h1>
+        <h1 class="h3 mb-2 text-gray-800">Oral</h1>
 {{--        <p class="mb-4">Select a patient</p>--}}
         <a class="nav-link ml-0" href="\forms">
             <i class="fas fa-fw mb-2 fa-arrow-circle-left"></i>
@@ -39,7 +39,6 @@
                             <th>Action</th>
                         </tr>
                         </thead>
-                        <tfoot class="text-md-center">
                         <tbody>
                         @foreach($patients as $patient)
                             <tr>
