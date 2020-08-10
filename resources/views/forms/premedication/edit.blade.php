@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('forms.partials.main')
 
 <!-- Styles -->
 

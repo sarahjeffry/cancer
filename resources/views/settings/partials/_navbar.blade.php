@@ -19,7 +19,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item">
         <a class="nav-link" href="\">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -50,7 +50,7 @@
 
     <!-- Nav Item - Report -->
     <li class="nav-item">
-        <a class="nav-link" href="\report">
+        <a class="nav-link" href="\reports">
             <i class="fas fa-fw fa-table"></i>
             <span>Report</span></a>
     </li>
@@ -59,7 +59,7 @@
 {{--    <hr class="sidebar-divider">--}}
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
+    <li class="nav-item active">
         <a class="nav-link" href="\settings">
             <i class="fas fa-fw fa-cog"></i>
             <span>Settings</span></a>

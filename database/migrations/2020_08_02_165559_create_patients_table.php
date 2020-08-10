@@ -26,6 +26,7 @@ class CreatePatientsTable extends Migration
             $table->string('status');
             $table->string('live');
             $table->integer('year');
+            $table->foreignId('consultant_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('report.partials.main')
 
 @yield('style')
     <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">

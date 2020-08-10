@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('forms.partials.main')
 
 <!-- Styles -->
 
@@ -38,7 +38,7 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Forms</h1>
-        <p class="mb-4">Select type of forms</p>
+        <p class="mb-4">Select type of form</p>
 
         <div class="row offset-sm-3">
             <!-- Stat Doses -->

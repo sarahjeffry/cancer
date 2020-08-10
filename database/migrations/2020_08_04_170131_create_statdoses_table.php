@@ -15,7 +15,7 @@ class CreateStatdosesTable extends Migration
     {
         Schema::create('statdoses', function (Blueprint $table) {
             $table->id();
-//            $table->foreign('id')->references('id')->on('patients');
+            $table->foreignId('patient_id')->constrained()->onDelete('cascade');
             $table->timestamps();
             $table->date('date')->nullable();
             $table->time('time')->nullable();

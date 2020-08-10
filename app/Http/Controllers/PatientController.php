@@ -17,12 +17,10 @@ class PatientController extends Controller
      */
     public function index(request $request)
     {
-        $patients = DB::table('patients')
-            ->where('status', '=', 'yes')
-            ->where(function ($query) {
-                $query->where('live', '=', 'alive');
-            })
-            ->get();
+        $patients = DB::table('patients')->where([
+            ['status', '=', 'yes'],
+            ['live', '=', 'alive']
+        ])->get();
 
         return view('patient.index', ['patients' => $patients]);
 
@@ -55,11 +53,11 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($mrn)
+    public function show($id)
     {
-        $patient = Patient::findOrFail($mrn);
-//        $patient['patient'] = Patient::find($mrn);
-        return View('patient.show', compact('patient'));
+        $patient = DB::table('patients')->where('id', $id)->first();
+//        dd($patients);
+        return View('patient.show', compact(['patient' => $patient]));
     }
 
     /**

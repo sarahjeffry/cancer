@@ -33,9 +33,7 @@
                             <th>Name</th>
                             <th>Gender</th>
                             <th>MRN</th>
-{{--                            <th>Type</th>--}}
-                            <th>Active</th>
-                            <th>Status</th>
+                            <th>Type</th>
                             <th>Year admitted</th>
                             <th>Action</th>
                         </tr>
@@ -44,14 +42,12 @@
                         @foreach($patients as $patient)
                             <tr>
                                 <td>{{$patient->name}}</td>
-                                <td  class="text-md-center" style="text-transform: capitalize;">{{$patient->gender}}</td>
-                                <td  class="text-md-center" style="text-transform: uppercase;">{{$patient->mrn}}</td>
-                                {{--                                <th style="text-transform: capitalize;">{{$patient->type}}</th>--}}
-                                <td class="text-md-center" style="text-transform: capitalize;">{{$patient->status}}</td>
-                                <td class="text-md-center" style="text-transform: capitalize;">{{$patient->live}}</td>
+                                <td  class="text-md-center text-capitalize">{{$patient->gender}}</td>
+                                <td  class="text-md-center text-uppercase">{{$patient->mrn}}</td>
+                                <td class="text-md-center text-capitalize">{{$patient->type}}</td>
                                 <td class="text-md-center">{{$patient->year}}</td>
                                 <td class="text-md-center">
-                                    <a href="{{ route('patients.show', $patient->mrn) }}" class="mr-sm-3">
+                                    <a href="{{ route('patients.show', $patient->id) }}" class="mr-sm-3">
                                         <button type="submit" class="btn btn-info">VIEW</button>
                                     </a>
                                     <a href="{{ route('patients.edit', $patient->id) }}">

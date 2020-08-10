@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('settings.partials.main')
 
 <!-- Styles -->
 

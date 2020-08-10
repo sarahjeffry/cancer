@@ -1,1 +1,1 @@
-<?php
+@extends('forms.partials.main')

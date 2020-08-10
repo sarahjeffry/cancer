@@ -15,7 +15,15 @@ class CreateOralsTable extends Migration
     {
         Schema::create('orals', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('patient_id')->constrained()->onDelete('cascade');
             $table->timestamps();
+            $table->date('date')->nullable();
+            $table->time('time')->nullable();
+            $table->string('drug_name')->nullable();
+            $table->float('dose_value')->nullable();
+            $table->string('dose_unit')->nullable();
+            $table->string('frequency')->nullable();
+            $table->string('duration')->nullable();
         });
     }
 
