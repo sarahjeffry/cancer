@@ -34,27 +34,27 @@
                             <div class="col-auto ml-sm-3 align-top">
                                 <div class="form-inline my-sm-3 ml-0">
                                     <span class="col-form-label mr-lg-3 mr-lg-3">Name:</span>
-                                    <strong class="ml-2">{{$patient->name}}</strong>
+                                    <strong class="ml-2">{$patient->name}}</strong>
                                 </div>
                                 <div class="form-inline my-sm-3 ml-0">
                                     <span class="col-form-label mr-lg-3 mr-lg-3">MRN:</span>
-                                    <strong class="ml-2">{{ '$MRN' }}</strong>
+                                    <strong class="ml-2">{ $patient->mrn }}</strong>
                                 </div>
                                 <div class="form-inline my-sm-3 ml-0">
                                     <span class="col-form-label mr-lg-3 mr-lg-3">Gender:</span>
-                                    <strong class="ml-2">{{ '$gender' }}</strong>
+                                    <strong class="ml-2">{ $patient->gender }}</strong>
                                 </div>
                                 <div class="form-inline my-sm-3 ml-0">
                                     <span class="col-form-label mr-lg-3 mr-lg-3">Cancer type:</span>
-                                    <strong class="ml-2">{{ '$type' }}</strong>
+                                    <strong class="ml-2">{ $patient->type }}</strong>
                                 </div>
                                 <div class="form-inline my-sm-3 ml-0">
                                     <span class="col-form-label mr-lg-3 mr-lg-3">Height:</span>
-                                    <strong class="ml-2">{{ '$height' }}</strong>
+                                    <strong class="ml-2">{ $patient->height }}</strong>
                                 </div>
                                 <div class="form-inline my-sm-3 ml-0">
                                     <span class="col-form-label mr-lg-3 mr-lg-3">Weight:</span>
-                                    <strong class="ml-2">{{ '$weight' }}</strong>
+                                    <strong class="ml-2">{ $patient->weight }}</strong>
                                 </div>
                             </div>
                         </div>
@@ -89,10 +89,10 @@
 
                 <div class="offset-md-5 my-sm-3 mb-4">
                     <a href="{{ route('patients.edit', Auth::user()->id) }}">
-                        <button type="submit" class="btn btn-primary">EDIT</button>
+                        <button type="submit" class="btn btn-secondary">EDIT</button>
                     </a>
-                    <a href="{{ route('patients.index') }}">
-                        <button type="submit" class="btn btn-secondary">BACK</button>
+                    <a href="/forms">
+                        <button type="submit" class="btn btn-primary">ADD NEW RECORD</button>
                     </a>
                 </div>
             </div>

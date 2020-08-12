@@ -47,12 +47,12 @@
                                 <td class="text-md-center text-capitalize">{{$patient->type}}</td>
                                 <td class="text-md-center">{{$patient->year}}</td>
                                 <td class="text-md-center">
-                                    <a href="{{ route('patients.show', $patient->id) }}" class="mr-sm-3">
+                                    <a href="{{ route('patients.show', $patient->id) }}" class="">
                                         <button type="submit" class="btn btn-info">VIEW</button>
                                     </a>
-                                    <a href="{{ route('patients.edit', $patient->id) }}">
-                                        <button type="submit" class="btn btn-primary">EDIT</button>
-                                    </a>
+{{--                                    <a href="{{ route('patients.edit', $patient->id) }}">--}}
+{{--                                        <button type="submit" class="btn btn-primary">EDIT</button>--}}
+{{--                                    </a>--}}
                                 </td>
                             </tr>
                         @endforeach
