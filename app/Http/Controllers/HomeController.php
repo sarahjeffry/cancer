@@ -314,6 +314,78 @@ class HomeController extends Controller
                 ['year', '=', 2020]
             ])->count();
 
+            $smoke15 = DB::table('patients')->where([
+                ['type', '=', 'lung'],
+                ['smoking', '=', 'yes'],
+                ['year', '=', 2015]
+            ])->count();
+
+            $notsmoke15 = DB::table('patients')->where([
+                ['type', '=', 'lung'],
+                ['smoking', '=', 'no'],
+                ['year', '=', 2015]
+            ])->count();
+
+            $smoke16 = DB::table('patients')->where([
+                ['type', '=', 'lung'],
+                ['smoking', '=', 'yes'],
+                ['year', '=', 2016]
+            ])->count();
+
+            $notsmoke16 = DB::table('patients')->where([
+                ['type', '=', 'lung'],
+                ['smoking', '=', 'no'],
+                ['year', '=', 2016]
+            ])->count();
+
+            $smoke17 = DB::table('patients')->where([
+                ['type', '=', 'lung'],
+                ['smoking', '=', 'yes'],
+                ['year', '=', 2017]
+            ])->count();
+
+            $notsmoke17 = DB::table('patients')->where([
+                ['type', '=', 'lung'],
+                ['smoking', '=', 'no'],
+                ['year', '=', 2017]
+            ])->count();
+
+            $smoke18 = DB::table('patients')->where([
+                ['type', '=', 'lung'],
+                ['smoking', '=', 'yes'],
+                ['year', '=', 2018]
+            ])->count();
+
+            $notsmoke18 = DB::table('patients')->where([
+                ['type', '=', 'lung'],
+                ['smoking', '=', 'no'],
+                ['year', '=', 2018]
+            ])->count();
+
+            $smoke19 = DB::table('patients')->where([
+                ['type', '=', 'lung'],
+                ['smoking', '=', 'yes'],
+                ['year', '=', 2019]
+            ])->count();
+
+            $notsmoke19 = DB::table('patients')->where([
+                ['type', '=', 'lung'],
+                ['smoking', '=', 'no'],
+                ['year', '=', 2019]
+            ])->count();
+
+            $smoke20 = DB::table('patients')->where([
+                ['type', '=', 'lung'],
+                ['smoking', '=', 'yes'],
+                ['year', '=', 2020]
+            ])->count();
+
+            $notsmoke20 = DB::table('patients')->where([
+                ['type', '=', 'lung'],
+                ['smoking', '=', 'no'],
+                ['year', '=', 2020]
+            ])->count();
+
             return view('admin.index', compact('users',
                 'breast15','breast16','breast17','breast18','breast19','breast20',
                 'lung15', 'lung16', 'lung17', 'lung18','lung19','lung20',
@@ -323,7 +395,9 @@ class HomeController extends Controller
                 'deadlung15', 'deadlung16','deadlung17', 'deadlung18','deadlung19','deadlung20',
                 'deadpancreas15','deadpancreas16','deadpancreas17','deadpancreas18','deadpancreas19','deadpancreas20',
                 'deadskin15','deadskin16','deadskin17','deadskin18','deadskin19','deadskin20',
-                'patientbreast20', 'patientlung20', 'patientpancreas20', 'patientskin20'
+                'patientbreast20', 'patientlung20', 'patientpancreas20', 'patientskin20',
+                'smoke15', 'smoke16', 'smoke17', 'smoke18', 'smoke19', 'smoke20',
+                'notsmoke15', 'notsmoke16', 'notsmoke17', 'notsmoke18', 'notsmoke19', 'notsmoke20'
             ));
         }
 

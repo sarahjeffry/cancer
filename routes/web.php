@@ -13,38 +13,21 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index');
 
-Route::get('/home', function () {
-    if(Auth::check()) {
-        return view('admin.index');
-    }
-    else {
-        return view('auth.login');
-    }
-
-});
-
-Route::get('/admin', function () {
-    return view('admin.index');
-});
-
-Route::get('/patients', function () {
-    $patients = Patient::all();
-    if(Auth::check()) {
-        $users = User::all();
-        return view('patient.index', compact('patients'));
-    }
-    else {
-        return view('auth.login');
-    }
-});
+//Route::get('/patients', function () {
+//    $patients = Patient::all();
+//    if(Auth::check()) {
+//        $users = User::all();
+//        return view('patient.index', compact('patients'));
+//    }
+//    else {
+//        return view('auth.login');
+//    }
+//});
 
 Route::get('/reports', function () {
     $patients = Patient::all();
@@ -60,17 +43,6 @@ Route::get('/reports', function () {
 
 Route::resource('/patient', 'PatientController')->names('patients');
 Route::resource('/settings', 'UserController')->names('setting');
-
-//Route::get('/settings', function () {
-//    if(Auth::check()) {
-//        $users = User::all();
-//        return view('settings', compact('users'));
-//    }
-//
-//    else {
-//        return view('auth.login');
-//    }
-//});
 
 /*
 |--------------------------------------------------------------------------
@@ -90,30 +62,35 @@ Route::get('/forms', function () {
     }
 });
 
-Route::resource('/statdoses', 'StatDosesController')->names('stat_doses');
-Route::resource('/oral', 'OralController')->names('oral');
-Route::resource('/premedication', 'PremedicationController')->names('premedication');
+//Route::resource('/statdoses', 'StatDosesController')->names('stat_doses');
+//Route::resource('/oral', 'OralController')->names('oral');
+//Route::resource('/premedication', 'PremedicationController')->names('premedication');
 
 /*     T E M P O R A R Y    R O U T E S      */
-//Route::get('/oral', function () {
-//    $patients = Patient::all();
-//    return view('forms.oral.index', compact('patients'));
-//});
+Route::get('/statdoses', function () {
+    $patients = Patient::all();
+    return view('forms.stat_doses.create', compact('patients'));
+});
+
+Route::get('/oral', function () {
+    $patients = Patient::all();
+    return view('forms.oral.create', compact('patients'));
+});
 
 Route::get('/injections', function () {
     $patients = Patient::all();
-    return view('forms.injections.index', compact('patients'));
+    return view('forms.injections.create', compact('patients'));
 });
 
 Route::get('/charts', function () {
     $patients = Patient::all();
-    return view('forms.charts.index', compact('patients'));
+    return view('forms.charts.create', compact('patients'));
 });
 
-//Route::get('/premedication', function () {
-//    $patients = Patient::all();
-//    return view('forms.premedication.create', compact('patients'));
-//});
+Route::get('/premedication', function () {
+    $patients = Patient::all();
+    return view('forms.premedication.create', compact('patients'));
+});
 
 Route::get('/infusion', function () {
     $patients = Patient::all();

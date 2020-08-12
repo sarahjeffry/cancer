@@ -18,6 +18,7 @@ class CreatePatientsTable extends Migration
             $table->string('name');
             $table->string('gender');
             $table->string('mrn')->unique();
+            $table->string('staff_id');
             $table->string('type');
             $table->float('height')->nullable();
             $table->float('weight')->nullable();
@@ -25,8 +26,8 @@ class CreatePatientsTable extends Migration
             $table->string('smoking');
             $table->string('status');
             $table->string('live');
+            $table->string('user_id')->unique();
             $table->integer('year');
-            $table->foreignId('consultant_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

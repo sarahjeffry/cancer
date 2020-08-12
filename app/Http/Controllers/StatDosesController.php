@@ -60,7 +60,7 @@ class StatDosesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

@@ -38,12 +38,12 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Forms</h1>
-        <p class="mb-4">Select type of form</p>
+        <p class="mb-2">Select type of form</p>
 
         <div class="row offset-sm-3">
             <!-- Stat Doses -->
             <div class="row-cols-xl-4 col-md-4 mb-3">
-                <a href="{{ route('stat_doses.index') }}">
+                <a href="\statdoses">
                     <div class="card forms h-100 py-2 bg-gradient-info">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -83,7 +83,7 @@
         <div class="row offset-sm-3">
             <!-- Oral -->
             <div class="row-cols-xl-4 col-md-4 mb-3">
-                <a href="{{ route('oral.index') }}">
+                <a href="\oral">
                     <div class="card forms h-100 py-2 bg-gradient-info">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">

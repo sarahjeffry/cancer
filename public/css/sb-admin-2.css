@@ -3851,7 +3851,7 @@ input[type="button"].btn-block {
 }
 
 .custom-control-label::before,
-.custom-file-label,
+.wid,
 .custom-select {
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }

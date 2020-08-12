@@ -12,10 +12,8 @@
         <p class="mb-4">Visualizations of patients recorded in iCancer</p>
 {{--        <p>{{$breast17}}, {{$breast18}}, {{$breast19}}, {{$breast20}}</p>--}}
         <!-- Content Row -->
-        <div class="row">
-
-            <div class="col-xl-8 col-lg-7">
-
+        <span class="form-inline" >
+            <div class="col-6" >
                 <!-- Area Chart -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -23,35 +21,16 @@
                     </div>
                     <div class="card-body">
                         <div class="chart-bar">
-{{--                            <canvas id="myBarChart"></canvas>--}}
-                            <canvas id="trends" width="200" height="90"></canvas>
+                            <canvas id="trends" width="195" height="120"></canvas>
                         </div>
                         <hr>
                         <center>Rate of cancer deaths by years</center>
                     </div>
                 </div>
-
-                <!-- Bar Chart -->
-                <div class="col-xl-8 col-lg-7">
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Correlation</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart-area">
-                                {{--                            <canvas id="myAreaChart"></canvas>--}}
-                                <canvas id="correlation" width="400" height="290"></canvas>
-                            </div>
-                            <hr>
-                            <center>Number of cancer occurences by year</center>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
             <!-- Donut Chart -->
-            <div class="col-xl-4 col-lg-5">
+            <div class="col-6" >
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3">
@@ -59,17 +38,32 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body ">
-                        <div class="chart-pie col-sm-9">
-{{--                            <canvas id="myPieChart"></canvas>--}}
-                            <canvas id="demographic" width="420" height="90"></canvas>
+                        <div class="chart-pie justify-content-center">
+                            <canvas id="demographic" width="75" height="40" class="ml-sm-2"></canvas>
                         </div>
                         <hr>
                         <center>Number of cancer occurences in 2020</center>
-{{--                        Styling for the donut chart can be found in the <code>/js/demo/chart-pie-demo.js</code> file.--}}
                     </div>
                 </div>
             </div>
-        </div>
+        </span>
+
+                <!-- Bar Chart -->
+            <div class="col-lg-10 offset-1" >
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Correlation</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-area">
+                                {{--                            <canvas id="myAreaChart"></canvas>--}}
+                                <canvas id="correlation" width="250" height="90"></canvas>
+                            </div>
+                            <hr>
+                            <center>Number of lung cancer occurences amongst smokers and non-smokers</center>
+                        </div>
+                    </div>
+            </div>
     </div>
     <!-- End of Main Content -->
 
@@ -144,7 +138,8 @@
                 labels: ['Breast', 'Lung', 'Pancreas', 'Skin'],
                 datasets: [{
                     label: 'Number of cancer occurences',
-                    data: [ {{ $patientbreast20 }}, {{ $patientlung20 }},{{ $patientpancreas20 }}, {{ $patientskin20 }}],
+                    {{--data: [ {{ $patientbreast20 }}, {{ $patientlung20 }},{{ $patientpancreas20 }}, {{ $patientskin20 }}],--}}
+                    data: [2,4,6,3],
                     backgroundColor: [
                         '#FF8DCC',
                         '#6C8DFC',
@@ -176,90 +171,49 @@
             data: {
                 labels: ['2015','2016','2017', '2018', '2019', '2020'],
                 datasets: [{
-                    label: 'Breast',
-                    data: [{{ $breast15 }}, {{ $breast16 }},{{ $breast17 }}, {{ $breast18 }}, {{ $breast19 }}, {{ $breast20 }}],
+                    label: 'Non-smokers',
+                    data: [{{ $notsmoke15 }}, {{ $notsmoke16 }}, {{ $notsmoke17 }}, {{ $notsmoke18 }}, {{ $notsmoke19 }},{{ $notsmoke20 }} ],
                     backgroundColor: [
-                        '#FF8DCC',
-                        '#FF8DCC',
-                        '#FF8DCC',
-                        '#FF8DCC',
-                        '#FF8DCC',
-                        '#FF8DCC'
+                        '#6C8DFC',
+                        '#6C8DFC',
+                        '#6C8DFC',
+                        '#6C8DFC',
+                        '#6C8DFC',
+                        '#6C8DFC'
+
                     ],
                     borderColor: [
-                        '#FE6EBD',
-                        '#FE6EBD',
-                        '#FE6EBD',
-                        '#FE6EBD',
-                        '#FE6EBD',
-                        '#FE6EBD',
+                        '#577CF8',
+                        '#577CF8',
+                        '#577CF8',
+                        '#577CF8',
+                        '#577CF8',
+                        '#577CF8'
                     ],
                     borderWidth: 1
                 },
                     {
-                        label: 'Lung',
-                        data: [ {{ $lung15 }}, {{ $lung16 }}, {{ $lung17 }}, {{ $lung18 }}, {{ $lung19 }}, {{ $lung20 }} ],
+                        label: 'Smokers',
+                        data: [ {{ $smoke15 }}, {{ $smoke16 }}, {{ $smoke17 }}, {{ $smoke18 }}, {{ $smoke19 }},{{ $smoke20 }}  ],
                         backgroundColor: [
-                            '#6C8DFC',
-                            '#6C8DFC',
-                            '#6C8DFC',
-                            '#6C8DFC',
-                            '#6C8DFC',
-                            '#6C8DFC'
+                            '#FF8DCC',
+                            '#FF8DCC',
+                            '#FF8DCC',
+                            '#FF8DCC',
+                            '#FF8DCC',
+                            '#FF8DCC'
                         ],
                         borderColor: [
-                            '#577CF8',
-                            '#577CF8',
-                            '#577CF8',
-                            '#577CF8',
-                            '#577CF8',
-                            '#577CF8'
+                            '#FE6EBD',
+                            '#FE6EBD',
+                            '#FE6EBD',
+                            '#FE6EBD',
+                            '#FE6EBD',
+                            '#FE6EBD'
                         ],
                         borderWidth: 1
                     },
-                    {
-                        label: 'Pancreas',
-                        data: [ {{ $pancreas15 }}, {{ $pancreas16 }}, {{ $pancreas17 }}, {{ $pancreas18 }}, {{ $pancreas19 }}, {{ $pancreas20 }} ],
-                        backgroundColor: [
-                            '#F8735B',
-                            '#F8735B',
-                            '#F8735B',
-                            '#F8735B',
-                            '#F8735B',
-                            '#F8735B'
-                        ],
-                        borderColor: [
-                            '#ED4C2F',
-                            '#ED4C2F',
-                            '#ED4C2F',
-                            '#ED4C2F',
-                            '#ED4C2F',
-                            '#ED4C2F'
-                        ],
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Skin',
-                        data: [{{ $skin15 }}, {{ $skin16 }},{{ $skin17 }}, {{ $skin18 }}, {{ $skin19 }}, {{ $skin20 }}],
-                        backgroundColor: [
-                            '#58BC74',
-                            '#58BC74',
-                            '#58BC74',
-                            '#58BC74',
-                            '#58BC74',
-                            '#58BC74'
-                        ],
-                        borderColor: [
-                            '#32AB54',
-                            '#32AB54',
-                            '#32AB54',
-                            '#32AB54',
-                            '#32AB54',
-                            '#32AB54'
-
-                        ],
-                        borderWidth: 1
-                    }]
+                    ]
             },
             options: {
                 tooltips: {
@@ -276,5 +230,111 @@
         });
     </script>
 
+{{--    <script>--}}
+{{--        var ctx = document.getElementById('correlation').getContext('2d');--}}
+{{--        var trends = new Chart(ctx, {--}}
+{{--            type: 'bar',--}}
+{{--            data: {--}}
+{{--                labels: ['2015','2016','2017', '2018', '2019', '2020'],--}}
+{{--                datasets: [{--}}
+{{--                    label: 'Breast',--}}
+{{--                    data: [{{ $breast15 }}, {{ $breast16 }},{{ $breast17 }}, {{ $breast18 }}, {{ $breast19 }}, {{ $breast20 }}],--}}
+{{--                    backgroundColor: [--}}
+{{--                        '#FF8DCC',--}}
+{{--                        '#FF8DCC',--}}
+{{--                        '#FF8DCC',--}}
+{{--                        '#FF8DCC',--}}
+{{--                        '#FF8DCC',--}}
+{{--                        '#FF8DCC'--}}
+{{--                    ],--}}
+{{--                    borderColor: [--}}
+{{--                        '#FE6EBD',--}}
+{{--                        '#FE6EBD',--}}
+{{--                        '#FE6EBD',--}}
+{{--                        '#FE6EBD',--}}
+{{--                        '#FE6EBD',--}}
+{{--                        '#FE6EBD',--}}
+{{--                    ],--}}
+{{--                    borderWidth: 1--}}
+{{--                },--}}
+{{--                    {--}}
+{{--                        label: 'Lung',--}}
+{{--                        data: [ {{ $lung15 }}, {{ $lung16 }}, {{ $lung17 }}, {{ $lung18 }}, {{ $lung19 }}, {{ $lung20 }} ],--}}
+{{--                        backgroundColor: [--}}
+{{--                            '#6C8DFC',--}}
+{{--                            '#6C8DFC',--}}
+{{--                            '#6C8DFC',--}}
+{{--                            '#6C8DFC',--}}
+{{--                            '#6C8DFC',--}}
+{{--                            '#6C8DFC'--}}
+{{--                        ],--}}
+{{--                        borderColor: [--}}
+{{--                            '#577CF8',--}}
+{{--                            '#577CF8',--}}
+{{--                            '#577CF8',--}}
+{{--                            '#577CF8',--}}
+{{--                            '#577CF8',--}}
+{{--                            '#577CF8'--}}
+{{--                        ],--}}
+{{--                        borderWidth: 1--}}
+{{--                    },--}}
+{{--                    {--}}
+{{--                        label: 'Pancreas',--}}
+{{--                        data: [ {{ $pancreas15 }}, {{ $pancreas16 }}, {{ $pancreas17 }}, {{ $pancreas18 }}, {{ $pancreas19 }}, {{ $pancreas20 }} ],--}}
+{{--                        backgroundColor: [--}}
+{{--                            '#F8735B',--}}
+{{--                            '#F8735B',--}}
+{{--                            '#F8735B',--}}
+{{--                            '#F8735B',--}}
+{{--                            '#F8735B',--}}
+{{--                            '#F8735B'--}}
+{{--                        ],--}}
+{{--                        borderColor: [--}}
+{{--                            '#ED4C2F',--}}
+{{--                            '#ED4C2F',--}}
+{{--                            '#ED4C2F',--}}
+{{--                            '#ED4C2F',--}}
+{{--                            '#ED4C2F',--}}
+{{--                            '#ED4C2F'--}}
+{{--                        ],--}}
+{{--                        borderWidth: 1--}}
+{{--                    },--}}
+{{--                    {--}}
+{{--                        label: 'Skin',--}}
+{{--                        data: [{{ $skin15 }}, {{ $skin16 }},{{ $skin17 }}, {{ $skin18 }}, {{ $skin19 }}, {{ $skin20 }}],--}}
+{{--                        backgroundColor: [--}}
+{{--                            '#58BC74',--}}
+{{--                            '#58BC74',--}}
+{{--                            '#58BC74',--}}
+{{--                            '#58BC74',--}}
+{{--                            '#58BC74',--}}
+{{--                            '#58BC74'--}}
+{{--                        ],--}}
+{{--                        borderColor: [--}}
+{{--                            '#32AB54',--}}
+{{--                            '#32AB54',--}}
+{{--                            '#32AB54',--}}
+{{--                            '#32AB54',--}}
+{{--                            '#32AB54',--}}
+{{--                            '#32AB54'--}}
+
+{{--                        ],--}}
+{{--                        borderWidth: 1--}}
+{{--                    }]--}}
+{{--            },--}}
+{{--            options: {--}}
+{{--                tooltips: {--}}
+{{--                    mode: 'index',--}}
+{{--                },--}}
+{{--                scales: {--}}
+{{--                    yAxes: [{--}}
+{{--                        ticks: {--}}
+{{--                            beginAtZero: true--}}
+{{--                        }--}}
+{{--                    }]--}}
+{{--                }--}}
+{{--            }--}}
+{{--        });--}}
+{{--    </script>--}}
 
 @endsection

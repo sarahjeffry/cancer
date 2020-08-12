@@ -17,7 +17,8 @@ $factory->define(\App\Patient::class, function (Faker $faker) {
         'smoking' => $faker->randomElement($array = array ('no','yes')),
         'status' => $faker->randomElement($array = array ('yes','no')),
         'live' => $faker->randomElement($array = array ('alive','deceased')),
-        'consultant_id' =>factory('App\User'),
+        'staff_id' =>factory('App\User'),
+        'user_id' => $faker->unique()->bothify('?PKS?###'),
         'year' => $faker->randomElement($array = array (2015,2016,2017,2018,2019,2020)),
     ];
 });

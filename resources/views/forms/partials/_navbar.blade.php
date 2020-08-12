@@ -50,7 +50,7 @@
 
     <!-- Nav Item - Report -->
     <li class="nav-item">
-        <a class="nav-link" href="\report">
+        <a class="nav-link" href="\reports">
             <i class="fas fa-fw fa-table"></i>
             <span>Report</span></a>
     </li>

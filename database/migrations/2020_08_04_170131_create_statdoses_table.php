@@ -13,7 +13,7 @@ class CreateStatdosesTable extends Migration
      */
     public function up()
     {
-        Schema::create('statdoses', function (Blueprint $table) {
+        Schema::create('stat_doses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('patient_id')->constrained()->onDelete('cascade');
             $table->timestamps();

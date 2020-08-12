@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Oral;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Patient;
@@ -27,11 +28,25 @@ class OralController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(array $data, Request $mrn)
     {
-        //
+        $oral = Oral::create([
+            'name' => $data['name'],
+            'gender' => $data['gender'],
+            'mrn'  => $mrn,
+            'type' => $data['type'],
+            'height' => $data['height'],
+            'weight' => $data['weight'],
+            'smoking' => $data['smoking'],
+            'status' => $data['status'],
+            'live' => $data['live'],
+            'year' => 2020
+
+        ]);
+
+        return view('forms.oral.show', compact('oral'));
     }
 
     /**
@@ -49,11 +64,12 @@ class OralController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        //
+        $oral = Oral::find($id);
+        return view('forms.oral.show',array('oral' => $oral));
     }
 
     /**
@@ -76,7 +92,8 @@ class OralController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $arr['patient'] = $mrn;
+        return view('forms.stat_doses.create', compact('patient'));
     }
 
     /**
