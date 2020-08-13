@@ -1,8 +1,10 @@
 @extends('patient.partials.main')
 
 @yield('style')
+<!-- DataTables Bootstrap CSS -->
 <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+
 <style>
     th {
         color: #3d3e47 !important;
@@ -27,7 +29,7 @@
             </div>
             <div class="card-body col-sm-11 ml-lg-5">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="85%" cellspacing="0">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead class="text-md-center">
                         <tr>
                             <th>Name</th>
@@ -47,7 +49,7 @@
                                 <td class="text-md-center text-capitalize">{{$patient->type}}</td>
                                 <td class="text-md-center">{{$patient->year}}</td>
                                 <td class="text-md-center">
-                                    <a href="{{ route('patients.show', $patient->id) }}" class="">
+                                    <a href="{{ route('patients.show', $patient->id) }}" class=" ">
                                         <button type="submit" class="btn btn-info">VIEW</button>
                                     </a>
 {{--                                    <a href="{{ route('patients.edit', $patient->id) }}">--}}
@@ -67,50 +69,10 @@
 
 @endsection
 
-@section('scripts')
-
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-
-{{--    <script>--}}
-{{--        $(document).ready(function() {--}}
-{{--            $('#user_table').DataTable({--}}
-{{--                processing: true,--}}
-{{--                serverSide: true,--}}
-{{--                ajax: {--}}
-{{--                  url: "{{ route('patient.index')  }}",--}}
-{{--                },--}}
-{{--                columns: [--}}
-{{--                    {--}}
-{{--                        data: 'name',--}}
-{{--                        name: 'Name'--}}
-{{--                    },--}}
-{{--                    {--}}
-{{--                        data: 'gender',--}}
-{{--                        name: 'Gender'--}}
-{{--                    },--}}
-{{--                    {--}}
-{{--                        data: 'mrn',--}}
-{{--                        name: 'MRN'--}}
-{{--                    },--}}
-{{--                    {--}}
-{{--                        data: 'status',--}}
-{{--                        name: 'Active'--}}
-{{--                    },--}}
-{{--                    {--}}
-{{--                        data: 'live',--}}
-{{--                        name: 'Status'--}}
-{{--                    },--}}
-{{--                    {--}}
-{{--                        data: 'year',--}}
-{{--                        name: 'Year'--}}
-{{--                    },--}}
-{{--                    {--}}
-{{--                        data: 'action',--}}
-{{--                        name: 'action',--}}
-{{--                        orderable: false--}}
-{{--                    }--}}
-{{--                ]--}}
-{{--            })--}}
-{{--        });--}}
-{{--    </script>--}}
-@endsection
+@push('js')
+    <script>
+        $(document).ready( function () {
+            $('.table').DataTable();
+        } );
+    </script>
+@endpush

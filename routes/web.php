@@ -5,6 +5,7 @@ use App\User;
 use App\StatDoses;
 use App\Treatment;
 use App\Premedication;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +42,11 @@ Route::get('/reports', function () {
     }
 });
 
+Route::get('generatePDF', function (){
+    $pdf = (new Barryvdh\DomPDF\PDF)->loadView('report');
+    return $pdf->download('Patient History.pdf');
+});
+Route::get('generatePDF/pdf', 'PDFController@pdf');
 Route::resource('/patient', 'PatientController')->names('patients');
 Route::resource('/settings', 'UserController')->names('setting');
 

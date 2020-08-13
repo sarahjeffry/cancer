@@ -103,7 +103,6 @@
 </div>
 
 <!-- Your JavaScript-->
-@yield('scripts')
 
 <!-- Bootstrap core JavaScript-->
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
@@ -114,6 +113,11 @@
 
 <!-- Custom scripts for all pages-->
 <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
+
+<!-- DataTables Bootstrap-->
+{{--<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>--}}
+
+@stack('scripts')
 
 </body>
 
