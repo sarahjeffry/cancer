@@ -69,6 +69,7 @@
                                     <option class="dropdown-item" value="daily">daily</option>
                                     <option class="dropdown-item" value="weekly">weekly</option>
                                     <option class="dropdown-item" value="two weeks">two weeks</option>
+                                    <option class="dropdown-item col-5" value="if necessary">If necessary</option>
                                 </div>
                             </select>
                             <input type="text" class="form-control ml-2 mr-4" name="duration" id="duration" style='display:none;'/>

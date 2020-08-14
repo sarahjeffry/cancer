@@ -18,7 +18,7 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Patients</h1>
-        <a class="nav-link ml-0" href="{{ route('patients.index') }}">
+        <a class="nav-link ml-0 col-2" href="{{ route('patients.index') }}" >
             <i class="fas fa-fw fa-arrow-circle-left"></i>
             <span>Back</span>
         </a>
@@ -34,27 +34,27 @@
                             <div class="col-auto ml-sm-3 align-top">
                                 <div class="form-inline my-sm-3 ml-0">
                                     <span class="col-form-label mr-lg-3 mr-lg-3">Name:</span>
-                                    <strong class="ml-2">{$patient->name}}</strong>
+                                    <strong class="ml-2 text-capitalize">{{$patient->name}}</strong>
                                 </div>
                                 <div class="form-inline my-sm-3 ml-0">
                                     <span class="col-form-label mr-lg-3 mr-lg-3">MRN:</span>
-                                    <strong class="ml-2">{ $patient->mrn }}</strong>
+                                    <strong class="ml-2 text-uppercase">{{ $patient->mrn }}</strong>
                                 </div>
                                 <div class="form-inline my-sm-3 ml-0">
                                     <span class="col-form-label mr-lg-3 mr-lg-3">Gender:</span>
-                                    <strong class="ml-2">{ $patient->gender }}</strong>
+                                    <strong class="ml-2 text-capitalize">{{ $patient->gender }}</strong>
                                 </div>
                                 <div class="form-inline my-sm-3 ml-0">
                                     <span class="col-form-label mr-lg-3 mr-lg-3">Cancer type:</span>
-                                    <strong class="ml-2">{ $patient->type }}</strong>
+                                    <strong class="ml-2 text-capitalize">{{ $patient->type }}</strong>
                                 </div>
                                 <div class="form-inline my-sm-3 ml-0">
                                     <span class="col-form-label mr-lg-3 mr-lg-3">Height:</span>
-                                    <strong class="ml-2">{ $patient->height }}</strong>
+                                    <strong class="ml-2">{{ $patient->height }} m</strong>
                                 </div>
                                 <div class="form-inline my-sm-3 ml-0">
                                     <span class="col-form-label mr-lg-3 mr-lg-3">Weight:</span>
-                                    <strong class="ml-2">{ $patient->weight }}</strong>
+                                    <strong class="ml-2">{{ $patient->weight }} Kg</strong>
                                 </div>
                             </div>
                         </div>
@@ -88,9 +88,9 @@
                 </div>
 
                 <div class="offset-md-5 my-sm-3 mb-4">
-                    <a href="{{ route('patients.edit', Auth::user()->id) }}">
-                        <button type="submit" class="btn btn-secondary">EDIT</button>
-                    </a>
+{{--                    <a href="{{ url('form') }}">--}}
+{{--                        <button type="submit" class="btn btn-secondary">EDIT</button>--}}
+{{--                    </a>--}}
                     <a href="/forms">
                         <button type="submit" class="btn btn-primary">ADD NEW RECORD</button>
                     </a>

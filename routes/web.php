@@ -43,12 +43,13 @@ Route::get('/reports', function () {
 });
 
 Route::get('generatePDF', function (){
-    $pdf = (new Barryvdh\DomPDF\PDF)->loadView('report');
-    return $pdf->download('Patient History.pdf');
+    $pdf = (new Barryvdh\DomPDF\PDF)->getDomPDF();
+    return $pdf->download('Patient_History.pdf');
 });
 Route::get('generatePDF/pdf', 'PDFController@pdf');
 Route::resource('/patient', 'PatientController')->names('patients');
 Route::resource('/settings', 'UserController')->names('setting');
+Route::get('form','FormController@menu');
 
 /*
 |--------------------------------------------------------------------------
@@ -68,15 +69,15 @@ Route::get('/forms', function () {
     }
 });
 
-//Route::resource('/statdoses', 'StatDosesController')->names('stat_doses');
+Route::resource('/statdoses', 'StatDosesController')->names('stat_doses');
 //Route::resource('/oral', 'OralController')->names('oral');
 //Route::resource('/premedication', 'PremedicationController')->names('premedication');
 
 /*     T E M P O R A R Y    R O U T E S      */
-Route::get('/statdoses', function () {
-    $patients = Patient::all();
-    return view('forms.stat_doses.create', compact('patients'));
-});
+//Route::get('/statdoses', function () {
+//    $patients = Patient::all();
+//    return view('forms.stat_doses.create', compact('patients'));
+//});
 
 Route::get('/oral', function () {
     $patients = Patient::all();

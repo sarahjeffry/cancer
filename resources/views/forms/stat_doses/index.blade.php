@@ -48,7 +48,7 @@
                                 <td class="text-md-center" style="text-transform: capitalize;">{{$patient->type}}</td>
                                 <td class="text-md-center" >{{$patient->year}}</td>
                                 <td class="text-md-center">
-                                    <a href="{{ route('stat_doses.update', $patient->mrn) }}">
+                                    <a href="{{ route('stat_doses.store', $patient->mrn) }}">
                                         <button type="submit" class="btn btn-success">SELECT</button>
                                     </a>
                                 </td>
@@ -67,6 +67,20 @@
 
 <!-- Scripts -->
 
-@section('scripts')
+@push('scripts')
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('.table').DataTable();
+        } );
 
-@endsection
+        function printlayer(Layer) {
+            var generator=window.open(",'name,");
+            var layertext = document.getElementById(layer);
+            generator.document.write(layertext.innerHTML.replace("Print patient history"));
+
+            generator.document.close();
+            generator.print();
+            generator.close();
+        }
+    </script>
+@endpush

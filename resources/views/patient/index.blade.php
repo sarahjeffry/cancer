@@ -52,8 +52,8 @@
                                     <a href="{{ route('patients.show', $patient->id) }}" class=" ">
                                         <button type="submit" class="btn btn-info">VIEW</button>
                                     </a>
-{{--                                    <a href="{{ route('patients.edit', $patient->id) }}">--}}
-{{--                                        <button type="submit" class="btn btn-primary">EDIT</button>--}}
+{{--                                    <a href="{{ route('patients.update', $patient->id) }}">--}}
+{{--                                        <button type="submit" class="btn btn-primary ml-1">ADD TREATMENT</button>--}}
 {{--                                    </a>--}}
                                 </td>
                             </tr>

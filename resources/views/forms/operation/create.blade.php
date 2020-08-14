@@ -72,7 +72,7 @@
                                     <option class="dropdown-item" value="epidural">Epidural</option>
                             </select>
 
-                            <label class="control-label ml-3">Diet order:</label>
+                            <label class="control-label ml-4">Diet order:</label>
                             <input type="radio" id="normal" name="diet" value="normal" class="ml-3 mr-1" required><label for="normal">Normal</label>
                             <input type="radio" id="diabetic" name="diet" value="diabetic" class="ml-3 mr-1" required><label for="diabetic">Diabetic</label>
                             <input type="radio" id="low_salt" name="diet" value="low salt" class="ml-3 mr-1"><label for="low_salt">Low salt</label>

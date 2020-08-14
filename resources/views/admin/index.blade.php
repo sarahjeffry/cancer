@@ -2,6 +2,7 @@
 
 @yield('style')
 
+
 @section('content')
 
     <!-- Begin Page Content -->

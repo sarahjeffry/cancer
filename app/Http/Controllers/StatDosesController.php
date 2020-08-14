@@ -56,11 +56,12 @@ class StatDosesController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function store(Request $request)
+    public function store($mrn)
     {
-
+        $patient = Patient::findOrFail($mrn);
+        return View('forms.stat_doses.create', compact('patient'));
     }
 
     /**
@@ -71,8 +72,12 @@ class StatDosesController extends Controller
      */
     public function show($id)
     {
-        $statdoses = StatDoses::find($id);
-        return view('forms.stat_doses.show',array('statdoses' => $statdoses));
+//        $statdoses = StatDoses::find($id);
+//        return view('forms.stat_doses.show',array('statdoses' => $statdoses));
+        $patient = Patient::findOrFail($id);
+
+        dd($patient);
+//        return View('forms.stat_doses.create', compact('patient'));
     }
 
     /**
@@ -83,7 +88,7 @@ class StatDosesController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -93,10 +98,11 @@ class StatDosesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    protected function update(Request $mrn)
+    protected function update($mrn)
     {
-        $arr['patient'] = $mrn;
-        return view('forms.stat_doses.create', compact('patient'));
+//        $arr['patient'] = $mrn;
+        $patient = Patient::findOrFail($mrn);
+        return View('forms.stat_doses.create', compact('patient'));
     }
 
     /**

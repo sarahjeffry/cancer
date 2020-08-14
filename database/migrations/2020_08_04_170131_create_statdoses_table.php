@@ -14,14 +14,15 @@ class CreateStatdosesTable extends Migration
     public function up()
     {
         Schema::create('stat_doses', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id')->unique();
             $table->foreignId('patient_id')->constrained()->onDelete('cascade');
-            $table->timestamps();
+//            $table->string('patient_id')->unique();
             $table->date('date')->nullable();
             $table->time('time')->nullable();
-            $table->string('name')->nullable();
+            $table->string('drug_name')->nullable();
             $table->float('dose_value')->nullable();
             $table->string('dose_unit')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -32,6 +33,6 @@ class CreateStatdosesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statdoses');
+        Schema::dropIfExists('stat_doses');
     }
 }

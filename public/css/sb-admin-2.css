@@ -3954,7 +3954,7 @@ input[type="button"].btn-block {
 }
 
 .navbar {
-  position: relative;
+  position: fixed;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -3986,6 +3986,7 @@ input[type="button"].btn-block {
 
 .navbar-nav {
   display: flex;
+  position: fixed;
   flex-direction: column;
   padding-left: 0;
   margin-bottom: 0;

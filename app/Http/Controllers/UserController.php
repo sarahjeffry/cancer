@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -69,22 +71,19 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
 
         $user->update([
             'name'      => $request->name, //'view'  => $request->column in database
             'role'      => $request->role,
-            'email'     => $request->email
+            'email'     => $request->email,
+            'password' => Hash::make($request->password),
         ]);
-
-//        $patient = Patient::all();
-//        return redirect()->route('patients.new_patient', compact('patient'));
-        return view('settings', compact('user'));
-        //return redirect('task');
+        return view('settings.index', compact('user'));
     }
 
     /**
@@ -97,10 +96,7 @@ class UserController extends Controller
     {
         $user = User::find($id); //object
 
-        //dd($task); //--> for debugging
-
         $user -> delete();
-
         return redirect()->back();
     }
 }

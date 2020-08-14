@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class StatDoses extends Model
 {
     protected $fillable = [
-        'date', 'time', 'drug', 'dose_value', 'dose_unit'
+        'id','patient_id','date', 'time', 'drug_name', 'dose_value', 'dose_unit'
     ];
 }

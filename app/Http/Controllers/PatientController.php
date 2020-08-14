@@ -17,6 +17,7 @@ class PatientController extends Controller
      */
     public function index(request $request)
     {
+
         $patients = DB::table('patients')->where([
             ['status', '=', 'yes'],
             ['live', '=', 'alive']
@@ -55,9 +56,9 @@ class PatientController extends Controller
      */
     public function show($id)
     {
-        $patient = DB::table('patients')->where('id', $id)->first();
-//        dd($patients);
-        return View('patient.show', compact(['patient' => $patient]));
+//        dd($patient);
+        $patient = Patient::findOrFail($id);
+        return View('patient.show', compact('patient'));
     }
 
     /**

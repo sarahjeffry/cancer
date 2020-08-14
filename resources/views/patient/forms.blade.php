@@ -1,4 +1,4 @@
-@extends('forms.partials.main')
+@extends('patient.partials.main')
 
 <!-- Styles -->
 
@@ -38,12 +38,19 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Forms</h1>
-        <p class="mb-2">Select type of form</p>
+{{--        <p class="ml-3 mb-3">Add treatment record for { $patient->name }}</p>--}}
+        <span>
+            <a class="nav-link ml-0" href="patients">
+                <i class="fas fa-fw mb-2 fa-arrow-circle-left"></i>
+                <span>Back</span>
+            </a>
+            <p class="ml-3 mb-3">Add treatment record for { $patient->name }}</p>
+        </span>
 
-        <div class="row offset-sm-3">
+        <div class="row offset-sm-3 mt-2">
             <!-- Stat Doses -->
             <div class="row-cols-xl-4 col-md-4 mb-3">
-                <a href="{{ route('stat_doses.index') }}">
+                <a href="\statdoses">
                     <div class="card forms h-100 py-2 bg-gradient-info">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">

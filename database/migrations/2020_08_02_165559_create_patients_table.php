@@ -14,10 +14,10 @@ class CreatePatientsTable extends Migration
     public function up()
     {
         Schema::create('patients', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('gender');
-            $table->string('mrn')->unique();
+            $table->string('patient_id')->unique();
             $table->string('staff_id');
             $table->string('type');
             $table->float('height')->nullable();
@@ -26,7 +26,7 @@ class CreatePatientsTable extends Migration
             $table->string('smoking');
             $table->string('status');
             $table->string('live');
-            $table->string('user_id')->unique();
+            $table->string('user_id')->unique(); //Tak tahulah kenapa kena ada column ni, tapi kalau tak letak jadi error
             $table->integer('year');
             $table->timestamps();
         });
