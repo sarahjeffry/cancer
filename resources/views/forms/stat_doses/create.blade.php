@@ -28,7 +28,7 @@
                         <span class="form-inline mb-sm-4">
                             <label class="control-label mb-3">Name:</label> <input type="text" name="name" class="form-control ml-3 mr-4" style="width: 300px;" value="{{ $patient->name }}" disabled>
                             <label class="control-label ml-3 ">Gender:</label> <input type="text" name="gender" class="form-control ml-3 mr-4" style="width: 200px;" value="{{ $patient->gender }}" disabled>&nbsp;
-                            <label class="control-label">MRN:</label> <input type="text" name="mrn" class="form-control ml-3 mr-4" style="width: 150px;" value="{{ $patient->mrn }}" disabled>
+                            <label class="control-label">MRN:</label> <input type="text" name="mrn" class="form-control ml-3 mr-4" style="width: 150px;" value="{{ $patient->patient_id }}" disabled>
                         </span>
                         <span class="form-inline mb-sm-3">
                             <label class="control-label">Cancer Type:</label> <input type="text" name="type" class="form-control ml-3 mr-4" value="{{ $patient->type }}" disabled>
@@ -45,8 +45,8 @@
                             <label class="control-label mb-1">Date prescribed: </label> <input type="date" name="date" class="form-control ml-3 mr-4" style="width: 150px;">
                             <label class="control-label ml-3 ">Time:</label> <input type="time" name="time" class="form-control ml-2 mr-4" style="width: 150px;">&nbsp;
                             <label class="control-label">Drug name:</label> <input type="text" name="drugname" class="form-control ml-2 mr-4" style="width: 250px;">
-                            <label class="control-label">Dose:</label> <input type="text" name="dose" class="form-control ml-2 mr-4" style="width: 90px;">
-                            <select required class="form-control animated--fade-in  mr-2" name="unit" id="unit" style="width: 80px;">
+                            <label class="control-label">Dose:</label> <input type="text" name="dose" class="form-control ml-2 mr-2" style="width: 90px;">
+                            <select required class="form-control animated--fade-in mr-2" name="unit" id="unit" style="width: 80px;">
                                 <div class="dropdown-menu text-center">
                                     <option class="dropdown-item" value="mcg">mcg</option>
                                     <option class="dropdown-item" value="mg">mg</option>

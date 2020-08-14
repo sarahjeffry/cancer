@@ -45,7 +45,7 @@
                             <tr>
                                 <td>{{$patient->name}}</td>
                                 <td  class="text-md-center text-capitalize">{{$patient->gender}}</td>
-                                <td  class="text-md-center text-uppercase">{{$patient->mrn}}</td>
+                                <td  class="text-md-center text-uppercase">{{$patient->patient_id}}</td>
                                 <td class="text-md-center text-capitalize">{{$patient->type}}</td>
                                 <td class="text-md-center">{{$patient->year}}</td>
                                 <td class="text-md-center">

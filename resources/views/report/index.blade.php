@@ -58,11 +58,11 @@
                             <tr>
                                 <td>{{$patient->name}}</td>
                                 <td class="text-md-center" style="text-transform: capitalize;">{{$patient->gender}}</td>
-                                <td class="text-md-center" style="text-transform: uppercase;">{{$patient->mrn}}</td>
+                                <td class="text-md-center" style="text-transform: uppercase;">{{$patient->patient_id}}</td>
                                 <td class="text-md-center" style="text-transform: capitalize;">{{$patient->type}}</td>
                                 <td class="text-md-center" style="text-transform: capitalize;">{{$patient->live}}</td>
                                 <td class="text-md-center" >{{$patient->year}}</td>
-                                <td class="text-md-center" ><a href="{{ route('patients.show', $patient->mrn) }}">
+                                <td class="text-md-center" ><a href="{{ route('patients.show', $patient->patient_id) }}">
                                         <button type="submit" class="btn btn-info">VIEW</button>
                                     </a></td>
                             </tr>

@@ -59,7 +59,7 @@
                             <tr>
                                 <td>{{$patient->name}}</td>
                                 <td class="text-md-center" style="text-transform: capitalize;">{{$patient->gender}}</td>
-                                <td class="text-md-center" style="text-transform: uppercase;">{{$patient->mrn}}</td>
+                                <td class="text-md-center" style="text-transform: uppercase;">{{$patient->patient_id}}</td>
                                 <td class="text-md-center" style="text-transform: capitalize;">{{$patient->type}}</td>
                                 <td class="text-md-center" style="text-transform: capitalize;">{{$patient->live}}</td>
                                 <td class="text-md-center" >{{$patient->height}} m</td>

@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <h1>This is to view patient information</h1>
+    <h1>This is to edit patient information</h1>
 
 @endsection

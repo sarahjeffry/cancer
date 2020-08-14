@@ -50,7 +50,7 @@ class PDFController extends Controller
                                 <tr style="text-align: center">
                                 <td style="text-align: left !important;">'.$patient->name.'</td>
                                 <td style="text-transform: capitalize;">'.$patient->gender.'</td>
-                                <td style="text-transform: uppercase;">'.$patient->mrn.'</td>
+                                <td style="text-transform: uppercase;">'.$patient->patient_id.'</td>
                                 <td style="text-transform: capitalize;">'.$patient->type.'</td>
                                 <td style="text-transform: capitalize;">'.$patient->height.'</td>
                                 <td style="text-transform: capitalize;">'.$patient->weight.'</td>

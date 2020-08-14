@@ -43,11 +43,11 @@
                         @foreach($patients as $patient)
                             <tr>
                                 <td>{{$patient->name}}</td>
-                                <td class="text-md-center" style="text-transform: uppercase;">{{$patient->mrn}}</td>
+                                <td class="text-md-center" style="text-transform: uppercase;">{{$patient->patient_id}}</td>
                                 <td class="text-md-center" style="text-transform: capitalize;">{{$patient->type}}</td>
                                 <td class="text-md-center" >{{$patient->year}}</td>
                                 <td class="text-md-center">
-                                    <a href="{{ route('stat_doses.update', $patient->mrn) }}">
+                                    <a href="{{ route('stat_doses.update', $patient->patient_id) }}">
                                         <button type="submit" class="btn btn-success">SELECT</button>
                                     </a>
                                 </td>

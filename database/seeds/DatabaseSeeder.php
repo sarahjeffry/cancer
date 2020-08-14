@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
         factory('App\Patient', 200)->create();
         factory('App\StatDoses', 30)->create();
         factory('App\Oral', 30)->create();
+        factory('App\Infusion', 30)->create();
+        factory('App\Inhalation', 30)->create();
 //        factory('App\User', 5)->create()->each(function($user){
 //            $user->patients()->save(factory('App\Patient')->make());
 //        });

@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="form-inline my-sm-3 ml-0">
                                     <span class="col-form-label mr-lg-3 mr-lg-3">MRN:</span>
-                                    <strong class="ml-2 text-uppercase">{{ $patient->mrn }}</strong>
+                                    <strong class="ml-2 text-uppercase">{{ $patient->patient_id }}</strong>
                                 </div>
                                 <div class="form-inline my-sm-3 ml-0">
                                     <span class="col-form-label mr-lg-3 mr-lg-3">Gender:</span>
