@@ -173,7 +173,7 @@
 
     </div>
     <div class="row offset-sm-3 ">
-        <!-- Treatment Changes Chart -->
+        <!-- Treatment Changes Charts -->
         <div class="row-cols-xl-4 col-md-4 mb-3">
             <a href="charts">
                 <div class="card forms h-100 py-2 bg-gradient-info">

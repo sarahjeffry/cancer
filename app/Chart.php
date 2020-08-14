@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Premedication extends Model
+class Chart extends Model
 {
     protected $fillable = [
-        'id','patient_id','date', 'time', 'drug_name', 'route'
+        'id','patient_id','treatment', 'iv_infusion', 'diet', 'chart_img'
     ];
 }

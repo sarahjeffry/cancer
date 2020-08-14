@@ -12,7 +12,6 @@
     </a>
     <br>
     <img class="img-profile rounded-circle mx-5" src="https://source.unsplash.com/7bMdiIqz_J4/125x125">
-{{--    <img class="img-profile rounded-circle mx-5" src="{{ Auth::user()->img_profile }}">--}}
     <div class="sidebar-brand-text text-white text-md-center text-capitalize mx-3"><br>Hi, {{ Auth::user()->name }}!</div>
 {{--    <div class="sidebar-brand-text text-white text-md-center mx-3"><br>You are an {{ Auth::user()->role }}</div>--}}
     <br>

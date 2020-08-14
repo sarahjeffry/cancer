@@ -20,6 +20,7 @@
 
     <!-- Custom styles for dataTables-->
     <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+
     <!-- Your custom styles-->
     @yield('styles')
 

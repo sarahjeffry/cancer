@@ -1,7 +1,7 @@
 /*!
- * Chart.js v2.8.0
+ * Charts.js v2.8.0
  * https://www.chartjs.org
- * (c) 2019 Chart.js Contributors
+ * (c) 2019 Charts.js Contributors
  * Released under the MIT License
  */
 (function (global, factory) {
@@ -731,11 +731,11 @@ for (var func in conversions) {
   // export rgb2hsl and ["rgb"]["hsl"]
   convert[from] = convert[from] || {};
 
-  convert[from][to] = convert[func] = (function(func) { 
+  convert[from][to] = convert[func] = (function(func) {
     return function(arg) {
       if (typeof arg == "number")
         arg = Array.prototype.slice.call(arguments);
-      
+
       var val = conversions[func](arg);
       if (typeof val == "string" || val === undefined)
         return val; // keyword
@@ -763,12 +763,12 @@ Converter.prototype.routeSpace = function(space, args) {
    }
    // color.rgb(10, 10, 10)
    if (typeof values == "number") {
-      values = Array.prototype.slice.call(args);        
+      values = Array.prototype.slice.call(args);
    }
 
    return this.setValues(space, values);
 };
-  
+
 /* Set the values for a space, invalidating cache */
 Converter.prototype.setValues = function(space, values) {
    this.space = space;
@@ -1100,7 +1100,7 @@ function getAlpha(string) {
 // generators
 function hexString(rgba, a) {
    var a = (a !== undefined && rgba.length === 3) ? a : rgba[3];
-   return "#" + hexDouble(rgba[0]) 
+   return "#" + hexDouble(rgba[0])
               + hexDouble(rgba[1])
               + hexDouble(rgba[2])
               + (
@@ -1520,7 +1520,7 @@ Color.prototype = {
 
 	clone: function () {
 		// NOTE(SB): using node-clone creates a dependency to Buffer when using browserify,
-		// making the final build way to big to embed in Chart.js. So let's do it manually,
+		// making the final build way to big to embed in Charts.js. So let's do it manually,
 		// assuming that values to clone are 1 dimension arrays containing only numbers,
 		// except 'alpha' which is a number.
 		var result = new Color();
@@ -1866,7 +1866,7 @@ var helpers = {
 	},
 
 	/**
-	 * The default merger when Chart.helpers.merge is called without merger option.
+	 * The default merger when Charts.helpers.merge is called without merger option.
 	 * Note(SB): also used by mergeConfig and mergeScaleConfig as fallback.
 	 * @private
 	 */
@@ -1991,8 +1991,8 @@ var helpers_core = helpers;
 // DEPRECATIONS
 
 /**
- * Provided for backward compatibility, use Chart.helpers.callback instead.
- * @function Chart.helpers.callCallback
+ * Provided for backward compatibility, use Charts.helpers.callback instead.
+ * @function Charts.helpers.callCallback
  * @deprecated since version 2.6.0
  * @todo remove at version 3
  * @private
@@ -2002,7 +2002,7 @@ helpers.callCallback = helpers.callback;
 /**
  * Provided for backward compatibility, use Array.prototype.indexOf instead.
  * Array.prototype.indexOf compatibility: Chrome, Opera, Safari, FF1.5+, IE9+
- * @function Chart.helpers.indexOf
+ * @function Charts.helpers.indexOf
  * @deprecated since version 2.7.0
  * @todo remove at version 3
  * @private
@@ -2012,8 +2012,8 @@ helpers.indexOf = function(array, item, fromIndex) {
 };
 
 /**
- * Provided for backward compatibility, use Chart.helpers.valueOrDefault instead.
- * @function Chart.helpers.getValueOrDefault
+ * Provided for backward compatibility, use Charts.helpers.valueOrDefault instead.
+ * @function Charts.helpers.getValueOrDefault
  * @deprecated since version 2.7.0
  * @todo remove at version 3
  * @private
@@ -2021,8 +2021,8 @@ helpers.indexOf = function(array, item, fromIndex) {
 helpers.getValueOrDefault = helpers.valueOrDefault;
 
 /**
- * Provided for backward compatibility, use Chart.helpers.valueAtIndexOrDefault instead.
- * @function Chart.helpers.getValueAtIndexOrDefault
+ * Provided for backward compatibility, use Charts.helpers.valueAtIndexOrDefault instead.
+ * @function Charts.helpers.getValueAtIndexOrDefault
  * @deprecated since version 2.7.0
  * @todo remove at version 3
  * @private
@@ -2268,8 +2268,8 @@ var helpers_easing = {
 // DEPRECATIONS
 
 /**
- * Provided for backward compatibility, use Chart.helpers.easing.effects instead.
- * @function Chart.helpers.easingEffects
+ * Provided for backward compatibility, use Charts.helpers.easing.effects instead.
+ * @function Charts.helpers.easingEffects
  * @deprecated since version 2.7.0
  * @todo remove at version 3
  * @private
@@ -2507,7 +2507,7 @@ var helpers_canvas = exports$1;
 // DEPRECATIONS
 
 /**
- * Provided for backward compatibility, use Chart.helpers.canvas.clear instead.
+ * Provided for backward compatibility, use Charts.helpers.canvas.clear instead.
  * @namespace Chart.helpers.clear
  * @deprecated since version 2.7.0
  * @todo remove at version 3
@@ -2516,7 +2516,7 @@ var helpers_canvas = exports$1;
 helpers_core.clear = exports$1.clear;
 
 /**
- * Provided for backward compatibility, use Chart.helpers.canvas.roundedRect instead.
+ * Provided for backward compatibility, use Charts.helpers.canvas.roundedRect instead.
  * @namespace Chart.helpers.drawRoundedRectangle
  * @deprecated since version 2.7.0
  * @todo remove at version 3
@@ -2568,7 +2568,7 @@ function toFontString(font) {
 }
 
 /**
- * @alias Chart.helpers.options
+ * @alias Charts.helpers.options
  * @namespace
  */
 var helpers_options = {
@@ -2818,8 +2818,8 @@ var core_animation = exports$2;
 // DEPRECATIONS
 
 /**
- * Provided for backward compatibility, use Chart.Animation instead
- * @prop Chart.Animation#animationObject
+ * Provided for backward compatibility, use Charts.Animation instead
+ * @prop Charts.Animation#animationObject
  * @deprecated since version 2.6.0
  * @todo remove at version 3
  */
@@ -2830,8 +2830,8 @@ Object.defineProperty(exports$2.prototype, 'animationObject', {
 });
 
 /**
- * Provided for backward compatibility, use Chart.Animation#chart instead
- * @prop Chart.Animation#chartInstance
+ * Provided for backward compatibility, use Charts.Animation#chart instead
+ * @prop Charts.Animation#chartInstance
  * @deprecated since version 2.6.0
  * @todo remove at version 3
  */
@@ -3042,13 +3042,13 @@ var DatasetController = function(chart, datasetIndex) {
 helpers$1.extend(DatasetController.prototype, {
 
 	/**
-	 * Element type used to generate a meta dataset (e.g. Chart.element.Line).
+	 * Element type used to generate a meta dataset (e.g. Charts.element.Line).
 	 * @type {Chart.core.element}
 	 */
 	datasetElementType: null,
 
 	/**
-	 * Element type used to generate a meta data (e.g. Chart.element.Point).
+	 * Element type used to generate a meta data (e.g. Charts.element.Point).
 	 * @type {Chart.core.element}
 	 */
 	dataElementType: null,
@@ -5988,7 +5988,7 @@ var core_interaction = {
 		},
 
 		/**
-		 * @function Chart.Interaction.modes.label
+		 * @function Charts.Interaction.modes.label
 		 * @deprecated since version 2.4.0
 		 * @todo remove at version 3
 		 * @private
@@ -5998,7 +5998,7 @@ var core_interaction = {
 		/**
 		 * Returns items at the same index. If the options.intersect parameter is true, we only return items if we intersect something
 		 * If the options.intersect mode is false, we find the nearest item and return the items at the same index as that item
-		 * @function Chart.Interaction.modes.index
+		 * @function Charts.Interaction.modes.index
 		 * @since v2.4.0
 		 * @param {Chart} chart - the chart we are returning items from
 		 * @param {Event} e - the event we are find things at
@@ -6010,7 +6010,7 @@ var core_interaction = {
 		/**
 		 * Returns items in the same dataset. If the options.intersect parameter is true, we only return items if we intersect something
 		 * If the options.intersect is false, we find the nearest item and return the items in that dataset
-		 * @function Chart.Interaction.modes.dataset
+		 * @function Charts.Interaction.modes.dataset
 		 * @param {Chart} chart - the chart we are returning items from
 		 * @param {Event} e - the event we are find things at
 		 * @param {IInteractionOptions} options - options to use during interaction
@@ -6030,7 +6030,7 @@ var core_interaction = {
 		},
 
 		/**
-		 * @function Chart.Interaction.modes.x-axis
+		 * @function Charts.Interaction.modes.x-axis
 		 * @deprecated since version 2.4.0. Use index mode and intersect == true
 		 * @todo remove at version 3
 		 * @private
@@ -6042,7 +6042,7 @@ var core_interaction = {
 		/**
 		 * Point mode returns all elements that hit test based on the event position
 		 * of the event
-		 * @function Chart.Interaction.modes.intersect
+		 * @function Charts.Interaction.modes.intersect
 		 * @param {Chart} chart - the chart we are returning items from
 		 * @param {Event} e - the event we are find things at
 		 * @return {Chart.Element[]} Array of elements that are under the point. If none are found, an empty array is returned
@@ -6054,7 +6054,7 @@ var core_interaction = {
 
 		/**
 		 * nearest mode returns the element closest to the point
-		 * @function Chart.Interaction.modes.intersect
+		 * @function Charts.Interaction.modes.intersect
 		 * @param {Chart} chart - the chart we are returning items from
 		 * @param {Event} e - the event we are find things at
 		 * @param {IInteractionOptions} options - options to use
@@ -6069,7 +6069,7 @@ var core_interaction = {
 
 		/**
 		 * x mode returns the elements that hit-test at the current x coordinate
-		 * @function Chart.Interaction.modes.x
+		 * @function Charts.Interaction.modes.x
 		 * @param {Chart} chart - the chart we are returning items from
 		 * @param {Event} e - the event we are find things at
 		 * @param {IInteractionOptions} options - options to use
@@ -6100,7 +6100,7 @@ var core_interaction = {
 
 		/**
 		 * y mode returns the elements that hit-test at the current y coordinate
-		 * @function Chart.Interaction.modes.y
+		 * @function Charts.Interaction.modes.y
 		 * @param {Chart} chart - the chart we are returning items from
 		 * @param {Event} e - the event we are find things at
 		 * @param {IInteractionOptions} options - options to use
@@ -6573,7 +6573,7 @@ var CSS_RENDER_ANIMATION = CSS_PREFIX + 'render-animation';
 var ANIMATION_START_EVENTS = ['animationstart', 'webkitAnimationStart'];
 
 /**
- * DOM event types -> Chart.js event types.
+ * DOM event types -> Charts.js event types.
  * Note: only events with different types are mapped.
  * @see https://developer.mozilla.org/en-US/docs/Web/Events
  */
@@ -6617,7 +6617,7 @@ function initCanvas(canvas, config) {
 	var renderHeight = canvas.getAttribute('height');
 	var renderWidth = canvas.getAttribute('width');
 
-	// Chart.js modifies some canvas values that we want to restore on destroy
+	// Charts.js modifies some canvas values that we want to restore on destroy
 	canvas[EXPANDO_KEY] = {
 		initial: {
 			height: renderHeight,
@@ -6857,7 +6857,7 @@ function injectCSS(platform, css) {
 	var style = platform._style || document.createElement('style');
 	if (!platform._style) {
 		platform._style = style;
-		css = '/* Chart.js */\n' + css;
+		css = '/* Charts.js */\n' + css;
 		style.setAttribute('type', 'text/css');
 		document.getElementsByTagName('head')[0].appendChild(style);
 	}
@@ -6869,7 +6869,7 @@ var platform_dom$2 = {
 	/**
 	 * When `true`, prevents the automatic injection of the stylesheet required to
 	 * correctly detect when the chart is added to the DOM and then resized. This
-	 * switch has been added to allow external stylesheet (`dist/Chart(.min)?.js`)
+	 * switch has been added to allow external stylesheet (`dist/Charts(.min)?.js`)
 	 * to be manually imported to make this library compatible with any CSP.
 	 * See https://github.com/chartjs/Chart.js/issues/5208
 	 */
@@ -7007,7 +7007,7 @@ var platform_dom$2 = {
  * Provided for backward compatibility, use EventTarget.addEventListener instead.
  * EventTarget.addEventListener compatibility: Chrome, Opera 7, Safari, FF1.5+, IE9+
  * @see https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
- * @function Chart.helpers.addEvent
+ * @function Charts.helpers.addEvent
  * @deprecated since version 2.7.0
  * @todo remove at version 3
  * @private
@@ -7018,7 +7018,7 @@ helpers$1.addEvent = addListener;
  * Provided for backward compatibility, use EventTarget.removeEventListener instead.
  * EventTarget.removeEventListener compatibility: Chrome, Opera 7, Safari, FF1.5+, IE9+
  * @see https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener
- * @function Chart.helpers.removeEvent
+ * @function Charts.helpers.removeEvent
  * @deprecated since version 2.7.0
  * @todo remove at version 3
  * @private
@@ -7058,7 +7058,7 @@ var platform = helpers$1.extend({
 
 	/**
 	 * Registers the specified listener on the given chart.
-	 * @param {Chart} chart - Chart from which to listen for event
+	 * @param {Chart} chart - Charts from which to listen for event
 	 * @param {string} type - The ({@link IEvent}) type to listen for
 	 * @param {function} listener - Receives a notification (an object that implements
 	 * the {@link IEvent} interface) when an event of the specified type occurs.
@@ -7067,7 +7067,7 @@ var platform = helpers$1.extend({
 
 	/**
 	 * Removes the specified listener previously registered with addEventListener.
-	 * @param {Chart} chart - Chart from which to remove the listener
+	 * @param {Chart} chart - Charts from which to remove the listener
 	 * @param {string} type - The ({@link IEvent}) type to remove
 	 * @param {function} listener - The listener function to remove from the event target.
 	 */
@@ -7381,7 +7381,7 @@ core_defaults._set('global', {
 var positioners = {
 	/**
 	 * Average mode places the tooltip at the average position of the elements shown
-	 * @function Chart.Tooltip.positioners.average
+	 * @function Charts.Tooltip.positioners.average
 	 * @param elements {ChartElement[]} the elements being displayed in the tooltip
 	 * @returns {object} tooltip position
 	 */
@@ -7413,7 +7413,7 @@ var positioners = {
 
 	/**
 	 * Gets the tooltip position nearest of the item nearest to the event position
-	 * @function Chart.Tooltip.positioners.nearest
+	 * @function Charts.Tooltip.positioners.nearest
 	 * @param elements {Chart.Element[]} the tooltip elements
 	 * @param eventPosition {object} the position of the event in canvas coordinates
 	 * @returns {object} the tooltip position
@@ -7845,7 +7845,7 @@ var exports$3 = core_element.extend({
 		var me = this;
 		var opts = me._options;
 
-		// Need to regenerate the model because its faster than using extend and it is necessary due to the optimization in Chart.Element.transition
+		// Need to regenerate the model because its faster than using extend and it is necessary due to the optimization in Charts.Element.transition
 		// that does _view = _model if ease === 1. This causes the 2nd tooltip update to set properties in both the view and model at the same time
 		// which breaks any animations.
 		var existingModel = me._model;
@@ -8436,9 +8436,9 @@ helpers$1.extend(Chart.prototype, /** @lends Chart */ {
 		me._bufferedRender = false;
 
 		/**
-		 * Provided for backward compatibility, Chart and Chart.Controller have been merged,
+		 * Provided for backward compatibility, Charts and Charts.Controller have been merged,
 		 * the "instance" still need to be defined since it might be called from plugins.
-		 * @prop Chart#chart
+		 * @prop Charts#chart
 		 * @deprecated since version 2.6.0
 		 * @todo remove at version 3
 		 * @private
@@ -9296,7 +9296,7 @@ var core_controller = Chart;
 // DEPRECATIONS
 
 /**
- * Provided for backward compatibility, use Chart instead.
+ * Provided for backward compatibility, use Charts instead.
  * @class Chart.Controller
  * @deprecated since version 2.6
  * @todo remove at version 3
@@ -9488,7 +9488,7 @@ var core_helpers = function() {
 
 	/**
 	 * Provided for backward compatibility, not available anymore
-	 * @function Chart.helpers.aliasPixel
+	 * @function Charts.helpers.aliasPixel
 	 * @deprecated since version 2.8.0
 	 * @todo remove at version 3
 	 */
@@ -9958,14 +9958,14 @@ function abstract() {
 /**
  * Date adapter (current used by the time scale)
  * @namespace Chart._adapters._date
- * @memberof Chart._adapters
+ * @memberof Charts._adapters
  * @private
  */
 
 /**
  * Currently supported unit string values.
  * @typedef {('millisecond'|'second'|'minute'|'hour'|'day'|'week'|'month'|'quarter'|'year')}
- * @memberof Chart._adapters._date
+ * @memberof Charts._adapters._date
  * @name Unit
  */
 
@@ -10076,7 +10076,7 @@ var core_ticks = {
 	formatters: {
 		/**
 		 * Formatter for value labels
-		 * @method Chart.Ticks.formatters.values
+		 * @method Charts.Ticks.formatters.values
 		 * @param value the value to display
 		 * @return {string|string[]} the label to display
 		 */
@@ -10086,7 +10086,7 @@ var core_ticks = {
 
 		/**
 		 * Formatter for linear numeric ticks
-		 * @method Chart.Ticks.formatters.linear
+		 * @method Charts.Ticks.formatters.linear
 		 * @param tickValue {number} the value to be formatted
 		 * @param index {number} the position of the tickValue parameter in the ticks array
 		 * @param ticks {number[]} the list of ticks being converted
@@ -18390,7 +18390,7 @@ function getBoxWidth(labelOpts, fontSize) {
 }
 
 /**
- * IMPORTANT: this class is exposed publicly as Chart.Legend, backward compatibility required!
+ * IMPORTANT: this class is exposed publicly as Charts.Legend, backward compatibility required!
  */
 var Legend = core_element.extend({
 
@@ -18803,7 +18803,7 @@ var Legend = core_element.extend({
 			return;
 		}
 
-		// Chart event already has relative position in it
+		// Charts event already has relative position in it
 		hoveredItem = me._getLegendItemAt(e.x, e.y);
 
 		if (type === 'click') {
@@ -18844,7 +18844,7 @@ var plugin_legend = {
 
 	/**
 	 * Backward compatibility: since 2.1.5, the legend is registered as a plugin, making
-	 * Chart.Legend obsolete. To avoid a breaking change, we export the Legend as part of
+	 * Charts.Legend obsolete. To avoid a breaking change, we export the Legend as part of
 	 * the plugin, which one will be re-exposed in the chart.js file.
 	 * https://github.com/chartjs/Chart.js/pull/2640
 	 * @private
@@ -18901,7 +18901,7 @@ core_defaults._set('global', {
 });
 
 /**
- * IMPORTANT: this class is exposed publicly as Chart.Legend, backward compatibility required!
+ * IMPORTANT: this class is exposed publicly as Charts.Legend, backward compatibility required!
  */
 var Title = core_element.extend({
 	initialize: function(config) {
@@ -19089,7 +19089,7 @@ var plugin_title = {
 
 	/**
 	 * Backward compatibility: since 2.1.5, the title is registered as a plugin, making
-	 * Chart.Title obsolete. To avoid a breaking change, we export the Title as part of
+	 * Charts.Title obsolete. To avoid a breaking change, we export the Title as part of
 	 * the plugin, which one will be re-exposed in the chart.js file.
 	 * https://github.com/chartjs/Chart.js/pull/2640
 	 * @private
@@ -19213,7 +19213,7 @@ core_controller.Legend = plugins.legend._element;
 core_controller.Title = plugins.title._element;
 
 /**
- * Provided for backward compatibility, use Chart.plugins instead
+ * Provided for backward compatibility, use Charts.plugins instead
  * @namespace Chart.pluginService
  * @deprecated since version 2.1.5
  * @todo remove at version 3
@@ -19222,7 +19222,7 @@ core_controller.Title = plugins.title._element;
 core_controller.pluginService = core_controller.plugins;
 
 /**
- * Provided for backward compatibility, inheriting from Chart.PlugingBase has no
+ * Provided for backward compatibility, inheriting from Charts.PlugingBase has no
  * effect, instead simply create/register plugins via plain JavaScript objects.
  * @interface Chart.PluginBase
  * @deprecated since version 2.5.0
@@ -19232,7 +19232,7 @@ core_controller.pluginService = core_controller.plugins;
 core_controller.PluginBase = core_controller.Element.extend({});
 
 /**
- * Provided for backward compatibility, use Chart.helpers.canvas instead.
+ * Provided for backward compatibility, use Charts.helpers.canvas instead.
  * @namespace Chart.canvasHelpers
  * @deprecated since version 2.6.0
  * @todo remove at version 3
@@ -19241,7 +19241,7 @@ core_controller.PluginBase = core_controller.Element.extend({});
 core_controller.canvasHelpers = core_controller.helpers.canvas;
 
 /**
- * Provided for backward compatibility, use Chart.layouts instead.
+ * Provided for backward compatibility, use Charts.layouts instead.
  * @namespace Chart.layoutService
  * @deprecated since version 2.7.3
  * @todo remove at version 3
@@ -19259,8 +19259,8 @@ core_controller.layoutService = core_controller.layouts;
 core_controller.LinearScaleBase = scale_linearbase;
 
 /**
- * Provided for backward compatibility, instead we should create a new Chart
- * by setting the type in the config (`new Chart(id, {type: '{chart-type}'}`).
+ * Provided for backward compatibility, instead we should create a new Charts
+ * by setting the type in the config (`new Charts(id, {type: '{chart-type}'}`).
  * @deprecated since version 2.8.0
  * @todo remove at version 3
  */

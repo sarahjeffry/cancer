@@ -15,7 +15,7 @@
         <!-- Content Row -->
         <span class="form-inline" >
             <div class="col-6" >
-                <!-- Area Chart -->
+                <!-- Area Charts -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Trend</h6>
@@ -30,7 +30,7 @@
                 </div>
             </div>
 
-            <!-- Donut Chart -->
+            <!-- Donut Charts -->
             <div class="col-6" >
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
@@ -49,7 +49,7 @@
             </div>
         </span>
 
-                <!-- Bar Chart -->
+                <!-- Bar Charts -->
             <div class="col-lg-10 offset-1" >
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -233,7 +233,7 @@
 
 {{--    <script>--}}
 {{--        var ctx = document.getElementById('correlation').getContext('2d');--}}
-{{--        var trends = new Chart(ctx, {--}}
+{{--        var trends = new Charts(ctx, {--}}
 {{--            type: 'bar',--}}
 {{--            data: {--}}
 {{--                labels: ['2015','2016','2017', '2018', '2019', '2020'],--}}

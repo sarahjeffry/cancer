@@ -16,7 +16,7 @@
         <p class="mb-4">Add { $patient->name }} infusion record</p>
         <a class="nav-link ml-0" href="forms">
             <i class="fas fa-fw mb-2 fa-arrow-circle-left"></i>
-            <span>Back</span>
+            <span>Change form</span>
         </a>
         <form action="#" method="POST" class="form-horizontal">
             {{ csrf_field() }}

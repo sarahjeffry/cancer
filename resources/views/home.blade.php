@@ -19,7 +19,7 @@
 
         <div class="col-xl-8 col-lg-7">
 
-            <!-- Area Chart -->
+            <!-- Area Charts -->
             <div class="card shadow mb-2">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Demographic</h6>
@@ -33,10 +33,10 @@
                 </div>
             </div>
 
-            <!-- Bar Chart -->
+            <!-- Bar Charts -->
 {{--            <div class="card shadow mb-4">--}}
 {{--                <div class="card-header py-3">--}}
-{{--                    <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>--}}
+{{--                    <h6 class="m-0 font-weight-bold text-primary">Bar Charts</h6>--}}
 {{--                </div>--}}
 {{--                <div class="card-body">--}}
 {{--                    <div class="chart-bar">--}}
@@ -49,12 +49,12 @@
 
 {{--        </div>--}}
 
-        <!-- Donut Chart -->
+        <!-- Donut Charts -->
 {{--        <div class="col-xl-4 col-lg-5">--}}
 {{--            <div class="card shadow mb-4">--}}
 {{--                <!-- Card Header - Dropdown -->--}}
 {{--                <div class="card-header py-3">--}}
-{{--                    <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>--}}
+{{--                    <h6 class="m-0 font-weight-bold text-primary">Donut Charts</h6>--}}
 {{--                </div>--}}
 {{--                <!-- Card Body -->--}}
 {{--                <div class="card-body">--}}
@@ -71,7 +71,7 @@
 @endsection
 
 @section('scripts')
-    <script src="{{asset('https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js')}}"></script>
+    <script src="{{asset('https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Charts.min.js')}}"></script>
     <script>
         var ctx = document.getElementById('trends').getContext('2d');
         var trends = new Chart(ctx, {

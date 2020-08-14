@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Infusion;
+use App\Inhalation;
+use App\Injection;
+use App\Operation;
+use App\Oral;
 use App\Patient;
+use App\Premedication;
+use App\StatDoses;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
@@ -58,7 +65,22 @@ class PatientController extends Controller
     {
 //        dd($patient);
         $patient = Patient::findOrFail($id);
-        return View('patient.show', compact('patient'));
+        $statdoses = StatDoses::findOrFail($id);
+//        if ($statdose->isEmpty()) {
+//            $statdose = "No data recorded for statdoses";
+//        }
+
+        $orals = Oral::findOrFail($id);
+        $injections = Injection::findOrFail($id);
+        $infusions = Infusion::findOrFail($id);
+        $inhalations = Inhalation::findOrFail($id);
+        $operations = Operation::findOrFail($id);
+        $premedications = Premedication::findOrFail($id);
+
+        return View('patient.show', compact('patient',
+            'statdoses', 'orals', 'injections', 'infusions',
+            'inhalations','operations', 'premedications'));
+//        dd($patient->id, $statdoses->drug_name, $orals->duration, $injections->dose_value, $infusions->date, $inhalations->time, $operations->date, $premedications->id);
     }
 
     /**

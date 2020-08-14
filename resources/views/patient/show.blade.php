@@ -68,20 +68,34 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body ">
-                        <div class="col ml-sm-3">
-                            <div class="form-inline offset-md-2 my-sm-3">
-                                <label for="name" class="text-md-right mr-lg-2">{{ __('Name') }}</label>
-                                <input id="name" type="text" class="form-control input-group" name="name" value="{{ '$name' }}" disabled>
-                            </div>
-                            <br>
-                            <div class="form-inline offset-md-2 my-sm-3" >
-                                <label for="mrn" class="text-md-right mr-lg-3">{{ __('MRN') }}</label>
-                                <input id="mrn" type="text" class="form-control input-group text-capitalize" name="mrn" value="{{ '$mrn' }}" disabled>
-                            </div>
-                            <br>
-                            <div class="form-inline offset-md-2 my-sm-3">
-                                <label for="type" class="text-md-right mr-lg-3">{{ __('Cancer type') }}</label>
-                                <input id="type" type="text" class="form-control input-group" name="type" value="{{ '$type' }}" disabled>
+                        <div class="col-auto ml-sm-3 align-top">
+                            <h6 class="m-0 font-weight-bold text-gray-900">Stat Doses</h6>
+                            <div class="form-inline my-sm-3 ml-0">
+
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead class="text-md-center">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+{{--                                        {{$statdoses->date}}--}}
+                                        @foreach($statdoses as $statdose)
+                                            <tr>
+                                                <td  class="text-md-center text-capitalize">{{$statdose->id}}</td>
+                                                <td class="text-md-center">
+                                                    <a href="{{ route('patients.show', $patient->id) }}" class=" ">
+                                                        <button type="submit" class="btn btn-info">VIEW</button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             </div>
                         </div>
                     </div>

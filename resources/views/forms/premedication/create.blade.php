@@ -3,8 +3,12 @@
 <!-- Styles -->
 
 @yield('styles')
-
-<link rel="stylesheet" href="{{ asset('css\visualizations.css') }}">
+<style>
+    .col-lg-10 {
+        padding:0 !important;
+    }
+</style>
+{{--<link rel="stylesheet" href="{{ asset('css\visualizations.css') }}">--}}
 
 @section('content')
 
@@ -16,12 +20,12 @@
         <p class="mb-4">Add { $patient->name }} premedication record</p>
         <a class="nav-link ml-0" href="forms">
             <i class="fas fa-fw mb-2 fa-arrow-circle-left"></i>
-            <span>Back</span>
+            <span>Change form</span>
         </a>
         <form action="#" method="POST" class="form-horizontal">
             {{ csrf_field() }}
 
-            <div class="card shadow">
+            <div class="card shadow offset-md-1 col-lg-10">
                 <div class="card-header">
                     <div class="ml-lg-5 mt-sm-3 justify-content-between">
                         <span class="form-inline mb-sm-4">
@@ -38,14 +42,13 @@
                     </div>
 
                 </div>
-                <div class="card-body form-inline justify-content-around">&nbsp;&nbsp;
-                    <div class="mt-sm-3 justify-content-between">
+                <div class="card-body form-inline justify-content-center">&nbsp;&nbsp;
+                    <div class="">
                         <div class="form-inline mb-sm-4">
-                            <label class="control-label mb-1">Date prescribed: </label> <input type="date" name="date" class="form-control ml-3 mr-4" style="width: 150px;">
+                            <label class="control-label mb-1 mr-2">Date prescribed: </label> <input type="date" name="date" class="form-control mr-4" style="width: 150px;">
                             <label class="control-label ml-3 ">Time:</label> <input type="time" name="time" class="form-control ml-2 mr-4" style="width: 150px;">&nbsp;
-                            <label class="control-label">Drug name:</label> <input type="text" name="drugname" class="form-control ml-2 mr-4" style="width: 320px;">
                             <label class="control-label">Route:</label>
-                            <select required class="form-control animated--fade-in  ml-2 mr-4" name="route" id="route" style="width: 75px;">
+                            <select required class="form-control animated--fade-in  ml-3 mr-4" name="route" id="route" style="width: 75px;">
                                 <div class="dropdown-menu text-center">
                                     <option class="dropdown-item" value="IV">IV</option>
                                     <option class="dropdown-item" value="PO">PO</option>
@@ -53,6 +56,21 @@
                                     <option class="dropdown-item" value="S/C">S/C</option>
                                 </div>
                             </select>
+                        </div>
+
+                        <div class="form-inline mb-sm-4">
+                            <label class="control-label mr-2">Drug name:</label> <input type="text" name="drugname" class="form-control mr-4" style="width: 350px;">
+
+                            <label class="control-label">Dose:</label> <input type="text" name="dose" class="form-control ml-2 mr-2" style="width: 90px;">
+                            <select required class="form-control animated--fade-in ml-2 mr-4" name="unit" id="unit" style="width: 80px;">
+                                <div class="dropdown-menu text-center">
+                                    <option class="dropdown-item" value="mcg">mcg</option>
+                                    <option class="dropdown-item" value="mg">mg</option>
+                                    <option class="dropdown-item" value="g">g</option>
+                                    <option class="dropdown-item" value="ml">ml</option>
+                                </div>
+                            </select>
+
                         </div>
 
                         <div class="form-inline mt-2">
