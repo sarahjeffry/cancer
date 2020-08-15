@@ -16,5 +16,6 @@ $factory->define(\App\Inhalation::class, function (Faker $faker) {
         'dose_unit' => $faker->randomElement($array = array ('mcg','mg','g','ml')),
         'frequency' => $faker->randomElement($array = array ('Once','Twice','8 hours')),
         'duration' => $faker->randomElement($array = array ('Daily','Weekly','Two Weeks')),
+        'prescribed_by' =>  factory('App\User')->create()
     ];
 });

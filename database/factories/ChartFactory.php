@@ -13,6 +13,7 @@ $factory->define(\App\Chart::class, function (Faker $faker) {
         'iv_infusion' => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'diet' => $faker->randomElement($array = array ('normal','diabetic','low salt')),
         'chart_img' => $faker->$faker->imageUrl('700', '700'),
+        'prescribed_by' =>  factory('App\User')->create()
     ];
 });
 

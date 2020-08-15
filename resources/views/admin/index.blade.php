@@ -150,7 +150,7 @@
 
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Dashboard</h1>
-                <p class="mb-4">Visualizations of patients recorded in iCancer</p>
+                <p class="mb-4">Visualizations of patients in iCancer</p>
                 <!-- Content Row -->
                 <span class="form-inline" >
                     <div class="col-6" >
@@ -161,7 +161,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="chart-bar">
-                                    <canvas id="trends" width="195" height="120"></canvas>
+                                    <canvas id="trends" width="225" height="120"></canvas>
                                 </div>
                                 <hr>
                                 <center>Rate of cancer deaths by years</center>
@@ -179,7 +179,7 @@
                             <!-- Card Body -->
                             <div class="card-body ">
                                 <div class="chart-pie justify-content-center">
-                                    <canvas id="demographic" width="75" height="40" class="ml-sm-2"></canvas>
+                                    <canvas id="demographic" width="89" height="40" class="ml-sm-2"></canvas>
                                 </div>
                                 <hr>
                                 <center>Number of cancer occurences in 2020</center>
@@ -196,7 +196,7 @@
                         <div class="card-body">
                             <div class="chart-area">
                                 {{--                            <canvas id="myAreaChart"></canvas>--}}
-                                <canvas id="correlation" width="250" height="90"></canvas>
+                                <canvas id="correlation" width="290" height="90"></canvas>
                             </div>
                             <hr>
                             <center>Number of lung cancer occurences amongst smokers and non-smokers</center>

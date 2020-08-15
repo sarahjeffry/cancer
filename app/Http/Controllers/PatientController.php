@@ -27,7 +27,7 @@ class PatientController extends Controller
 
         $patients = DB::table('patients')->where([
             ['status', '=', 'yes'],
-            ['live', '=', 'alive']
+            ['live', '=', 'alive'],
         ])->get();
 
         return view('patient.index', ['patients' => $patients]);
@@ -60,37 +60,22 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show(Patient $patient)
     {
-//        dd($patient);
-        $patient = Patient::findOrFail($id);
-        $statdoses = StatDoses::findOrFail($id);
-//        if ($statdose->isEmpty()) {
-//            $statdose = "No data recorded for statdoses";
-//        }
-
-        $orals = Oral::findOrFail($id);
-        $injections = Injection::findOrFail($id);
-        $infusions = Infusion::findOrFail($id);
-        $inhalations = Inhalation::findOrFail($id);
-        $operations = Operation::findOrFail($id);
-        $premedications = Premedication::findOrFail($id);
-
-        return View('patient.show', compact('patient',
-            'statdoses', 'orals', 'injections', 'infusions',
-            'inhalations','operations', 'premedications'));
-//        dd($patient->id, $statdoses->drug_name, $orals->duration, $injections->dose_value, $infusions->date, $inhalations->time, $operations->date, $premedications->id);
+        $patient = Patient::find($patient->id);
+        return view('patient.show', compact('patient'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return string
      */
-    public function edit($id)
+    public function edit(Patient $patient)
     {
-        //
+        $patient = Patient::find($patient->id);
+        return view('report.edit', compact('patient'));
     }
 
     /**

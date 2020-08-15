@@ -20,5 +20,6 @@ $factory->define(\App\Patient::class, function (Faker $faker) {
         'staff_id' => factory('App\User')->create()->staff_id,
         'user_id' => $faker->unique()->bothify('?PKS?###'),
         'year' => $faker->randomElement($array = array (2015,2016,2017,2018,2019,2020)),
+        'date_in' => $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now', $timezone = null),
     ];
 });

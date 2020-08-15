@@ -12,8 +12,16 @@
     </a>
     <br>
     <img class="img-profile rounded-circle mx-5" src="https://source.unsplash.com/7bMdiIqz_J4/125x125">
-    <div class="sidebar-brand-text text-white text-md-center text-capitalize mx-3"><br>Hi, {{ Auth::user()->name }}!</div>
-{{--    <div class="sidebar-brand-text text-white text-md-center mx-3"><br>You are an {{ Auth::user()->role }}</div>--}}
+    <div class="sidebar-brand-text text-white text-md-center text-capitalize mx-3 mb-2"><br>Hi, {{ Auth::user()->name }}!</div>
+    @if(Auth::user()->role == 'admin')
+        <div class="sidebar-brand-text text-gray-400 text-md-center mx-3">Administrator</div>
+    @endif
+    @if(Auth::user()->role == 'consultant')
+        <div class="sidebar-brand-text text-gray-400 text-md-center mx-3">Consultant</div>
+    @endif
+    @if(Auth::user()->role == 'nurse')
+        <div class="sidebar-brand-text text-gray-400 text-md-center mx-3">Nurse</div>
+    @endif
     <br>
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
@@ -30,7 +38,7 @@
 
     <!-- Nav Item - Patients -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('patients.index') }}">
+        <a class="nav-link" href="{{ route('patient.index') }}">
             <i class="fas fa-fw fa-person-booth"></i>
             <span>Patients</span></a>
     </li>
@@ -65,8 +73,7 @@
 @endif
     <!-- Divider -->
 {{--    <hr class="sidebar-divider">--}}
-
-    <!-- Nav Item - Tables -->
+<!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="\settings">
             <i class="fas fa-fw fa-cog"></i>

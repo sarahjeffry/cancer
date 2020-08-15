@@ -36,7 +36,7 @@
                             <th>Gender</th>
                             <th>MRN</th>
                             <th>Type</th>
-                            <th>Consultant</th>
+                            <th>Date admitted</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -47,13 +47,13 @@
                                 <td  class="text-md-center text-capitalize">{{$patient->gender}}</td>
                                 <td  class="text-md-center text-uppercase">{{$patient->patient_id}}</td>
                                 <td class="text-md-center text-capitalize">{{$patient->type}}</td>
-                                <td class="text-md-center text-uppercase">{{$patient->staff_id}}</td>
+                                <td class="text-md-center text-uppercase">{{$patient->date_in}}</td>
                                 <td class="text-md-center">
-                                    <a href="{{ route('patients.show', $patient->id) }}" class=" ">
+                                    <a href="/patients/{{$patient->id}}/show">
                                         <button type="submit" class="btn btn-info">VIEW</button>
                                     </a>
                                     @if(Auth::user()->role == 'admin')
-                                        <a class=" shadow animated--grow-in" aria-labelledby="userDropdown" href="{{ route('patients.destroy', $patient->id) }}" data-toggle="modal" data-target="#deleteModal">
+                                        <a class=" shadow animated--grow-in" aria-labelledby="userDropdown" href="{{ route('patient.destroy', $patient->id) }}" data-toggle="modal" data-target="#deleteModal">
                                             <button type="submit" class="btn btn-danger">DELETE</button>
                                         </a>
                                     @endif
@@ -68,35 +68,36 @@
 
     </div>
     <!-- /.container-fluid -->
-
-@endsection
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete {{$patient->name}}?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            {{--            <div class="modal-body">Are you sure you want to delete the record?</div>--}}
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                {{--                <a class="btn btn-primary" href="/logout">Logout</a>--}}
-                {{--                <a class="btn btn-danger" href="{{ route('settings.destroy', $user->id) }}"--}}
-                <a class="btn btn-danger" href="#"
-                   onclick="event.preventDefault();
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete {{$patient->name}}?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                {{--            <div class="modal-body">Are you sure you want to delete the record?</div>--}}
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    {{--                <a class="btn btn-primary" href="/logout">Logout</a>--}}
+                    {{--                <a class="btn btn-danger" href="{{ route('settings.destroy', $user->id) }}"--}}
+                    <a class="btn btn-danger" href="#"
+                       onclick="event.preventDefault();
                    document.getElementById('delete-form').submit();">
-                    {{ __('Delete') }}
+                        {{ __('Delete') }}
 
-                    <form id="delete-form" action="#" method="DELETE" style="display: none;">
-                        @csrf
-                    </form>
-                </a>
+                        <form id="delete-form" action="#" method="DELETE" style="display: none;">
+                            @csrf
+                        </form>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+@endsection
+
 @push('js')
 
     <!-- Page level plugins -->

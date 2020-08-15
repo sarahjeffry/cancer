@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\True_;
 
 class UserController extends Controller
 {
@@ -23,13 +24,22 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Create a new user instance after a valid registration.
      *
-     * @return \Illuminate\Http\Response
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+//        User::create([
+//            'name' => $request['name'],
+//            'role'  => $request['role'],
+//            'staff_id' => $request['staff_id'],
+//            'email' => $request['email'],
+//            'password' => Hash::make($request['password']),
+//        ]);
+//
+//        return view('user_management.index');
     }
 
     /**
@@ -69,9 +79,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-//        $user = User::find($id);
-        $arr['user'] = $user;
-        return view('settings.edit', compact('user'));
+        $user = User::find($user->id);
+//        $arr['user'] = $user;
+        return view('user_management.edit', compact('user'));
     }
 
     /**
@@ -84,14 +94,17 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-
+//
         $user->update([
             'name'      => $request->name, //'view'  => $request->column in database
-            'role'      => $request->role,
             'email'     => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        return view('settings.index', compact('user'));
+
+        return view('settings.index')
+            ->with('message', 'You have successfully updated your profile!');
+//        return view('settings.index')->with(['message' => 'You have successfully updated your profile!', 'alert' => 'alert-success']);
+//        dd("Updated");
     }
 
     /**
@@ -105,6 +118,6 @@ class UserController extends Controller
         $user = User::find($id); //object
 
         $user -> delete();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'You have successfully updated your profile!');;
     }
 }

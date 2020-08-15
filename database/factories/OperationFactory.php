@@ -15,7 +15,8 @@ $factory->define(\App\Operation::class, function (Faker $faker) {
         'diagnosis' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
         'shaving' => $faker->randomElement($array = array ('yes','no')),
         'anaesthetist' => $faker->randomElement($array = array ('spinal','local','general','sedation', 'epidural')),
-        'diet' => $faker->randomElement($array = array ('normal','diabetic','low salt'))
+        'diet' => $faker->randomElement($array = array ('normal','diabetic','low salt')),
+        'prescribed_by' =>  factory('App\User')->create()
     ];
 });
 

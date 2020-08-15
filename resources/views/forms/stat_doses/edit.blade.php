@@ -28,7 +28,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">{{ $patient->name }}</h6>
             </div>
             <div class="card-body">
-                <form action="{{route('stat_doses.create', $patient->id)}}" method="POST" class="form-horizontal">
+                <form action="{{route('stat_dose.create', $patient->id)}}" method="POST" class="form-horizontal">
                     {{ csrf_field() }}
                     <a class="nav-link ml-0" href="{{redirect()->back()}}">
                         <i class="fas fa-fw fa-arrow-circle-left"></i>

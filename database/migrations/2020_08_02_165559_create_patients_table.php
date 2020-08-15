@@ -28,6 +28,7 @@ class CreatePatientsTable extends Migration
             $table->string('live');
             $table->string('user_id')->unique(); //Tak tahulah kenapa kena ada column ni, tapi kalau tak letak jadi error
             $table->integer('year');
+            $table->date('date_in');
             $table->timestamps();
         });
     }

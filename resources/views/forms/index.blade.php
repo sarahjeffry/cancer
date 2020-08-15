@@ -32,7 +32,12 @@
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
-
+        @if(session()->has('message'))
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ session()->get('message') }}
+            </div>
+        @endif
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Forms</h1>
         <p class="mb-2">Select type of form</p>
@@ -40,7 +45,7 @@
         <div class="row offset-sm-3">
             <!-- Stat Doses -->
             <div class="row-cols-xl-4 col-md-4 mb-3">
-                <a href="{{ route('stat_doses.index') }}">
+                <a href="forms/statdoses">
                     <div class="card forms h-100 py-2 bg-gradient-info">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -59,7 +64,7 @@
 
             <!-- Premedication -->
             <div class="row-cols-xl-4 col-md-4 mb-3">
-                <a href="premedication">
+                <a href="forms/premedication">
                     <div class="card forms h-100 py-2 bg-gradient-info">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -80,7 +85,7 @@
         <div class="row offset-sm-3">
             <!-- Oral -->
             <div class="row-cols-xl-4 col-md-4 mb-3">
-                <a href="\oral">
+                <a href="forms/oral">
                     <div class="card forms h-100 py-2 bg-gradient-info">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -99,7 +104,7 @@
 
             <!-- Infusion -->
             <div class="row-cols-xl-4 col-md-4 mb-3">
-                <a href="infusion">
+                <a href="forms/infusion">
                     <div class="card forms h-100 py-2 bg-gradient-info">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -122,7 +127,7 @@
     <div class="row offset-sm-3">
         <!-- Injection -->
         <div class="row-cols-xl-4 col-md-4 mb-3">
-            <a href="injections">
+            <a href="forms/injection">
                 <div class="card forms h-100 py-2 bg-gradient-info">
                     <div class="btn card-body">
                         <div class="row no-gutters align-items-center">
@@ -141,7 +146,7 @@
 
         <!-- Operation Procedure -->
         <div class="row-cols-xl-4 col-md-4 mb-3">
-            <a href="operation">
+            <a href="forms/operation">
                 <div class="card forms h-100 py-2 bg-gradient-info">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -163,7 +168,7 @@
     <div class="row offset-sm-3">
         <!-- Treatment Changes Charts -->
         <div class="row-cols-xl-4 col-md-4 mb-3">
-            <a href="charts">
+            <a href="forms/charts">
                 <div class="card forms h-100 py-2 bg-gradient-info">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -182,7 +187,7 @@
 
         <!-- Inhalation -->
         <div class="row-cols-xl-4 col-md-4 mb-3 ">
-            <a href="inhalation">
+            <a href="forms/inhalation">
                 <div class="card forms h-100 py-2 bg-gradient-info">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">

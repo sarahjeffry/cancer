@@ -14,6 +14,7 @@ $factory->define(\App\StatDoses::class, function (Faker $faker) {
         'drug_name' => $faker->randomElement($array = array ('Paracetamol','Ibuprofen','Hydrocodone')),
         'dose_value' => $faker->randomFloat($nbMaxDecimals = NULL, $min = 5, $max = 25),
         'dose_unit' => $faker->randomElement($array = array ('mcg','mg','g','ml')),
+        'prescribed_by' =>  factory('App\User')->create()
     ];
 });
 

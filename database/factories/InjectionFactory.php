@@ -14,6 +14,7 @@ $factory->define(\App\Injection::class, function (Faker $faker) {
         'route' => $faker->randomElement($array = array ('IV','PO','IM','S/C')),
         'drug_name' => $faker->randomElement($array = array ('Doxorubicin','Cyclophosphamide')),
         'dose_value' => $faker->randomFloat($nbMaxDecimals = NULL, $min = 5, $max = 15),
-        'dose_unit' => $faker->randomElement($array = array ('mcg','mg','g','ml'))
+        'dose_unit' => $faker->randomElement($array = array ('mcg','mg','g','ml')),
+        'prescribed_by' =>  factory('App\User')->create()
     ];
 });

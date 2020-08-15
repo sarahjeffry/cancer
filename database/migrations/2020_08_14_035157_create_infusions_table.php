@@ -21,6 +21,7 @@ class CreateInfusionsTable extends Migration
             $table->string('drug_name')->nullable();
             $table->float('dose_value')->nullable();
             $table->string('dose_unit')->nullable();
+            $table->string('prescribed_by')->nullable();
             $table->timestamps();
         });
     }

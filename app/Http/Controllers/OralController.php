@@ -5,6 +5,7 @@ use App\Oral;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Patient;
+use Illuminate\Support\Facades\Auth;
 
 class OralController extends Controller
 {
@@ -15,14 +16,7 @@ class OralController extends Controller
      */
     public function index()
     {
-        $patients = DB::table('patients')
-            ->where('status', '=', 'yes')
-            ->where(function ($query) {
-                $query->where('live', '=', 'alive');
-            })
-            ->get();
-
-        return view('forms.oral.index', ['patients' => $patients]);
+        return view('forms.premedication.create');
     }
 
     /**
@@ -30,34 +24,39 @@ class OralController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create(array $data, Request $mrn)
+    public function create()
     {
-        $oral = Oral::create([
-            'name' => $data['name'],
-            'gender' => $data['gender'],
-            'mrn'  => $mrn,
-            'type' => $data['type'],
-            'height' => $data['height'],
-            'weight' => $data['weight'],
-            'smoking' => $data['smoking'],
-            'status' => $data['status'],
-            'live' => $data['live'],
-            'year' => 2020
-
-        ]);
-
-        return view('forms.oral.show', compact('oral'));
+        $patients = Patient::all();
+        return view('forms.oral.show',['patients' => $patients])->with('message', 'You have successfully added the record!');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(array $data, Request $mrn)
     {
-        //
+//        Oral::create([
+//            'patient_id' => $data['mrn'],
+//            'date' => $data['date'],
+//            'time' => $data['time'],
+//            'mrn'  => $mrn,
+//            'drug_name' => $data['drug_name'],
+//            'route' => $data['route'],
+////            'prescribed_by' => $data['Auth::user()->']
+//        ]);
+        Oral::create([
+            'patient_id' => request('id'),
+            'date' => request('date'),
+            'time'  => request('time'),
+            'mrn' => request('mrn'),
+            'drug_name' => request('drug_name'),
+            'route' => request('route'),
+            'prescribed_by' => Auth::user()->getAuthIdentifierName()
+        ]);
+        return back()->with('message', 'You have successfully added the record!');
     }
 
     /**
@@ -66,10 +65,15 @@ class OralController extends Controller
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show()
     {
-        $oral = Oral::find($id);
-        return view('forms.oral.show',array('oral' => $oral));
+        $patients = DB::table('patients')->where([
+            ['status', '=', 'yes'],
+            ['live', '=', 'alive'],
+        ])->get();
+
+        return view('forms.oral.index', ['patients' => $patients]);
+
     }
 
     /**
@@ -88,12 +92,12 @@ class OralController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function update(Request $request, $id)
+    public function update($mrn)
     {
-        $arr['patient'] = $mrn;
-        return view('forms.stat_doses.create', compact('patient'));
+        $patient = Patient::findOrFail($mrn);
+        return View('forms.oral.create', compact('patient'));
     }
 
     /**
@@ -105,8 +109,6 @@ class OralController extends Controller
     public function destroy($id)
     {
         $oral = Oral::find($id);
-
-        //dd($task); //--> for debugging
         $oral -> delete();
         return redirect()->back();
     }

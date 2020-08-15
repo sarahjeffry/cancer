@@ -20,13 +20,30 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">History</h1>
-        <a class="nav-link float-right" id="print" href="{{ url('generatePDF') }}" @click.prevent="printlayer">
-            <i class="fas fa-fw mb-2 fa-print"></i>
-            <span>Print</span>
-        </a>
-        <p class="mb-4">History of registered patients</p>
-
+        @if(Auth::user()->role == 'admin')
+            <h1 class="h3 mb-2 text-gray-800">Patients</h1>
+            <a class="nav-link float-right" id="print" href="{{ url('generatePDF') }}" @click.prevent="printlayer">
+                <i class="fas fa-fw mb-2 fa-print"></i>
+                <span>Print</span>
+            </a>
+            <p class="mb-4">Registered patients</p>
+        @endif
+        @if(Auth::user()->role == 'consultant')
+            <h1 class="h3 mb-2 text-gray-800">History</h1>
+            <a class="nav-link float-right" id="print" href="{{ url('generatePDF') }}" @click.prevent="printlayer">
+                <i class="fas fa-fw mb-2 fa-print"></i>
+                <span>Print</span>
+            </a>
+            <p class="mb-4">History of registered patients</p>
+        @endif
+        @if(Auth::user()->role == 'nurse')
+            <h1 class="h3 mb-2 text-gray-800">History</h1>
+            <a class="nav-link float-right" id="print" href="{{ url('generatePDF') }}" @click.prevent="printlayer">
+                <i class="fas fa-fw mb-2 fa-print"></i>
+                <span>Print</span>
+            </a>
+            <p class="mb-4">History of registered patients</p>
+        @endif
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -45,7 +62,7 @@
                                 <th>Gender</th>
                             @endif
                             <th>MRN</th>
-                            <th>Type</th>
+                            <th>Consultant</th>
 {{--                            <th>Status</th>--}}
                             <th>Year admitted</th>
                             <th>Action</th>
@@ -61,9 +78,9 @@
                                 <th>Gender</th>
                             @endif
                             <th>MRN</th>
-                            <th>Type</th>
+                            <th>Consultant</th>
 {{--                            <th>Status</th>--}}
-                            <th>Year admitted</th>
+                            <th>Date admitted</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>
@@ -78,18 +95,18 @@
                                     <td class="text-md-center" style="text-transform: capitalize;">{{$patient->gender}}</td>
                                 @endif
                                 <td class="text-md-center" style="text-transform: uppercase;">{{$patient->patient_id}}</td>
-                                <td class="text-md-center" style="text-transform: capitalize;">{{$patient->type}}</td>
+                                <td class="text-md-center text-uppercase" style="text-transform: capitalize;">{{$patient->staff_id}}</td>
 {{--                                <td class="text-md-center" style="text-transform: capitalize;">{{$patient->live}}</td>--}}
-                                <td class="text-md-center" >{{$patient->year}}</td>
+                                <td class="text-md-center" >{{$patient->date_in}}</td>
                                 <td class="text-md-center" >
-                                    <a href="{{ route('patients.show', $patient->patient_id) }}">
+                                    <a href="/patients/{{$patient->id}}">
                                         <button type="submit" class="btn btn-info">VIEW</button>
                                     </a>
                                     @if(Auth::user()->role == 'admin')
-                                        <a href="{{ route('patients.edit', $patient->id) }}" data-toggle="modal" >
+                                        <a href="/patients/{{$patient->id}}/edit">
                                             <button type="submit" class="btn btn-warning">EDIT</button>
                                         </a>
-                                            <a class=" shadow animated--grow-in" aria-labelledby="userDropdown" href="{{ route('patients.destroy', $patient->id) }}" data-toggle="modal" data-target="#deleteModal">
+                                            <a class=" shadow animated--grow-in" aria-labelledby="userDropdown" href="{{route('patient.destroy', $patient->id)}}" data-toggle="modal" data-target="#deleteModal">
                                                 <button type="submit" class="btn btn-danger">DELETE</button>
                                             </a>
                                     @endif
@@ -104,35 +121,34 @@
 
     </div>
     <!-- /.container-fluid -->
-
-@endsection
-<!-- Logout Modal-->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete the record of {{$patient->name}}?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-{{--            <div class="modal-body">Are you sure you want to delete the record?</div>--}}
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                {{--                <a class="btn btn-primary" href="/logout">Logout</a>--}}
-                <a class="btn btn-danger" href="{{ route('patients.destroy', $patient->id) }}"
-                   onclick="event.preventDefault();
+    <!-- Logout Modal-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete the record of {{$patient->name}} ({{$patient->id}})?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                {{--            <div class="modal-body">Are you sure you want to delete the record?</div>--}}
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    {{--                <a class="btn btn-primary" href="/logout">Logout</a>--}}
+                    <a class="btn btn-danger" href="/patients/{{$patient->id}}"
+                       onclick="event.preventDefault();
                    document.getElementById('delete-form').submit();">
-                    {{ __('Delete') }}
+                        {{ __('Delete') }}
 
-                    <form id="delete-form" action="{{ route('patients.destroy', $patient->id) }}" method="DELETE" style="display: none;">
-                        @csrf
-                    </form>
-                </a>
+                        <form id="delete-form" action="{{route('patient.destroy', $patient->id)}}" method="DELETE" style="display: none;">
+                            @csrf
+                        </form>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+@endsection
 
 @push('js')
         <script type="text/javascript">

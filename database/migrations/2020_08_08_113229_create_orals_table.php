@@ -24,6 +24,7 @@ class CreateOralsTable extends Migration
             $table->string('dose_unit')->nullable();
             $table->string('frequency')->nullable();
             $table->string('duration')->nullable();
+            $table->string('prescribed_by')->nullable();
         });
     }
 

@@ -2,25 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Infusion;
 use App\Patient;
-use App\StatDoses;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class StatDosesController extends Controller
+class InfusionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
-    public function index(Patient $patient)
+    public function index()
     {
-        $patient = Patient::findOrFail($patient->id);
-//        return View('forms.stat_doses.create', compact('patient'));
-        dd($patient);
+        //
     }
 
     /**
@@ -28,10 +25,10 @@ class StatDosesController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    protected function create()
+    public function create()
     {
         $patients = Patient::all();
-        return view('forms.stat_doses.show',['patients' => $patients])->with('message', 'You have successfully added the record!');
+        return view('forms.infusion.show',['patients' => $patients])->with('message', 'You have successfully added the record!');
     }
 
     /**
@@ -40,22 +37,20 @@ class StatDosesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store()
+    public function store(Request $request)
     {
-        StatDoses::create([
+        Infusion::create([
             'patient_id' => request('id'),
             'date' => request('date'),
             'time'  => request('time'),
+            'route'  => request('route'),
             'drug_name' => request('drug_name'),
             'dose_value' => request('dose_value'),
             'dose_unit' => request('dose_unit'),
             'prescribed_by' => Auth::user()->getAuthIdentifierName(),
         ]);
-//
-//        $patient = StatDoses::findOrFail('patient_id');
-//        return View('forms.stat_doses.create', compact('patient'));
         return back()->with('message', 'You have successfully added the record!');
-    }
+    } //
 
     /**
      * Display the specified resource.
@@ -65,17 +60,12 @@ class StatDosesController extends Controller
      */
     public function show()
     {
-//        $statdoses = StatDoses::find($id);
-//        return view('forms.stat_doses.show',array('statdoses' => $statdoses));
         $patients = DB::table('patients')->where([
             ['status', '=', 'yes'],
             ['live', '=', 'alive'],
         ])->get();
 
-        return view('forms.stat_doses.index', ['patients' => $patients]);
-
-//        dd($patient);
-//        return View('forms.stat_doses.create', compact('patient'));
+        return view('forms.infusion.index', ['patients' => $patients]);
     }
 
     /**
@@ -86,7 +76,7 @@ class StatDosesController extends Controller
      */
     public function edit($id)
     {
-
+        //
     }
 
     /**
@@ -96,11 +86,10 @@ class StatDosesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    protected function update($mrn)
+    public function update($mrn)
     {
-//        $arr['patient'] = $mrn;
         $patient = Patient::findOrFail($mrn);
-        return View('forms.stat_doses.create', compact('patient'));
+        return View('forms.infusion.create', compact('patient'));
     }
 
     /**
@@ -111,8 +100,8 @@ class StatDosesController extends Controller
      */
     public function destroy($id)
     {
-        $statdose = StatDoses::find($id);
-        $statdose -> delete();
+        $infusion = Infusion::find($id);
+        $infusion -> delete();
         return redirect()->back();
     }
 }

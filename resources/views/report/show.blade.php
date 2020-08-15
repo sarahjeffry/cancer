@@ -1,4 +1,4 @@
-@extends('patient.partials.main')
+@extends('report.partials.main')
 
 @yield('style')
 
@@ -17,7 +17,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Patients</h1>
+        <h1 class="h3 mb-2 text-gray-800">Patients Details</h1>
         <a class="nav-link ml-0 col-2" href="{{ route('patient.index') }}" >
             <i class="fas fa-fw fa-arrow-circle-left"></i>
             <span>Back</span>
@@ -81,8 +81,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-{{--                                        {{$statdoses->date}}--}}
-                                        @foreach($statdoses as $statdose)
+
                                             <tr>
                                                 <td  class="text-md-center text-capitalize">{{$patient->name}}</td>
                                                 <td class="text-md-center">
@@ -91,7 +90,6 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -99,15 +97,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="offset-md-5 my-sm-3 mb-4">
-{{--                    <a href="{{ url('form') }}">--}}
-{{--                        <button type="submit" class="btn btn-secondary">EDIT</button>--}}
-{{--                    </a>--}}
-                    <a href="/forms">
-                        <button type="submit" class="btn btn-primary">ADD NEW RECORD</button>
-                    </a>
                 </div>
             </div>
 

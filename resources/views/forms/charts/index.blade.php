@@ -18,10 +18,9 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Oral</h1>
-{{--        <p class="mb-4">Select a patient</p>--}}
         <a class="nav-link ml-0" href="\forms">
             <i class="fas fa-fw mb-2 fa-arrow-circle-left"></i>
-            <span>Back</span>
+            <span>Change form</span>
         </a>
         <div class="card shadow mb-4">
             <div class="card-header col py-3">
@@ -35,21 +34,25 @@
                             <th>Name</th>
                             <th>MRN</th>
                             <th>Type</th>
-                            <th>Year admitted</th>
+                            <th>Date admitted</th>
                             <th>Action</th>
                         </tr>
                         </thead>
+                        <tfoot class="text-md-center">
                         <tbody>
                         @foreach($patients as $patient)
                             <tr>
                                 <td>{{$patient->name}}</td>
                                 <td class="text-md-center" style="text-transform: uppercase;">{{$patient->patient_id}}</td>
                                 <td class="text-md-center" style="text-transform: capitalize;">{{$patient->type}}</td>
-                                <td class="text-md-center" >{{$patient->year}}</td>
+                                <td class="text-md-center" >{{$patient->date_in}}</td>
                                 <td class="text-md-center">
-                                    <a href="{{ route('stat_doses.update', $patient->patient_id) }}">
+                                    {{--                                    <form action="{{ route('stat_dose.index', $patient->id) }}" method="GET" class="form-horizontal">--}}
+                                    {{--                                    <a href="{{ route('stat_dose.index', $patient->id) }}">--}}
+                                    <a href="/charts/{{$patient->id}}/update">
                                         <button type="submit" class="btn btn-success">SELECT</button>
                                     </a>
+                                    {{--                                    </form>--}}
                                 </td>
                             </tr>
                         @endforeach
@@ -58,7 +61,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <!-- End of Main Content -->
 

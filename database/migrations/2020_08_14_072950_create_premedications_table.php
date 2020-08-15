@@ -23,6 +23,7 @@ class CreatePremedicationsTable extends Migration
             $table->float('dose_value')->nullable();
             $table->string('dose_unit')->nullable();
             $table->string('route')->nullable();
+            $table->string('prescribed_by')->nullable();
         });
     }
 

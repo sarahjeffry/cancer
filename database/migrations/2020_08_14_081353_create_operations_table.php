@@ -24,6 +24,7 @@ class CreateOperationsTable extends Migration
             $table->string('shaving')->nullable();
             $table->string('anaesthetist')->nullable();
             $table->string('diet')->nullable();
+            $table->string('prescribed_by')->nullable();
         });
     }
 

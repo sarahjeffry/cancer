@@ -1,4 +1,4 @@
-@extends('settings.partials.main')
+@extends('user_management.partials.main')
 
 <!-- Styles -->
 
@@ -38,14 +38,14 @@
 {{--                        <span>Back</span>--}}
 {{--                    </a>--}}
 
-                    <form action="/settings/{{Auth::user()->id}}" method="POST" class="form-horizontal">
+                    <form action="/settings/{{$user->id}}" method="POST" class="form-horizontal">
                         {{--                            {{ csrf_field() }}--}}
                         @csrf
                         @method('put')
 
                         <div class="form-inline my-sm-2 m-4 ">
                             <label for="name" class="mr-5 mb-2">{{ __('Name') }}</label>
-                            <input id="name" type="text" class="form-control input-group col-lg-6" name="name" value="{{ Auth::user()->name }}">
+                            <input id="name" type="text" class="form-control input-group col-lg-6" name="name" value="{{ $user->name }}">
                         </div>
                         <div class="form-inline my-sm-2 m-4 ">
                             <label for="email" class="mr-5 mb-2">{{ __('Email') }}</label>

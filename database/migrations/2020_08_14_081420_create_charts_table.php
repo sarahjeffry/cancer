@@ -21,6 +21,7 @@ class CreateChartsTable extends Migration
             $table->string('iv_infusion')->nullable();
             $table->string('diet')->nullable();
             $table->string('chart_img')->nullable();
+            $table->string('prescribed_by')->nullable();
         });
     }
 //'id','patient_id','treatment', 'iv_infusion', 'diet', 'chart_img'

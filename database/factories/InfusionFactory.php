@@ -14,5 +14,6 @@ $factory->define(\App\Infusion::class, function (Faker $faker) {
         'drug_name' => $faker->randomElement($array = array ('Carboplatin','Paraplatin','Anthracycline ')),
         'dose_value' => $faker->randomFloat($nbMaxDecimals = NULL, $min = 5, $max = 25),
         'dose_unit' => $faker->randomElement($array = array ('mcg','mg','g','ml')),
+        'prescribed_by' =>  factory('App\User')->create()
     ];
 });

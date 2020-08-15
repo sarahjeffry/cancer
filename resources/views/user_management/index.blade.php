@@ -26,8 +26,15 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            @if(session()->has('message'))
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ session()->get('message') }}
+                </div>
+            @endif
+
             <h1 class="h3 mb-3 text-gray-800">User Management</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <a href="new" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-plus fa-sm text-white-50"></i> Add New User</a>
         </div>
 
@@ -48,15 +55,6 @@
                             <th>Action</th>
                         </tr>
                         </thead>
-                        <tfoot class="text-md-center">
-                        <tr>
-                            <th>Name</th>
-                            <th>Staff ID</th>
-                            <th>Role</th>
-                            <th>Email</th>
-                            <th>Action</th>
-                        </tr>
-                        </tfoot>
                         <tbody>
                         @foreach($users as $user)
                             <tr>
@@ -64,13 +62,13 @@
                                 <td class="text-md-center" style="text-transform: uppercase;">{{$user->staff_id}}</td>
                                 <td class="text-md-center" style="text-transform: capitalize;">{{$user->role}}</td>
                                 <td class="text-md-center" >{{$user->email}}</td>
-                                <td class="text-md-center" >
-                                    <a href="{{ route('setting.edit', $user->id) }}" >
-                                        <button type="submit" class="btn btn-warning">EDIT</button>
-                                    </a>
-                                    <a class=" shadow animated--grow-in" aria-labelledby="userDropdown" href="{{ route('setting.destroy', $user->id) }}" data-toggle="modal" data-target="#deleteModal">
-                                        <button type="submit" class="btn btn-danger">DELETE</button>
-                                    </a>
+                                <td class="text-md-center">
+                                   <a href="{{ route('setting.edit', $user->id) }}" >
+                                      <button type="submit" class="btn btn-warning mr-2 ">EDIT</button>
+                                   </a>
+                                  <a class=" shadow animated--grow-in" aria-labelledby="userDropdown" href="/users/{{$user->id}}/destroy" data-toggle="modal" data-target="#deleteModal">
+                                     <button type="submit" class="btn btn-danger">DELETE</button>
+                                  </a>
                                 </td>
                             </tr>
                         @endforeach
@@ -88,7 +86,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete ({{$user->id}}) {{$user->name}}?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>

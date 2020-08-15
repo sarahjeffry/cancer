@@ -14,6 +14,7 @@ $factory->define(\App\Premedication::class, function (Faker $faker) {
         'drug_name' => $faker->randomElement($array = array ('Kytril','Zantac')),
         'dose_value' => $faker->randomFloat($nbMaxDecimals = NULL, $min = 5, $max = 25),
         'dose_unit' => $faker->randomElement($array = array ('mcg','mg','g','ml')),
-        'route' => $faker->randomElement($array = array ('IV','PO','IM','S/C'))
+        'route' => $faker->randomElement($array = array ('IV','PO','IM','S/C')),
+        'prescribed_by' =>  factory('App\User')->create()
     ];
 });
