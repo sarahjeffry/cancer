@@ -31,7 +31,6 @@ class PatientController extends Controller
         ])->get();
 
         return view('patient.index', ['patients' => $patients]);
-
     }
 
     /**

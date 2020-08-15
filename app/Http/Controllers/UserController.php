@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
@@ -46,11 +47,18 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $users = DB::table('users')->where([
+            ['role', '=', 'nurse']
+        ])->orWhere([
+            ['role','=', 'consultant']
+        ])->get();
+
+//        dd($users);
+        return view('user_management.index', ['users' => $users]);
     }
 
     /**

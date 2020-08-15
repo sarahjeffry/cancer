@@ -157,12 +157,10 @@
                 </div>
             </a>
         </div>
-
-
+    </div>
     <!-- /.container-fluid -->
 
-    </div>
-    <div class="row offset-sm-3 ">
+    <div class="row offset-sm-3">
         <!-- Treatment Changes Charts -->
         <div class="row-cols-xl-4 col-md-4 mb-3">
             <a href="charts">
@@ -183,7 +181,7 @@
         </div>
 
         <!-- Inhalation -->
-        <div class="row-cols-xl-4 col-md-4 mb-3">
+        <div class="row-cols-xl-4 col-md-4 mb-3 ">
             <a href="inhalation">
                 <div class="card forms h-100 py-2 bg-gradient-info">
                     <div class="card-body">
@@ -201,7 +199,6 @@
             </a>
         </div>
         <!-- /.container-fluid -->
-
     </div>
     <!-- End of Main Content -->
 

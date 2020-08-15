@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role', 'staff_id'
+        'name', 'email', 'password', 'role', 'staff_id','last_online_at'
     ];
 
     /**
@@ -36,6 +36,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'last_online_at' => 'datetime'
     ];
 
     public function permissions() {

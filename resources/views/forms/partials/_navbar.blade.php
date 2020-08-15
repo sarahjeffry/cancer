@@ -55,6 +55,14 @@
             <span>History</span></a>
     </li>
 
+    <!-- Nav Item - Tables -->
+    @if(Auth::user()->role == 'admin')
+        <li class="nav-item">
+            <a class="nav-link" href="\users">
+                <i class="fas fa-user fa-cog"></i>
+                <span>User Management</span></a>
+        </li>
+@endif
     <!-- Divider -->
 {{--    <hr class="sidebar-divider">--}}
 

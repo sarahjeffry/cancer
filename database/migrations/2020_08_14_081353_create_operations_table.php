@@ -19,8 +19,8 @@ class CreateOperationsTable extends Migration
             $table->timestamps();
             $table->date('date')->nullable();
             $table->time('time')->nullable();
-            $table->string('operation')->nullable();
-            $table->string('diagnosis')->nullable();
+            $table->longText('operation')->nullable();
+            $table->longText('diagnosis')->nullable();
             $table->string('shaving')->nullable();
             $table->string('anaesthetist')->nullable();
             $table->string('diet')->nullable();

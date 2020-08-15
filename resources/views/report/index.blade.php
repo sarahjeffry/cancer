@@ -8,6 +8,10 @@
         th {
             color: #3d3e47 !important;
         }
+
+        a:hover {
+            text-decoration: none !important;
+        }
     </style>
 
 @section('content')
@@ -34,10 +38,15 @@
                         <thead class="text-md-center">
                         <tr>
                             <th>Name</th>
-                            <th>Gender</th>
+                            @if(Auth::user()->role == 'consultant')
+                                <th>Gender</th>
+                            @endif
+                            @if(Auth::user()->role == 'nurse')
+                                <th>Gender</th>
+                            @endif
                             <th>MRN</th>
                             <th>Type</th>
-                            <th>Status</th>
+{{--                            <th>Status</th>--}}
                             <th>Year admitted</th>
                             <th>Action</th>
                         </tr>
@@ -45,10 +54,15 @@
                         <tfoot class="text-md-center">
                         <tr>
                             <th>Name</th>
-                            <th>Gender</th>
+                            @if(Auth::user()->role == 'consultant')
+                                <th>Gender</th>
+                            @endif
+                            @if(Auth::user()->role == 'nurse')
+                                <th>Gender</th>
+                            @endif
                             <th>MRN</th>
                             <th>Type</th>
-                            <th>Status</th>
+{{--                            <th>Status</th>--}}
                             <th>Year admitted</th>
                             <th>Action</th>
                         </tr>
@@ -57,14 +71,29 @@
                         @foreach($patients as $patient)
                             <tr>
                                 <td>{{$patient->name}}</td>
-                                <td class="text-md-center" style="text-transform: capitalize;">{{$patient->gender}}</td>
+                                @if(Auth::user()->role == 'nurse')
+                                    <td class="text-md-center" style="text-transform: capitalize;">{{$patient->gender}}</td>
+                                @endif
+                                @if(Auth::user()->role == 'consultant')
+                                    <td class="text-md-center" style="text-transform: capitalize;">{{$patient->gender}}</td>
+                                @endif
                                 <td class="text-md-center" style="text-transform: uppercase;">{{$patient->patient_id}}</td>
                                 <td class="text-md-center" style="text-transform: capitalize;">{{$patient->type}}</td>
-                                <td class="text-md-center" style="text-transform: capitalize;">{{$patient->live}}</td>
+{{--                                <td class="text-md-center" style="text-transform: capitalize;">{{$patient->live}}</td>--}}
                                 <td class="text-md-center" >{{$patient->year}}</td>
-                                <td class="text-md-center" ><a href="{{ route('patients.show', $patient->patient_id) }}">
+                                <td class="text-md-center" >
+                                    <a href="{{ route('patients.show', $patient->patient_id) }}">
                                         <button type="submit" class="btn btn-info">VIEW</button>
-                                    </a></td>
+                                    </a>
+                                    @if(Auth::user()->role == 'admin')
+                                        <a href="{{ route('patients.edit', $patient->id) }}" data-toggle="modal" >
+                                            <button type="submit" class="btn btn-warning">EDIT</button>
+                                        </a>
+                                            <a class=" shadow animated--grow-in" aria-labelledby="userDropdown" href="{{ route('patients.destroy', $patient->id) }}" data-toggle="modal" data-target="#deleteModal">
+                                                <button type="submit" class="btn btn-danger">DELETE</button>
+                                            </a>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -77,6 +106,33 @@
     <!-- /.container-fluid -->
 
 @endsection
+<!-- Logout Modal-->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete the record of {{$patient->name}}?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+{{--            <div class="modal-body">Are you sure you want to delete the record?</div>--}}
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                {{--                <a class="btn btn-primary" href="/logout">Logout</a>--}}
+                <a class="btn btn-danger" href="{{ route('patients.destroy', $patient->id) }}"
+                   onclick="event.preventDefault();
+                   document.getElementById('delete-form').submit();">
+                    {{ __('Delete') }}
+
+                    <form id="delete-form" action="{{ route('patients.destroy', $patient->id) }}" method="DELETE" style="display: none;">
+                        @csrf
+                    </form>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
 @push('js')
         <script type="text/javascript">

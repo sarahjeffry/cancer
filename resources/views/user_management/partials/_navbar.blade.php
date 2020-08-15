@@ -27,49 +27,9 @@
 
     <!-- Divider -->
 {{--    <hr class="sidebar-divider">--}}
-    @if(Auth::user()->role == 'nurse')
-    <!-- Nav Item - Patients -->
-        <li class="nav-item active">
-            <a class="nav-link" href="{{ route('patients.index') }}">
-                <i class="fas fa-fw fa-person-booth"></i>
-                <span>Patients</span></a>
-        </li>
-    @endif
 
-    @if(Auth::user()->role == 'consultant')
-    <!-- Nav Item - Patients -->
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('patients.index') }}">
-                <i class="fas fa-fw fa-person-booth"></i>
-                <span>Patients</span></a>
-        </li>
-    @endif
-<!-- Divider -->
-    {{--    <hr class="sidebar-divider">--}}
-
-    @if(Auth::user()->role == 'nurse')
-    <!-- Nav Item - Forms -->
-        <li class="nav-item">
-            <a class="nav-link" href="\forms">
-                <i class="fas fa-fw fa-pen-alt"></i>
-                <span>Forms</span></a>
-        </li>
-    @endif
-
-    @if(Auth::user()->role == 'consultant')
-    <!-- Nav Item - Forms -->
-        <li class="nav-item">
-            <a class="nav-link" href="\forms">
-                <i class="fas fa-fw fa-pen-alt"></i>
-                <span>Forms</span></a>
-        </li>
-    @endif
-
-<!-- Divider -->
-    {{--    <hr class="sidebar-divider">--}}
-
-<!-- Nav Item - Report -->
-    <li class="nav-item active">
+    <!-- Nav Item - Report -->
+    <li class="nav-item">
         <a class="nav-link" href="\reports">
             <i class="fas fa-fw fa-table"></i>
             @if(Auth::user()->role == 'nurse')
@@ -84,14 +44,12 @@
     </li>
 
     <!-- Nav Item - Tables -->
-    @if(Auth::user()->role == 'admin')
-        <li class="nav-item">
+        <li class="nav-item active">
             <a class="nav-link" href="\users">
                 <i class="fas fa-user fa-cog"></i>
                 <span>User Management</span>
             </a>
         </li>
-    @endif
 
     <!-- Divider -->
 {{--    <hr class="sidebar-divider">--}}

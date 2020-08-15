@@ -49,6 +49,7 @@ Route::get('generatePDF', function (){
 Route::get('generatePDF/pdf', 'PDFController@pdf');
 Route::resource('/patient', 'PatientController')->names('patients');
 Route::resource('/settings', 'UserController')->names('setting');
+Route::get('/users', 'UserController@show');
 Route::get('form','FormController@menu');
 
 /*

@@ -84,7 +84,7 @@
 {{--                                        {{$statdoses->date}}--}}
                                         @foreach($statdoses as $statdose)
                                             <tr>
-                                                <td  class="text-md-center text-capitalize">{{$statdose->id}}</td>
+                                                <td  class="text-md-center text-capitalize">{{$patient->name}}</td>
                                                 <td class="text-md-center">
                                                     <a href="{{ route('patients.show', $patient->id) }}" class=" ">
                                                         <button type="submit" class="btn btn-info">VIEW</button>

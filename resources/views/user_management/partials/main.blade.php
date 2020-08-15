@@ -34,7 +34,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    @include('patient.partials._navbar')
+    @include('user_management.partials._navbar')
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -103,6 +103,8 @@
 </div>
 
 <!-- Your JavaScript-->
+
+<!-- Bootstrap core JavaScript-->
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
@@ -112,8 +114,11 @@
 <!-- Custom scripts for all pages-->
 <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
 
+<!-- DataTables Bootstrap-->
+{{--<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>--}}
 
-@stack('js')
+@stack('scripts')
+
 </body>
 
 </html>

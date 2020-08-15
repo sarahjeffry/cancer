@@ -27,8 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $users = User::all();
+
         if(Auth::check()) {
-            $users = User::all();
 
             $breast15 = DB::table('patients')->where([
                 ['type', '=', 'breast'],
@@ -386,6 +387,90 @@ class HomeController extends Controller
                 ['year', '=', 2020]
             ])->count();
 
+            $active = DB::table('patients')->where([
+                ['status', '=', 'yes'],
+                ['live', '=', 'alive']
+            ])->count();
+            $totalpatients = DB::table('patients')->count();
+            $consultants = DB::table('users')->where([
+               ['role', '=', 'consultant']
+            ])->count();
+            $nurses = DB::table('users')->where([
+                ['role', '=', 'nurse']
+            ])->count();
+
+            $fdeath15 = DB::table('patients')->where([
+                ['live', '=', 'deceased'],
+                ['year', '=', 2015],
+                ['gender', '=', 'female']
+            ])->count();
+
+            $fdeath16 = DB::table('patients')->where([
+                ['live', '=', 'deceased'],
+                ['year', '=', 2016],
+                ['gender', '=', 'female']
+            ])->count();
+
+            $fdeath17 = DB::table('patients')->where([
+                ['live', '=', 'deceased'],
+                ['year', '=', 2017],
+                ['gender', '=', 'female']
+            ])->count();
+
+            $fdeath18 = DB::table('patients')->where([
+                ['live', '=', 'deceased'],
+                ['year', '=', 2018],
+                ['gender', '=', 'female']
+            ])->count();
+
+            $fdeath19 = DB::table('patients')->where([
+                ['live', '=', 'deceased'],
+                ['year', '=', 2019],
+                ['gender', '=', 'female']
+            ])->count();
+
+            $fdeath20 = DB::table('patients')->where([
+                ['live', '=', 'deceased'],
+                ['year', '=', 2020],
+                ['gender', '=', 'female']
+            ])->count();
+
+            $mdeath15 = DB::table('patients')->where([
+                ['live', '=', 'deceased'],
+                ['year', '=', 2015],
+                ['gender', '=', 'male']
+            ])->count();
+
+            $mdeath16 = DB::table('patients')->where([
+                ['live', '=', 'deceased'],
+                ['year', '=', 2016],
+                ['gender', '=', 'male']
+            ])->count();
+
+            $mdeath17 = DB::table('patients')->where([
+                ['live', '=', 'deceased'],
+                ['year', '=', 2017],
+                ['gender', '=', 'male']
+            ])->count();
+
+            $mdeath18 = DB::table('patients')->where([
+                ['live', '=', 'deceased'],
+                ['year', '=', 2018],
+                ['gender', '=', 'male']
+            ])->count();
+
+            $mdeath19 = DB::table('patients')->where([
+                ['live', '=', 'deceased'],
+                ['year', '=', 2019],
+                ['gender', '=', 'male']
+            ])->count();
+
+            $mdeath20 = DB::table('patients')->where([
+                ['live', '=', 'deceased'],
+                ['year', '=', 2020],
+                ['gender', '=', 'male']
+            ])->count();
+//            dd($totalpatients);
             return view('admin.index', compact('users',
                 'breast15','breast16','breast17','breast18','breast19','breast20',
                 'lung15', 'lung16', 'lung17', 'lung18','lung19','lung20',
@@ -397,7 +482,8 @@ class HomeController extends Controller
                 'deadskin15','deadskin16','deadskin17','deadskin18','deadskin19','deadskin20',
                 'patientbreast20', 'patientlung20', 'patientpancreas20', 'patientskin20',
                 'smoke15', 'smoke16', 'smoke17', 'smoke18', 'smoke19', 'smoke20',
-                'notsmoke15', 'notsmoke16', 'notsmoke17', 'notsmoke18', 'notsmoke19', 'notsmoke20'
+                'notsmoke15', 'notsmoke16', 'notsmoke17', 'notsmoke18', 'notsmoke19', 'notsmoke20',
+                'active','totalpatients', 'consultants', 'nurses'
             ));
         }
 
