@@ -12,7 +12,6 @@
 </style>
 
 @section('content')
-
     <!-- Begin Page Content -->
     <div class="container-fluid">
         @if(session()->has('message'))

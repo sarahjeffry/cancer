@@ -168,7 +168,7 @@
     <div class="row offset-sm-3">
         <!-- Treatment Changes Charts -->
         <div class="row-cols-xl-4 col-md-4 mb-3">
-            <a href="forms/charts">
+            <a href="forms/chart">
                 <div class="card forms h-100 py-2 bg-gradient-info">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">

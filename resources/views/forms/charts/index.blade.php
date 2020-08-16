@@ -17,7 +17,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Oral</h1>
+        <h1 class="h3 mb-2 text-gray-800">Charts</h1>
         <a class="nav-link ml-0" href="\forms">
             <i class="fas fa-fw mb-2 fa-arrow-circle-left"></i>
             <span>Change form</span>
@@ -49,7 +49,7 @@
                                 <td class="text-md-center">
                                     {{--                                    <form action="{{ route('stat_dose.index', $patient->id) }}" method="GET" class="form-horizontal">--}}
                                     {{--                                    <a href="{{ route('stat_dose.index', $patient->id) }}">--}}
-                                    <a href="/charts/{{$patient->id}}/update">
+                                    <a href="/chart/{{$patient->id}}/update">
                                         <button type="submit" class="btn btn-success">SELECT</button>
                                     </a>
                                     {{--                                    </form>--}}

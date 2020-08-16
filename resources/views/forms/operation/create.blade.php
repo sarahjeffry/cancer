@@ -58,7 +58,12 @@
                             <label class="control-label">Operation:</label> <input type="text" name="operation" class="form-control ml-2 mr-4" style="width: 300px;" required>
                         </div>
                         <div class="form-inline mb-sm-4">
-                            <label class="control-label">Diagnosis:</label> <textarea type="text" name="diagnosis" class="form-control textarea ml-2 mr-4 col-sm-8" style="resize: none;" required></textarea>
+                            @if(Auth::user()->role == 'nurse')
+                                <label class="control-label">Diagnosis:</label> <textarea type="text" name="diagnosis" class="form-control textarea ml-2 mr-4 col-sm-8" style="resize: none;" disabled></textarea>
+                            @endif
+                            @if(Auth::user()->role == 'consultant')
+                                <label class="control-label">Diagnosis:</label> <textarea type="text" name="diagnosis" class="form-control textarea ml-2 mr-4 col-sm-8" style="resize: none;" required></textarea>
+                            @endif
                             <label class="control-label ml-3">Shaving:</label>
                             <label>
                                 <input type="radio" id="yes" name="shaving" value="yes" class="ml-3 mr-1" required><label for="yes">Yes</label>
