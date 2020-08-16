@@ -17,7 +17,12 @@
 </style>
 
 @section('content')
-
+    @if(session()->has('message'))
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ session()->get('message') }}
+        </div>
+    @endif
     <!-- Begin Page Content -->
     <div class="container-fluid">
 

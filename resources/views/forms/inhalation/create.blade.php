@@ -87,7 +87,7 @@
                         </div>
 
                         <div class="form-inline mt-2 mb-lg-4">
-                            <input type="submit" value="SAVE" class="btn btn-primary offset-5"/>
+                            <button type="submit" value="SAVE" class="btn btn-primary offset-5">SAVE</button>
                             <a href="/forms">
                                 <div class="btn btn-secondary ml-2">CANCEL</div>
                             </a>

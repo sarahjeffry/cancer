@@ -18,7 +18,12 @@
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
-
+        @if(session()->has('message'))
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ session()->get('message') }}
+            </div>
+        @endif
         <!-- Page Heading -->
         @if(Auth::user()->role == 'admin')
             <h1 class="h3 mb-2 text-gray-800">Patients</h1>
@@ -99,16 +104,21 @@
 {{--                                <td class="text-md-center" style="text-transform: capitalize;">{{$patient->live}}</td>--}}
                                 <td class="text-md-center" >{{$patient->date_in}}</td>
                                 <td class="text-md-center" >
-                                    <a href="/patients/{{$patient->id}}">
+                                    <a href="/patients/{{$patient->id}}/show">
                                         <button type="submit" class="btn btn-info">VIEW</button>
                                     </a>
                                     @if(Auth::user()->role == 'admin')
-                                        <a href="/patients/{{$patient->id}}/edit">
-                                            <button type="submit" class="btn btn-warning">EDIT</button>
+{{--                                        <a href="/patients/{{$patient->id}}/edit">--}}
+{{--                                            <button type="submit" class="btn btn-warning">EDIT</button>--}}
+{{--                                        </a>--}}
+
+                                        <a class=" shadow animated--grow-in" aria-labelledby="userDropdown" href="/patients/{{ $patient->id }}/destroy">
+                                            <button type="submit" class="btn btn-danger">DELETE</button>
+                                            <form id="delete-form" action="{{route('patient.destroy', $patient->id)}}" method="POST" style="display: none;">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
                                         </a>
-                                            <a class=" shadow animated--grow-in" aria-labelledby="userDropdown" href="{{route('patient.destroy', $patient->id)}}" data-toggle="modal" data-target="#deleteModal">
-                                                <button type="submit" class="btn btn-danger">DELETE</button>
-                                            </a>
                                     @endif
                                 </td>
                             </tr>
@@ -121,33 +131,6 @@
 
     </div>
     <!-- /.container-fluid -->
-    <!-- Logout Modal-->
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete the record of {{$patient->name}} ({{$patient->id}})?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                {{--            <div class="modal-body">Are you sure you want to delete the record?</div>--}}
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    {{--                <a class="btn btn-primary" href="/logout">Logout</a>--}}
-                    <a class="btn btn-danger" href="/patients/{{$patient->id}}"
-                       onclick="event.preventDefault();
-                   document.getElementById('delete-form').submit();">
-                        {{ __('Delete') }}
-
-                        <form id="delete-form" action="{{route('patient.destroy', $patient->id)}}" method="DELETE" style="display: none;">
-                            @csrf
-                        </form>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @push('js')

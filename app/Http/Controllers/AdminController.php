@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Patient;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -13,12 +14,11 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $id)
     {
-        $patientsCount = Patient::count();
-        $usersCount = User::count();
-
-        return view('home', compact('patientsCount', 'usersCount'));
+        $user = User::all();
+//        $user = User::find($id);
+        return view('settings.index', compact('user'));
     }
 
     /**
@@ -28,7 +28,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -57,11 +57,12 @@ class AdminController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $user = User::all();
+        return view('settings.edit',$user);
     }
 
     /**
@@ -69,11 +70,27 @@ class AdminController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function update(Request $request, $id)
+    public function update($id,$data)
     {
-        //
+//        $user = User::findOrFail($id);
+////
+//        $user->update([
+//            'name'      => $request->name, //'view'  => $request->column in database
+//            'email'     => $request->email,
+//            'password' => Hash::make($request->password),
+//        ]);
+//
+////        return back()->with('message', 'You have successfully added the record!');
+//        return view('settings.index')
+//            ->with('message', 'You have successfully updated your profile!');
+        DB::table('users')
+            ->where('id', $id)
+            ->update($data);
+
+        return view('user_management.index')
+            ->with('message', 'You have successfully updated a record!');
     }
 
     /**

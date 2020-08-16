@@ -53,6 +53,9 @@
                                         <button type="submit" class="btn btn-info">VIEW</button>
                                     </a>
                                     @if(Auth::user()->role == 'admin')
+{{--                                        <a href="{{ route('patient.edit', $patient->id) }}">--}}
+{{--                                            <button type="submit" class="btn btn-warning">EDIT</button>--}}
+{{--                                        </a>--}}
                                         <a class=" shadow animated--grow-in" aria-labelledby="userDropdown" href="{{ route('patient.destroy', $patient->id) }}" data-toggle="modal" data-target="#deleteModal">
                                             <button type="submit" class="btn btn-danger">DELETE</button>
                                         </a>

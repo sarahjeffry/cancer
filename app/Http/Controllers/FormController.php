@@ -7,11 +7,9 @@ use Illuminate\Http\Request;
 
 class FormController extends Controller
 {
-    function menu () {
-//        Request $id
-//        $patient = Patient::find($id);
+    function index ($id) {
 
-//        return view('patient.forms',compact('patient'));
-        return view('patient.forms');
+        $patient = Patient::findOrFail($id);
+        return View('forms.index', compact('patient'));
     }
 }

@@ -28,7 +28,7 @@
             <i class="fas fa-fw mb-2 fa-arrow-circle-left"></i>
             <span>Change patient</span>
         </a>
-        <form action="oral/{{$patient->id}}/store" method="POST" class="form-horizontal">
+        <form action="/oral/{{$patient->id}}/store" method="POST" class="form-horizontal">
             {{ csrf_field() }}
             @method('GET')
 
@@ -87,9 +87,8 @@
                             </select>
                             <input type="text" class="form-control ml-2 mr-4" name="duration" id="duration" style='display:none;' required>
                         </div>
-
                         <div class="form-inline mt-2 mb-lg-5">
-                            <input type="submit" value="SAVE" class="btn btn-primary offset-5"/>
+                            <button type="submit" value="SAVE" class="btn btn-primary offset-5">SAVE</button>
                             <a href="/forms">
                                 <div class="btn btn-secondary ml-2">CANCEL</div>
                             </a>

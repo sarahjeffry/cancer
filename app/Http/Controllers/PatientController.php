@@ -13,6 +13,7 @@ use App\StatDoses;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 
 class PatientController extends Controller
@@ -60,10 +61,12 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Patient $patient)
+    public function show($mrn)
     {
-        $patient = Patient::find($patient->id);
-        return view('patient.show', compact('patient'));
+        $patient = Patient::findOrFail($mrn);
+        $statdoses = StatDoses::findOrFail($mrn);
+
+        return view('patient.show', compact('patient', 'statdoses'));
     }
 
     /**
@@ -83,11 +86,21 @@ class PatientController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function update(Request $request, $id)
     {
-        //
+        $patient = Patient::findOrFail($id);
+//
+        $patient->update([
+            'name'      => $request->name, //'view'  => $request->column in database
+            'email'     => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+//        return back()->with('message', 'You have successfully added the record!');
+        return view('patient.show')
+            ->with('message', 'You have successfully updated your profile!');
     }
 
     /**
@@ -98,10 +111,9 @@ class PatientController extends Controller
      */
     public function destroy($id)
     {
-        $patient = Patient::find($id);
+        DB::table('patients')->where('id', '=', $id)->delete();
 
-        //dd($task); //--> for debugging
-        $patient -> delete();
-        return redirect()->back();
+//        return redirect()->back()->with('message', 'You have deleted the record.');
+        return redirect()->back()->with('message', 'You have deleted the record.');
     }
 }

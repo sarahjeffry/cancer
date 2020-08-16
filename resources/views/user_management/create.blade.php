@@ -20,7 +20,12 @@
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
-
+        @if(session()->has('message'))
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ session()->get('message') }}
+            </div>
+    @endif
         <!-- Page Heading -->
         <h1 class="h3 mb-3 text-gray-800">Add New User</h1>
 
@@ -36,8 +41,9 @@
             <div class="card-body col-sm-11 ml-lg-5">
                 <div class="boxes ml-lg-5 mt-sm-3 justify-content-between">
 
-                    <form method="POST" action="{{ route('register') }}" class="form-horizontal">
+                    <form method="POST" action="{{ route('create_user.create') }}" class="form-horizontal">
                         @csrf
+                        @method('GET')
 
                         <div class="form-inline my-sm-2 m-4">
                             <label for="name" class="mr-5">{{ __('Name') }}</label>

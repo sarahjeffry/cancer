@@ -56,8 +56,8 @@
                         <div class="mt-sm-3 justify-content-between">
                             <div class="form-inline mb-sm-4">
                                 <label class="control-label">Drug name:</label> <input type="text" name="drug_name" class="form-control ml-2 mr-4" style="width: 250px;" required>
-                                <label class="control-label">Dose:</label> <input type="text" name="dose_value" class="form-control ml-2 mr-4" style="width: 90px;" required>
-                                <select required class="form-control animated--fade-in  mr-2" name="dose_unit" id="unit" style="width: 80px;">
+                                <label class="control-label">Dose:</label> <input type="text" name="dose_value" class="form-control ml-2 mr-2" style="width: 90px;" required>
+                                <select required class="form-control animated--fade-in" name="dose_unit" id="unit" style="width: 80px;">
                                     <div class="dropdown-menu text-center">
                                         <option class="dropdown-item" value="mcg">mcg</option>
                                         <option class="dropdown-item" value="mg">mg</option>

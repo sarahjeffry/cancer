@@ -1,12 +1,7 @@
 <?php
-
 use App\Patient;
 use App\User;
-use App\StatDoses;
-use App\Treatment;
-use App\Premedication;
-use Barryvdh\DomPDF\PDF;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,22 +9,9 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 */
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index');
-
-//Route::get('/patients', function () {
-//    $patients = Patient::all();
-//    if(Auth::check()) {
-//        $users = User::all();
-//        return view('patient.index', compact('patients'));
-//    }
-//    else {
-//        return view('auth.login');
-//    }
-//});
 
 Route::get('/reports', function () {
     $patients = Patient::all();
@@ -43,6 +25,11 @@ Route::get('/reports', function () {
     }
 });
 
+/*
+|--------------------------------------------------------------------------
+| PDF generator Routes
+|--------------------------------------------------------------------------
+*/
 Route::get('generatePDF', function (){
     $pdf = (new Barryvdh\DomPDF\PDF)->getDomPDF();
     return $pdf->download('Patient_History.pdf');
@@ -57,22 +44,37 @@ Route::get('/new', function () {
         return view('auth.login');
     }
 });
-
+/*
+|--------------------------------------------------------------------------
+| Patient Management Routes - ADMIN ONLY
+|--------------------------------------------------------------------------
+*/
 Route::resource('/patients', 'PatientController')->names('patient');
-Route::get('/patients/{id}', 'PatientController@show');
-
-Route::resource('/settings', 'UserController')->names('setting');
-Route::get('/settings/{id}/edit', 'UserController@edit');
-Route::get('/users/{id}/destroy', 'UserController@destroy');
+Route::get('/patients/{id}/show', 'PatientController@show');
+/* /patients/{{$patient->id}}/show
+|--------------------------------------------------------------------------
+| User Management Routes - ADMIN ONLY
+|--------------------------------------------------------------------------
+*/
 Route::get('/users', 'UserController@show');
+Route::get('/users/{id}/destroy', 'UserController@destroy');
+Route::get('/patients/{id}/destroy', 'PatientController@destroy');
 Route::get('form','FormController@menu');
-
+/*
+|--------------------------------------------------------------------------
+| Settings Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('settings/create','UserController')->names('create_user');
+Route::get('/settings/{id}/edit', 'UserController@edit');
+Route::get('/settings/{id}/update', 'UserController@update');
+Route::resource('/settings', 'AdminController')->names('setting');
+//Route::get('/users/{id}/destroy', 'UserController@destroy');
 /*
 |--------------------------------------------------------------------------
 | Form Routes
 |--------------------------------------------------------------------------
 */
-
 Route::get('/forms', function () {
     if(Auth::check()) {
         $patients = Patient::all();
@@ -82,6 +84,8 @@ Route::get('/forms', function () {
         return view('auth.login');
     }
 });
+/* From Patients to Form */
+//Route::get('/forms/{id}','FormController@index');
 
 /* S T A T  D O S E S */
 Route::get('/forms/statdoses', 'StatDosesController@show');
@@ -130,59 +134,4 @@ Route::get('/forms/inhalation', 'InhalationController@show');
 Route::get('/inhalation/{id}/update', 'InhalationController@update');
 Route::get('/inhalation/{id}/create', 'InhalationController@create');
 Route::get('/inhalation/{id}/store', 'InhalationController@store');
-//Route::resource('/statdoses', 'StatDosesController')->names('stat_dose');
-//1. Select a patient from the table
-//Route::get('forms/statdose', function () {
-//    $patients = DB::table('patients')
-//        ->where('status', '=', 'yes')
-//        ->where(function ($query) {
-//            $query->where('live', '=', 'alive');
-//        })
-//        ->get();
-//
-//    return view('forms.stat_doses.index', ['patients' => $patients]);
-//});
-//Route::resource('/oral', 'OralController')->names('oral');
-//Route::resource('/premedication', 'PremedicationController')->names('premedication');
-
-/*     T E M P O R A R Y    R O U T E S      */
-//Route::get('/statdoses', function () {
-//    $patients = Patient::all();
-//    return view('forms.stat_doses.create', compact('patients'));
-//});
-
-Route::get('/oral', function () {
-    $patients = Patient::all();
-    return view('forms.oral.create', compact('patients'));
-});
-
-Route::get('/injections', function () {
-    $patients = Patient::all();
-    return view('forms.injections.create', compact('patients'));
-});
-
-Route::get('/charts', function () {
-    $patients = Patient::all();
-    return view('forms.charts.create', compact('patients'));
-});
-
-Route::get('/premedication', function () {
-    $patients = Patient::all();
-    return view('forms.premedication.create', compact('patients'));
-});
-
-Route::get('/infusion', function () {
-    $patients = Patient::all();
-    return view('forms.infusion.create', compact('patients'));
-});
-
-Route::get('/operation', function () {
-    $patients = Patient::all();
-    return view('forms.operation.create', compact('patients'));
-});
-
-Route::get('/inhalation', function () {
-    $patients = Patient::all();
-    return view('forms.inhalation.create', compact('patients'));
-});
 

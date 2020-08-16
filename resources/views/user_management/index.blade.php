@@ -23,15 +23,16 @@
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
-
+        <!-- Message -->
+        @if(session()->has('message'))
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ session()->get('message') }}
+            </div>
+    @endif
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            @if(session()->has('message'))
-                <div class="alert alert-success alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    {{ session()->get('message') }}
-                </div>
-            @endif
+
 
             <h1 class="h3 mb-3 text-gray-800">User Management</h1>
             <a href="new" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
@@ -66,9 +67,13 @@
                                    <a href="{{ route('setting.edit', $user->id) }}" >
                                       <button type="submit" class="btn btn-warning mr-2 ">EDIT</button>
                                    </a>
-                                  <a class=" shadow animated--grow-in" aria-labelledby="userDropdown" href="/users/{{$user->id}}/destroy" data-toggle="modal" data-target="#deleteModal">
-                                     <button type="submit" class="btn btn-danger">DELETE</button>
-                                  </a>
+                                    <a class=" shadow animated--grow-in" aria-labelledby="userDropdown" href="/users/{{ $user->id }}/destroy">
+                                        <button type="submit" class="btn btn-danger">DELETE</button>
+                                        <form id="delete-form" action="{{route('create_user.destroy', $user->id)}}" method="POST" style="display: none;">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
@@ -101,8 +106,9 @@
                    document.getElementById('delete-form').submit();">
                     {{ __('Delete') }}
 
-                    <form id="delete-form" action="{{route('setting.destroy', $user->id)}}" method="DELETE" style="display: none;">
+                    <form id="delete-form" action="{{route('setting.destroy', $user->id)}}" method="POST" style="display: none;">
                         @csrf
+                        @method('DELETE')
                     </form>
                 </a>
             </div>
