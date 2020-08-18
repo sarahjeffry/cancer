@@ -53,6 +53,7 @@
                             <th>Staff ID</th>
                             <th>Role</th>
                             <th>Email</th>
+                            <th>Last Online</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -63,8 +64,9 @@
                                 <td class="text-md-center" style="text-transform: uppercase;">{{$user->staff_id}}</td>
                                 <td class="text-md-center" style="text-transform: capitalize;">{{$user->role}}</td>
                                 <td class="text-md-center" >{{$user->email}}</td>
+                                <td class="text-md-center" >{{ \Carbon\Carbon::parse($user->last_online_at)->diffForHumans() }}</td>
                                 <td class="text-md-center">
-                                   <a href="{{ route('setting.edit', $user->id) }}" >
+                                   <a href="{{ route('create_user.edit', $user->id) }}" >
                                       <button type="submit" class="btn btn-warning mr-2 ">EDIT</button>
                                    </a>
                                     <a class=" shadow animated--grow-in" aria-labelledby="userDropdown" href="/users/{{ $user->id }}/destroy">

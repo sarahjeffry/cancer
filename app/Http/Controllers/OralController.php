@@ -38,15 +38,6 @@ class OralController extends Controller
      */
     public function store(array $data, Request $mrn)
     {
-//        Oral::create([
-//            'patient_id' => $data['mrn'],
-//            'date' => $data['date'],
-//            'time' => $data['time'],
-//            'mrn'  => $mrn,
-//            'drug_name' => $data['drug_name'],
-//            'route' => $data['route'],
-////            'prescribed_by' => $data['Auth::user()->']
-//        ]);
         Oral::create([
             'patient_id' => request('id'),
             'date' => request('date'),

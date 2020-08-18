@@ -44,3 +44,4 @@ class Patient extends Model
         return $this->hasMany('App\Chart');
     }
 }
+

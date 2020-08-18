@@ -12,4 +12,8 @@ class FormController extends Controller
         $patient = Patient::findOrFail($id);
         return View('forms.index', compact('patient'));
     }
+
+    function menu (Patient $id) {
+        return view('forms_with_id.index',$id);
+    }
 }

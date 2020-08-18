@@ -1,23 +1,14 @@
-@extends('forms.partials.main')
+@extends('patient.partials.main')
 
 <!-- Styles -->
 
 @yield('styles')
-
-<link rel="stylesheet" href="{{ asset('css\visualizations.css') }}">
 <style>
-    .col-lg-10 {
+    .col-lg-9 {
         padding:0 !important;
     }
-
-    .custom-file {
-        position: relative !important;;
-    }
-
-    .custom-file-label {
-        width: 300px !important;
-    }
 </style>
+<link rel="stylesheet" href="{{ asset('css\visualizations.css') }}">
 
 @section('content')
 
@@ -28,19 +19,19 @@
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 {{ session()->get('message') }}
             </div>
-    @endif
-    <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Charts</h1>
-        <p class="mb-4">Add {{ $patient->name }} operation record</p>
-        <a class="nav-link ml-0" href="/forms">
+        @endif
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Infusion</h1>
+        <p class="mb-4">Add {{ $patient->name }} infusion record</p>
+        <a class="nav-link ml-0" href="/forms/{{ $patient->id }}">
             <i class="fas fa-fw mb-2 fa-arrow-circle-left"></i>
             <span>Change form</span>
         </a>
-        <form action="/chart/{{$patient->id}}/store" method="POST" class="form-horizontal">
+        <form action="/infusion/{{$patient->id}}/store" method="POST" class="form-horizontal">
             {{ csrf_field() }}
             @method('GET')
 
-            <div class="card shadow offset-md-1 col-lg-10">
+            <div class="card shadow offset-md-1 col-lg-9">
                 <div class="card-header">
                     <div class="ml-lg-5 mt-sm-3 justify-content-between">
                         <span class="form-inline mb-sm-4">
@@ -57,26 +48,29 @@
                     </div>
                 </div>
                 <div class="form-inline justify-content-around">
-                    <div class="mt-sm-4 justify-content-between">
+                    <div class="mt-sm-3 justify-content-between">
                         <div class="form-inline mb-sm-4">
-                            <label class="control-label">Treatment:</label> <textarea type="text" name="treatment" class="form-control textarea ml-2 mr-4" style="resize: none; width: 320px;" required></textarea>
-                            <label class="control-label">IV Infusion:</label> <textarea type="text" name="iv_infusion" class="form-control textarea ml-2 mr-4" style="resize: none; width: 320px;" required></textarea>
+                            <label class="control-label mb-1">Date prescribed: </label> <input type="date" name="date" class="form-control ml-3 mr-4" style="width: 180px;" required>
+                            <label class="control-label ml-3 ">Time:</label> <input type="time" name="time" class="form-control ml-2 mr-4" style="width: 150px;" required>&nbsp;
                         </div>
-                        <div class="form-inline mb-sm-4">
-                            <label class="control-label ml-3 mr-3">Diet order:</label>
-                            <input type="radio" id="normal" name="diet" value="normal" class="ml-3 mr-1" required><label for="normal">Normal</label>
-                            <input type="radio" id="diabetic" name="diet" value="diabetic" class="ml-3 mr-1" ><label for="diabetic">Diabetic</label>
-                            <input type="radio" id="low_salt" name="diet" value="low salt" class="ml-3 mr-1"><label for="low_salt">Low salt</label>
-
-                            <div class="form-inline custom-file mb-3 control-label ml-4 mr-3" style="width: 350px !important;">
-                                <input type="file" class="custom-file-input ml-4 mr-3" id="customFile" name="filename">
-                                <label class="custom-file-label" for="customFile">Upload chart</label>
+                        <div class="mt-sm-3 justify-content-between">
+                            <div class="form-inline mb-sm-4">
+                                <label class="control-label">Drug name:</label> <input type="text" name="drug_name" class="form-control ml-2 mr-4" style="width: 250px;" required>
+                                <label class="control-label">Dose:</label> <input type="text" name="dose_value" class="form-control ml-2 mr-2" style="width: 90px;" required>
+                                <select required class="form-control animated--fade-in" name="dose_unit" id="unit" style="width: 80px;">
+                                    <div class="dropdown-menu text-center">
+                                        <option class="dropdown-item" value="mcg">mcg</option>
+                                        <option class="dropdown-item" value="mg">mg</option>
+                                        <option class="dropdown-item" value="g">g</option>
+                                        <option class="dropdown-item" value="ml">ml</option>
+                                    </div>
+                                </select>
                             </div>
                         </div>
 
-                        <div class="form-inline mt-2 mb-lg-3">
+                        <div class="form-inline mt-2 mb-4">
                             <input type="submit" value="SAVE" class="btn btn-primary offset-5"/>
-                            <a href="/forms">
+                            <a href="/forms/{{ $patient->id }}">
                                 <div class="btn btn-secondary ml-2">CANCEL</div>
                             </a>
                         </div>
@@ -85,20 +79,16 @@
             </div>
         </form>
 
+
     </div>
     <!-- End of Main Content -->
+
+{{--    <a href="{{route('stat_doses.index')}}"><button type="button" class="backbtn">⬅</button></a>--}}
 
 @endsection
 
 <!-- Scripts -->
 
 @section('scripts')
-    <script>
-        // Add the following code if you want the name of the file appear on select
-        $(".custom-file-input").on("change", function() {
-            var fileName = $(this).val().split("\\").pop();
-            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-        });
-    </script>
 
 @endsection

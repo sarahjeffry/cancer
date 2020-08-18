@@ -35,16 +35,7 @@
 
     <!-- Divider -->
 {{--    <hr class="sidebar-divider">--}}
-    @if(Auth::user()->role == 'nurse')
-    <!-- Nav Item - Patients -->
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('patient.index') }}">
-                <i class="fas fa-fw fa-person-booth"></i>
-                <span>Patients</span></a>
-        </li>
-    @endif
-
-    @if(Auth::user()->role == 'consultant')
+    @if(Auth::user()->role == 'nurse' or Auth::user()->role == 'consultant')
     <!-- Nav Item - Patients -->
         <li class="nav-item">
             <a class="nav-link" href="{{ route('patient.index') }}">
@@ -55,17 +46,7 @@
 <!-- Divider -->
     {{--    <hr class="sidebar-divider">--}}
 
-    @if(Auth::user()->role == 'nurse')
-    <!-- Nav Item - Forms -->
-        <li class="nav-item">
-            <a class="nav-link" href="\forms">
-                <i class="fas fa-fw fa-pen-alt"></i>
-                <span>Forms</span></a>
-        </li>
-    @endif
-
-    @if(Auth::user()->role == 'consultant')
-    <!-- Nav Item - Forms -->
+    @if(Auth::user()->role == 'nurse' or Auth::user()->role == 'consultant')
         <li class="nav-item">
             <a class="nav-link" href="\forms">
                 <i class="fas fa-fw fa-pen-alt"></i>
@@ -80,12 +61,9 @@
     <li class="nav-item">
         <a class="nav-link" href="\reports">
             <i class="fas fa-fw fa-table"></i>
-        @if(Auth::user()->role == 'nurse')
-            <span>History</span></a>
-        @endif
-        @if(Auth::user()->role == 'consultant')
-            <span>History</span></a>
-        @endif
+            @if(Auth::user()->role == 'nurse' or Auth::user()->role == 'consultant')
+                <span>History</span></a>
+            @endif
         @if(Auth::user()->role == 'admin')
             <span>Patients</span></a>
         @endif

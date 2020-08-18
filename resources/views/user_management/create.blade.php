@@ -29,7 +29,7 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-3 text-gray-800">Add New User</h1>
 
-        <a class="nav-link ml-0" href="\settings">
+        <a class="nav-link ml-0" href="\users">
             <i class="fas fa-fw fa-arrow-circle-left"></i>
             <span>Back</span>
         </a>
@@ -53,6 +53,7 @@
                             <label for="role" class="mr-sm-5">{{ __(' Role ') }}</label>
                             <select class="form-control animated--fade-in col-lg-6 ml-2 mr-2" name="role" id="role" required>
                                 <div class="dropdown-menu text-center">
+                                    <option class="dropdown-item" value="admin">Admin</option>
                                     <option class="dropdown-item" value="consultant">Consultant</option>
                                     <option class="dropdown-item" value="nurse">Nurse</option>
                                 </div>

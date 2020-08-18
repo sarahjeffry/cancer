@@ -42,13 +42,13 @@
             <i class="fas fa-fw fa-table"></i>
             @if(Auth::user()->role == 'nurse')
                 <span>History</span></a>
-        @endif
-        @if(Auth::user()->role == 'consultant')
-            <span>History</span></a>
-        @endif
-        @if(Auth::user()->role == 'admin')
-            <span>Patients</span></a>
-        @endif
+            @endif
+            @if(Auth::user()->role == 'consultant')
+                <span>History</span></a>
+            @endif
+            @if(Auth::user()->role == 'admin')
+                <span>Patients</span></a>
+            @endif
     </li>
 
     <!-- Nav Item - Tables -->

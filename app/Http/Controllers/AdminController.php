@@ -70,27 +70,20 @@ class AdminController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($id,$data)
+    public function update($id, Request $request)
     {
-//        $user = User::findOrFail($id);
-////
-//        $user->update([
-//            'name'      => $request->name, //'view'  => $request->column in database
-//            'email'     => $request->email,
-//            'password' => Hash::make($request->password),
-//        ]);
+        $user = User::findOrFail($id);
 //
-////        return back()->with('message', 'You have successfully added the record!');
-//        return view('settings.index')
-//            ->with('message', 'You have successfully updated your profile!');
-        DB::table('users')
-            ->where('id', $id)
-            ->update($data);
+        $user->update([
+            'name'      => $request->name, //'view'  => $request->column in database
+            'email'     => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
 
-        return view('user_management.index')
-            ->with('message', 'You have successfully updated a record!');
+//        return back()->with('message', 'You have successfully added the record!');
+        return back()->with('message', 'You have successfully updated your profile!');
     }
 
     /**

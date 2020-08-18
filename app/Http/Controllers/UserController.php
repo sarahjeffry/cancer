@@ -40,7 +40,7 @@ class UserController extends Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return redirect()->back()->with('message', 'You have successfully added a new user!');
+        return back()->with(['message' => 'You have successfully added a new user!', 'alert' => 'alert-success']);
     }
 
     /**
@@ -103,8 +103,8 @@ class UserController extends Controller
             'staff_id'     => $request->staff_id,
         ]);
 
-        return redirect()->back()->with('message', 'You have successfully updated the record!');
-//        return view('settings.index')->with(['message' => 'You have successfully updated your profile!', 'alert' => 'alert-success']);
+//        return redirect()->back()->with('message', 'You have successfully updated the record!');
+        return back()->with(['message' => 'You have successfully updated the user!', 'alert' => 'alert-success']);
 //        dd("Updated");
     }
 

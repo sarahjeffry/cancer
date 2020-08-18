@@ -20,14 +20,19 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Patients</h1>
-        <a class="nav-link ml-0 col-2" href="{{ route('patient.index') }}" >
-            <i class="fas fa-fw fa-arrow-circle-left"></i>
-            <span>Back</span>
-        </a>
-{{--        <a href="/forms/{{ $patient->id }}" class="d-none float-right d-sm-inline-block btn btn-sm btn-primary shadow-sm">--}}
-{{--            <i class="fas fa-plus fa-sm text-white-50"></i> Add New Record</a>--}}
-{{--        <h1 class="h3 mb-3 text-gray-800">Add new treatment record</h1>--}}
+        <div>
+            <h1 class="h3 mb-2 text-gray-800">Patients</h1>
+            @if(Auth::user()->role === 'consultant' or  Auth::user()->role === 'nurse')
+                <a href="/forms/{{ $patient->id }}" class="d-none float-right d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                    <i class="fas fa-plus fa-sm text-white-50"></i> Add New Record</a>
+            @endif
+            <br>
+            <a class="nav-link ml-0 col-2" href="{{ route('patient.index') }}" >
+                <i class="fas fa-fw fa-arrow-circle-left"></i>
+                <span>Back</span>
+            </a>
+
+        </div>
 
         <div class="card shadow offset-md-1 col-lg-9 mb-xl-2">
             <div class="card-header py-3">
@@ -49,275 +54,282 @@
                 </div>
             </div>
         </div>
+
         <!-- Treatments Card -->
         <div class="card row shadow mt-sm-3 col-md-10" style="margin-left: 5%">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-gray-900">Treatment</h6>
             </div>
 
-            <!-- Stat Doses, Premedication, Oral, Infusion -->
-            <div class="card-body col-xs-6" >
-                <h6 class="m-0 font-weight-bold text-primary">Stat Doses</h6>
-                <div class="my-sm-3 ml-0">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead class="text-md-center">
-                            <tr>
-                                <th>Drug name</th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Dose</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tbody class="text-md-center">
-{{--                            @foreach($statdoses as $statdose)--}}
-{{--                                <tr>--}}
-{{--                                    <td>{ $statdose->drug_name }}</td>--}}
-{{--                                    <td>{ $statdose->date }}</td>--}}
-{{--                                    <td>{ $statdose->time }}</td>--}}
-{{--                                    <td>{ $statdose->dose_value }} { $infusion->dose_unit }}</td>--}}
-{{--                                </tr>--}}
-{{--                            @endforeach--}}
-{{--                            </tbody>--}}
-                            <tr>
-                                <td>Paracetamol</td>
-                                <td>2020-06-18</td>
-                                <td>20:49:42</td>
-                                <td>500 mg</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+            @if (count($statdoses) === 0 and count($premedications) === 0 and count($orals) === 0
+                and count($infusions) === 0 and count($injections) === 0 and count($operations) === 0
+                and count($inhalations) === 0 and count($charts) === 0 )
+                <div class="p-5">
+                    <h4>No treatment is recorded for this patient.</h4><br>
+                    @if(Auth::user()->role === 'consultant' or  Auth::user()->role === 'nurse')
+                    <a href="/forms/{{ $patient->id }}" class="d-none align-content-center d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                        <i class="fas fa-plus fa-sm text-white-50"></i> Add First Record</a>
+                    @endif
                 </div>
 
-{{--                <h6 class="m-0 font-weight-bold text-primary">Premedication</h6>--}}
-{{--                <div class="my-sm-3 ml-0">--}}
-{{--                    <div class="table-responsive">--}}
-{{--                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">--}}
-{{--                            <thead class="text-md-center">--}}
-{{--                            <tr>--}}
-{{--                                <th>Drug name</th>--}}
-{{--                                <th>Date</th>--}}
-{{--                                <th>Time</th>--}}
-{{--                                <th>Route</th>--}}
-{{--                                <th>Dose</th>--}}
-{{--                            </tr>--}}
-{{--                            </thead>--}}
-{{--                            <tbody>--}}
-{{--                            --}}{{----}}{{--                                    @foreach($premedications as $$premedication)--}}
-{{--                            <tr>--}}
-{{--                                <td>{ $premedications->drug_name }}</td>--}}
-{{--                                <td>{ $premedications->date }}</td>--}}
-{{--                                <td>{ $premedications->time }}</td>--}}
-{{--                                <td>{ $premedications->route }}</td>--}}
-{{--                                <td>{ $premedications->dose_value }} { $infusion->dose_unit }}</td>--}}
-{{--                            </tr>--}}
-{{--                            --}}{{----}}{{--                                    @endforeach--}}
-{{--                            </tbody>--}}
-{{--                        </table>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+            @endif
 
-{{--                <h6 class="m-0 font-weight-bold text-primary">Oral</h6>--}}
-{{--                <div class="my-sm-3 ml-0">--}}
-{{--                    <div class="table-responsive">--}}
-{{--                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">--}}
-{{--                            <thead class="text-md-center">--}}
-{{--                            <tr>--}}
-{{--                                <th>Drug name</th>--}}
-{{--                                <th>Date</th>--}}
-{{--                                <th>Time</th>--}}
-{{--                                <th>Dose</th>--}}
-{{--                                <th>Frequency</th>--}}
-{{--                            </tr>--}}
-{{--                            </thead>--}}
-{{--                            <tbody>--}}
-{{--                            --}}{{----}}{{--                                    @foreach($orals as $oral)--}}
-{{--                            <tr>--}}
-{{--                                <td>{ $oral->drug_name }}</td>--}}
-{{--                                <td>{ $oral->date }}</td>--}}
-{{--                                <td>{ $oral->time }}</td>--}}
-{{--                                <td>{ $oral->dose_value }} { $infusion->dose_unit }}</td>--}}
-{{--                                <td>{ $oral->frequency }} { $infusion->duration }}</td>--}}
-{{--                            </tr>--}}
-{{--                            --}}{{----}}{{--                                    @endforeach--}}
-{{--                            </tbody>--}}
-{{--                        </table>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+            <div class="p-5 justify-content-around">
+                @if (count($statdoses) > 0)
+                    <h6 class="m-0 font-weight-bold text-primary">Stat Doses</h6>
+                    <div class="my-sm-3 ml-0">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead class="text-md-center">
+                                <tr>
+                                    <th>Drug name</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Dose</th>
+                                    <th>Prescribed by</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tbody class="text-md-center text-capitalize">
+                                @foreach($statdoses as $statdose)
+                                    <tr>
+                                        <td>{{ $statdose->drug_name }}</td>
+                                        <td>{{ $statdose->date }}</td>
+                                        <td>{{ $statdose->time }}</td>
+                                        <td>{{ $statdose->dose_value }} {{ $statdose->dose_unit }}</td>
+                                        <td>{{ $statdose->name }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                @endif
 
-{{--                <h6 class="m-0 font-weight-bold text-primary">Infusion</h6>--}}
-{{--                <div class="my-sm-3 ml-0">--}}
-{{--                    <div class="table-responsive">--}}
-{{--                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">--}}
-{{--                            <thead class="text-md-center">--}}
-{{--                            <tr>--}}
-{{--                                <th>Drug name</th>--}}
-{{--                                <th>Date</th>--}}
-{{--                                <th>Time</th>--}}
-{{--                                <th>Dose</th>--}}
-{{--                            </tr>--}}
-{{--                            </thead>--}}
-{{--                            <tbody class="text-md-center">--}}
-{{--                            --}}{{----}}{{--                                    @foreach($infusions as $infusion)--}}
-{{--                            <tr>--}}
-{{--                                <td>{ $infusion->drug_name }}</td>--}}
-{{--                                <td>{ $infusion->date }}</td>--}}
-{{--                                <td>{ $infusion->time }}</td>--}}
-{{--                                <td>{ $infusion->dose_value }} { $infusion->dose_unit }}</td>--}}
-{{--                            </tr>--}}
-{{--                            --}}{{----}}{{--                                    @endforeach--}}
-{{--                            </tbody>--}}
-{{--                        </table>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+                @if (count($premedications) > 0)
+                    <h6 class="m-0 font-weight-bold text-primary">Premedication</h6>
+                    <div class="my-sm-3 ml-0">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead class="text-md-center">
+                                <tr>
+                                    <th>Drug name</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Route</th>
+                                    <th>Dose</th>
+                                    <th>Prescribed by</th>
+                                </tr>
+                                </thead>
+                                <tbody class="text-capitalize">
+                                @foreach($premedications as $premedication)
+                                    <tr>
+                                        <td>{{ $premedications->drug_name }}</td>
+                                        <td>{{ $premedications->date }}</td>
+                                        <td>{{ $premedications->time }}</td>
+                                        <td>{{ $premedications->route }}</td>
+                                        <td>{{ $premedications->dose_value }} {{ $infusion->dose_unit }}</td>
+                                        <td>{{ $premedication->name }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                @endif
+
+                @if (count($orals) > 0)
+                    <h6 class="m-0 font-weight-bold text-primary">Oral</h6>
+                    <div class="my-sm-3 ml-0">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead class="text-md-center">
+                                <tr>
+                                    <th>Drug name</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Dose</th>
+                                    <th>Frequency</th>
+                                    <th>Prescribed by</th>
+                                </tr>
+                                </thead>
+                                <tbody class="text-capitalize">
+                                @foreach($orals as $oral)
+                                    <tr>
+                                        <td>{{ $oral->drug_name }}</td>
+                                        <td>{{ $oral->date }}</td>
+                                        <td>{{ $oral->time }}</td>
+                                        <td>{{ $oral->dose_value }} {{ $infusion->dose_unit }}</td>
+                                        <td>{{ $oral->frequency }} for {{ $infusion->duration }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                @endif
+
+                @if (count($infusions) > 0)
+                    <h6 class="m-0 font-weight-bold text-primary">Infusion</h6>
+                    <div class="my-sm-3 ml-0">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead class="text-md-center">
+                                <tr>
+                                    <th>Drug name</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Dose</th>
+                                    <th>Prescribed by</th>
+                                </tr>
+                                </thead>
+                                <tbody class="text-md-center text-capitalize">
+                                @foreach($infusions as $infusion)
+                                    <tr>
+                                        <td>{{ $infusion->drug_name }}</td>
+                                        <td>{{ $infusion->date }}</td>
+                                        <td>{{ $infusion->time }}</td>
+                                        <td>{{ $infusion->dose_value }} {{ $infusion->dose_unit }}</td>
+                                        <td>{{ $infusion->name }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                @endif
 
             <!-- Injection, Operation, Charts, Inhalation -->
-            <div class="card-body col-xs-6">
-                <h6 class="m-0 font-weight-bold text-primary">Injection</h6>
-                <div class="my-sm-3 ml-0">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead class="text-md-center">
-                            <tr>
-                                <th>Drug name</th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Dose</th>
-                                <th>Route</th>
-                            </tr>
-                            </thead>
-{{--                            <tbody class="text-md-center">--}}
-{{--                            @foreach($injections as $injection)--}}
-{{--                                <tr>--}}
-{{--                                    <td>{ $injection->drug_name }}</td>--}}
-{{--                                    <td>{ $injection->treatment }}</td>--}}
-{{--                                    <td>{ $injection->time }}</td>--}}
-{{--                                    <td>{ $injection->dose_value }} { $injection->dose_unit }}</td>--}}
-{{--                                    <td>{ $injection->route }}</td>--}}
-{{--                                </tr>--}}
-{{--                            @endforeach--}}
-{{--                            </tbody>--}}
-                            <tbody class="text-md-center">
-                            <tr>
-                                <td>Cyclophosphamide</td>
-                                <td>2019-08-13</td>
-                                <td>13:45:12</td>
-                                <td>15 ml</td>
-                                <td>S/C</td>
-                            </tr>
-                            <tr>
-                                <td>Doxorubicin</td>
-                                <td>2020-05-03</td>
-                                <td>08:20:30</td>
-                                <td>20 ml</td>
-                                <td>S/C</td>
-                            </tr>
-                            </tbody>
-                        </table>
+                @if (count($injections) > 0)
+                    <div class="card-body col-xs-6">
+                        <h6 class="m-0 font-weight-bold text-primary">Injection</h6>
+                        <div class="my-sm-3 ml-0">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead class="text-md-center">
+                                    <tr>
+                                        <th>Drug name</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Dose</th>
+                                        <th>Route</th>
+                                        <th>Prescribed by</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="text-md-center text-capitalize">
+                                    @foreach($injections as $injection)
+                                        <tr>
+                                            <td>{{ $injection->drug_name }}</td>
+                                            <td>{{ $injection->treatment }}</td>
+                                            <td>{{ $injection->time }}</td>
+                                            <td>{{ $injection->dose_value }} {{ $injection->dose_unit }}</td>
+                                            <td>{{ $injection->route }}</td>
+                                            <td>{{ $injection->name }}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        @endif
+
+                        @if (count($operations) > 0)
+                            <h6 class="m-0 font-weight-bold text-primary">Operation</h6>
+                            <div class="my-sm-3 ml-0">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead class="text-md-center">
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Operation</th>
+                                            <th>Anaesthetist</th>
+                                            <th>Diet Order</th>
+                                            <th>Prescribed by</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="text-md-center text-capitalize">
+                                        @foreach($operations as $operation)
+                                            <tr>
+                                                <td>{{ $operation->date }}</td>
+                                                <td>{{ $operation->time }}</td>
+                                                <td>{{ $operation->operation }}</td>
+                                                <td>{{ $operation->anaesthetist }}</td>
+                                                <td>{{ $operation->diet }}</td>
+                                                <td>{{ $operation->name }}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        @endif
+
+                        @if (count($charts) > 0)
+                            <h6 class="m-0 font-weight-bold text-primary">Charts</h6>
+                            <div class="my-sm-3 ml-0">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead class="text-md-center">
+                                        <tr>
+                                            <th>Treatment</th>
+                                            <th>IV Infusion</th>
+                                            <th>Diet Order</th>
+                                            <th>Chart</th>
+                                            <th>Staff Name</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="text-md-center text-capitalize">
+                                        @foreach($charts as $chart)
+                                            <tr>
+                                                <td>{{ $chart->treatment }}</td>
+                                                <td>{{ $chart->iv_infusion }}</td>
+                                                <td>{{ $chart->diet }}</td>
+                                                <td>{{ $chart->chart_img }}</td>
+                                                <td>{{ $chart->name }}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        @endif
+
+                        @if (count($inhalations) > 0)
+                            <h6 class="m-0 font-weight-bold text-primary">Inhalation</h6>
+                            <div class="my-sm-3 ml-0">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead class="text-md-center">
+                                        <tr>
+                                            <th>Drug name</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Dose</th>
+                                            <th>Frequency</th>
+                                            <th>Prescribed by</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="text-md-center text-capitalize">
+                                        @foreach($inhalations as $inhalation)
+                                            <tr>
+                                                <td>{{ $inhalation->drug_name }}</td>
+                                                <td>{{ $inhalation->date }}</td>
+                                                <td>{{ $inhalation->time }}</td>
+                                                <td>{{ $inhalation->dose_value }} {{ $inhalation->dose_unit }}</td>
+                                                <td>{{ $inhalation->frequency }} for {{ $inhalation->duration }}</td>
+                                                <td>{{ $inhalation->name }}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        @endif
+
                     </div>
-                </div>
-
-{{--                <h6 class="m-0 font-weight-bold text-primary">Operation</h6>--}}
-{{--                <div class="my-sm-3 ml-0">--}}
-{{--                    <div class="table-responsive">--}}
-{{--                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">--}}
-{{--                            <thead class="text-md-center">--}}
-{{--                            <tr>--}}
-{{--                                <th>Date</th>--}}
-{{--                                <th>Time</th>--}}
-{{--                                <th>Operation</th>--}}
-{{--                                <th>Anaesthetist</th>--}}
-{{--                                <th>Diet Order</th>--}}
-{{--                            </tr>--}}
-{{--                            </thead>--}}
-{{--                            <tbody class="text-md-center">--}}
-{{--                            --}}{{----}}{{--                                    @foreach($operations as $operation)--}}
-{{--                            <tr>--}}
-{{--                                <td>{ $operation->treatment }}</td>--}}
-{{--                                <td>{ $operation->time }}</td>--}}
-{{--                                <td>{ $operation->operation }}</td>--}}
-{{--                                <td>{ $operation->anasthetist }}</td>--}}
-{{--                                <td>{ $operation->diet }}</td>--}}
-{{--                                --}}{{----}}{{--                                    @endforeach--}}
-{{--                            </tr>--}}
-{{--                            </tbody>--}}
-{{--                        </table>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--                <h6 class="m-0 font-weight-bold text-primary">Charts</h6>--}}
-{{--                <div class="my-sm-3 ml-0">--}}
-{{--                    <div class="table-responsive">--}}
-{{--                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">--}}
-{{--                            <thead class="text-md-center">--}}
-{{--                            <tr>--}}
-{{--                                <th>Treatment</th>--}}
-{{--                                <th>IV Infusion</th>--}}
-{{--                                <th>Diet Order</th>--}}
-{{--                                <th>Chart</th>--}}
-{{--                            </tr>--}}
-{{--                            </thead>--}}
-{{--                            <tbody class="text-md-center">--}}
-{{--                            --}}{{----}}{{--                                    @foreach($inhalations as $inhalation)--}}
-{{--                            <tr>--}}
-{{--                                <td>{ $inhalation->treatment }}</td>--}}
-{{--                                <td>{ $inhalation->iv_infusion }}</td>--}}
-{{--                                <td>{ $inhalation->diet }}</td>--}}
-{{--                                <td>{ $inhalation->chart_img }} { $inhalation->dose_unit }}</td>--}}
-{{--                                --}}{{----}}{{--                                    @endforeach--}}
-{{--                            </tr>--}}
-{{--                            </tbody>--}}
-{{--                        </table>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-                <h6 class="m-0 font-weight-bold text-primary">Inhalation</h6>
-                <div class="my-sm-3 ml-0">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead class="text-md-center">
-                            <tr>
-                                <th>Drug name</th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Dose</th>
-                                <th>Frequency</th>
-                            </tr>
-                            </thead>
-                            <tbody class="text-md-center">
-                            <tr>
-                                <td>Ventolin</td>
-                                <td>2019-08-13</td>
-                                <td>16:45:12</td>
-                                <td>20 mg</td>
-                                <td>PO</td>
-                            </tr>
-                            <tr>
-                                <td>Ventolin</td>
-                                <td>2020-05-03</td>
-                                <td>08:20:30</td>
-                                <td>30 mg</td>
-                                <td>S/C</td>
-                            </tbody>
-{{--                            <tbody class="text-md-center">--}}
-{{--                            --}}{{--                                    @foreach($inhalations as $inhalation)--}}
-{{--                            <tr>--}}
-{{--                                <td>{ $inhalation->name }}</td>--}}
-{{--                                <td>{ $inhalation->date }}</td>--}}
-{{--                                <td>{ $inhalation->time }}</td>--}}
-{{--                                <td>{ $inhalation->dose_value }} { $inhalation->dose_unit }}</td>--}}
-{{--                                <td>{ $inhalation->frequency }} for { $inhalation->duration }}</td>--}}
-{{--                            </tr>--}}
-{{--                            --}}{{--                                    @endforeach--}}
-{{--                            </tbody>--}}
-                        </table>
-                    </div>
-                </div>
-            </div>
         </div>
+
     </div>
 
 

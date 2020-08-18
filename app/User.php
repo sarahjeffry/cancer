@@ -47,7 +47,7 @@ class User extends Authenticatable
 //        return $this->belongsToMany(Role::class);
 //    }
 //
-//    public function patients() {
-//        return $this->hasMany(Patient::class);
-//    }
+    public function patients() {
+        return $this->hasMany(Patient::class);
+    }
 }

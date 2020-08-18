@@ -1,4 +1,4 @@
-@extends('forms.partials.main')
+@extends('patient.partials.main')
 
 <!-- Styles -->
 
@@ -31,8 +31,8 @@
     @endif
     <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Charts</h1>
-        <p class="mb-4">Add {{ $patient->name }} operation record</p>
-        <a class="nav-link ml-0" href="/forms">
+        <p class="mb-4">Add {{ $patient->name }} chart record</p>
+        <a class="nav-link ml-0" href="/forms/{{ $patient->id }}">
             <i class="fas fa-fw mb-2 fa-arrow-circle-left"></i>
             <span>Change form</span>
         </a>
@@ -76,7 +76,7 @@
 
                         <div class="form-inline mt-2 mb-lg-3">
                             <input type="submit" value="SAVE" class="btn btn-primary offset-5"/>
-                            <a href="/forms">
+                            <a href="/forms/{{ $patient->id }}">
                                 <div class="btn btn-secondary ml-2">CANCEL</div>
                             </a>
                         </div>

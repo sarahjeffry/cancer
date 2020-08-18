@@ -18,7 +18,7 @@
 
 @section('content')
     @if(session()->has('message'))
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success alert-dismissible m-3">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             {{ session()->get('message') }}
         </div>
@@ -58,7 +58,7 @@
                         </div>
                         <div class="form-inline my-sm-2 m-4 ">
                             <label for="password" class="mr-3 mb-2">{{ __('Password') }}</label>
-                            <input id="password" type="password" class="form-control input-group col-lg-6" name="password" value="">
+                            <input id="password" type="password" class="form-control input-group col-lg-6" name="password" required>
                         </div>
 
                         <div class="offset-md-3 mb-4">

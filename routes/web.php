@@ -46,27 +46,33 @@ Route::get('/new', function () {
 });
 /*
 |--------------------------------------------------------------------------
+| Patient Management Routes - ALL
+|--------------------------------------------------------------------------
+*/
+Route::get('/patients/{id}/show', 'PatientController@show'); //Show patients details and treatment records
+/*
+|--------------------------------------------------------------------------
 | Patient Management Routes - ADMIN ONLY
 |--------------------------------------------------------------------------
 */
 Route::resource('/patients', 'PatientController')->names('patient');
-Route::get('/patients/{id}/show', 'PatientController@show');
 /* /patients/{{$patient->id}}/show
 |--------------------------------------------------------------------------
 | User Management Routes - ADMIN ONLY
 |--------------------------------------------------------------------------
 */
-Route::get('/users', 'UserController@show');
-Route::get('/users/{id}/destroy', 'UserController@destroy');
-Route::get('/patients/{id}/destroy', 'PatientController@destroy');
-Route::get('form','FormController@menu');
+Route::get('/users', 'UserController@show');                       //Show all users in a table
+Route::get('/users/{id}/destroy', 'UserController@destroy');       //Delete User
+Route::get('/patients/{id}/destroy', 'PatientController@destroy'); //Delete Patient
+Route::get('/forms/{id}','FormController@menu');                          //Patutnya ni nak letak add new record button kat Patients page
 /*
 |--------------------------------------------------------------------------
 | Settings Routes
 |--------------------------------------------------------------------------
 */
 Route::resource('settings/create','UserController')->names('create_user');
-Route::get('/settings/{id}/edit', 'UserController@edit');
+Route::get('/settings/{id}/edit', 'AdminController@edit');
+
 Route::get('/settings/{id}/update', 'UserController@update');
 Route::resource('/settings', 'AdminController')->names('setting');
 //Route::get('/users/{id}/destroy', 'UserController@destroy');

@@ -49,7 +49,7 @@ class StatDosesController extends Controller
             'drug_name' => request('drug_name'),
             'dose_value' => request('dose_value'),
             'dose_unit' => request('dose_unit'),
-            'prescribed_by' => Auth::user()->getAuthIdentifierName(),
+            'prescribed_by' => request(Auth::user()->getAuthIdentifierName()),
         ]);
 //
 //        $patient = StatDoses::findOrFail('patient_id');

@@ -21,11 +21,11 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
         @if(session()->has('message'))
-            <div class="alert alert-success alert-dismissible">
+            <div class="alert alert-success alert-dismissible m-3">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 {{ session()->get('message') }}
             </div>
-    @endif
+        @endif
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Settings</h1>
         <p class="mb-4">{{$user->name }} Details</p>
@@ -44,7 +44,6 @@
 {{--                    </a>--}}
 
                     <form action="/settings/{{$user->id}}/update" method="POST" class="form-horizontal">
-                        {{--                            {{ csrf_field() }}--}}
                         @csrf
                         @method('GET')
 
@@ -60,6 +59,7 @@
                             <label for="role" class="mr-sm-5">{{ __(' Role ') }}</label>
                             <select class="form-control animated--fade-in col-lg-6 ml-2 mr-2" name="role" id="role" value="{{ $user->role }}" required>
                                 <div class="dropdown-menu text-center">
+                                    <option class="dropdown-item" value="admin">Admin</option>
                                     <option class="dropdown-item" value="consultant">Consultant</option>
                                     <option class="dropdown-item" value="nurse">Nurse</option>
                                 </div>

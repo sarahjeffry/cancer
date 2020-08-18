@@ -133,7 +133,7 @@
                                         <td>{{$user->name}}</td>
                                         <td class="text-md-center" style="text-transform: uppercase;">{{$user->staff_id}}</td>
                                         <td class="text-md-center" style="text-transform: capitalize;">{{$user->role}}</td>
-                                        <td class="text-md-center" >{{$user->last_online_at}}</td>
+                                        <td class="text-md-center" >{{$user->last_online_at->diffForHumans()}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
