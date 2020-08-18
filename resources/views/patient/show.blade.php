@@ -245,7 +245,7 @@
                                             <th>Operation</th>
                                             <th>Anaesthetist</th>
                                             <th>Diet Order</th>
-                                            <th>Prescribed by</th>
+                                            <th>Diagnosis</th>
                                         </tr>
                                         </thead>
                                         <tbody class="text-md-center text-capitalize">
@@ -256,7 +256,15 @@
                                                 <td>{{ $operation->operation }}</td>
                                                 <td>{{ $operation->anaesthetist }}</td>
                                                 <td>{{ $operation->diet }}</td>
-                                                <td>{{ $operation->name }}</td>
+                                                <td class="text">
+                                                    @if($operation->diagnosis == null)
+                                                        <a href="/operation/{{ $patient->id }}/update" class="d-none align-content-center btn btn-sm btn-primary">
+                                                            <i class="fas fa-plus fa-sm text-white-50"></i>Add Diagnosis</a>
+                                                    @elseif($operation->diagnosis != null)
+                                                        {{ $operation->diagnosis }}
+                                                    @endif
+                                                </td>
+
                                             </tr>
                                         @endforeach
                                         </tbody>
