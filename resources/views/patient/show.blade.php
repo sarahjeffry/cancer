@@ -86,7 +86,6 @@
                                     <th>Date</th>
                                     <th>Time</th>
                                     <th>Dose</th>
-                                    <th>Prescribed by</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -97,7 +96,6 @@
                                         <td>{{ $statdose->date }}</td>
                                         <td>{{ $statdose->time }}</td>
                                         <td>{{ $statdose->dose_value }} {{ $statdose->dose_unit }}</td>
-                                        <td>{{ $statdose->name }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -118,18 +116,16 @@
                                     <th>Time</th>
                                     <th>Route</th>
                                     <th>Dose</th>
-                                    <th>Prescribed by</th>
                                 </tr>
                                 </thead>
-                                <tbody class="text-capitalize">
+                                <tbody class="text-capitalize text-md-center">
                                 @foreach($premedications as $premedication)
                                     <tr>
-                                        <td>{{ $premedications->drug_name }}</td>
-                                        <td>{{ $premedications->date }}</td>
-                                        <td>{{ $premedications->time }}</td>
-                                        <td>{{ $premedications->route }}</td>
-                                        <td>{{ $premedications->dose_value }} {{ $infusion->dose_unit }}</td>
-                                        <td>{{ $premedication->name }}</td>
+                                        <td>{{ $premedication->drug_name }}</td>
+                                        <td>{{ $premedication->date }}</td>
+                                        <td>{{ $premedication->time }}</td>
+                                        <td>{{ $premedication->route }}</td>
+                                        <td>{{ $premedication->dose_value }} {{ $premedication->dose_unit }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -150,17 +146,16 @@
                                     <th>Time</th>
                                     <th>Dose</th>
                                     <th>Frequency</th>
-                                    <th>Prescribed by</th>
                                 </tr>
                                 </thead>
-                                <tbody class="text-capitalize">
+                                <tbody class="text-capitalize text-md-center">
                                 @foreach($orals as $oral)
                                     <tr>
                                         <td>{{ $oral->drug_name }}</td>
                                         <td>{{ $oral->date }}</td>
                                         <td>{{ $oral->time }}</td>
-                                        <td>{{ $oral->dose_value }} {{ $infusion->dose_unit }}</td>
-                                        <td>{{ $oral->frequency }} for {{ $infusion->duration }}</td>
+                                        <td>{{ $oral->dose_value }} {{ $oral->dose_unit }}</td>
+                                        <td>{{ $oral->frequency }} </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -180,7 +175,6 @@
                                     <th>Date</th>
                                     <th>Time</th>
                                     <th>Dose</th>
-                                    <th>Prescribed by</th>
                                 </tr>
                                 </thead>
                                 <tbody class="text-md-center text-capitalize">
@@ -189,8 +183,7 @@
                                         <td>{{ $infusion->drug_name }}</td>
                                         <td>{{ $infusion->date }}</td>
                                         <td>{{ $infusion->time }}</td>
-                                        <td>{{ $infusion->dose_value }} {{ $infusion->dose_unit }}</td>
-                                        <td>{{ $infusion->name }}</td>
+                                        <td class="text-lowercase">{{ $infusion->dose_value }} {{ $infusion->dose_unit }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -213,18 +206,16 @@
                                         <th>Time</th>
                                         <th>Dose</th>
                                         <th>Route</th>
-                                        <th>Prescribed by</th>
                                     </tr>
                                     </thead>
                                     <tbody class="text-md-center text-capitalize">
                                     @foreach($injections as $injection)
                                         <tr>
                                             <td>{{ $injection->drug_name }}</td>
-                                            <td>{{ $injection->treatment }}</td>
+                                            <td>{{ $injection->date }}</td>
                                             <td>{{ $injection->time }}</td>
-                                            <td>{{ $injection->dose_value }} {{ $injection->dose_unit }}</td>
+                                            <td class="text-lowercase">{{ $injection->dose_value }} {{ $injection->dose_unit }}</td>
                                             <td>{{ $injection->route }}</td>
-                                            <td>{{ $injection->name }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -293,7 +284,7 @@
                                                 <td>{{ $chart->treatment }}</td>
                                                 <td>{{ $chart->iv_infusion }}</td>
                                                 <td>{{ $chart->diet }}</td>
-                                                <td>{{ $chart->chart_img }}</td>
+                                                <td>{{ asset($chart->chart_img) }}</td>
                                                 <td>{{ $chart->name }}</td>
                                             </tr>
                                         @endforeach
@@ -315,7 +306,6 @@
                                             <th>Time</th>
                                             <th>Dose</th>
                                             <th>Frequency</th>
-                                            <th>Prescribed by</th>
                                         </tr>
                                         </thead>
                                         <tbody class="text-md-center text-capitalize">
@@ -326,7 +316,6 @@
                                                 <td>{{ $inhalation->time }}</td>
                                                 <td>{{ $inhalation->dose_value }} {{ $inhalation->dose_unit }}</td>
                                                 <td>{{ $inhalation->frequency }} for {{ $inhalation->duration }}</td>
-                                                <td>{{ $inhalation->name }}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>

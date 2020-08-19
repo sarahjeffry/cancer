@@ -38,16 +38,38 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'last_online_at' => 'datetime'
     ];
-//
-//    public function permissions() {
-//        return $this->belongsToMany(Permission::class);
-//    }
-//
-//    public function roles() {
-//        return $this->belongsToMany(Role::class);
-//    }
-//
+
     public function patients() {
         return $this->hasMany(Patient::class);
+    }
+
+    public function stat_doses() {
+        return $this->hasMany(StatDoses::class);
+    }
+    public function premedication() {
+        return $this->hasMany(Premedication::class);
+    }
+    public function oral() {
+        return $this->hasMany(Oral::class);
+    }
+    public function injection() {
+        return $this->hasMany(Injection::class);
+    }
+    public function operations() {
+        return $this->hasMany(Operation::class);
+    }
+    public function charts() {
+        return $this->hasMany(Chart::class);
+    }
+    public function inhalation() {
+        return $this->hasMany(Inhalation::class);
+    }
+
+    public function setImgProfileAttribute($value) {
+        $this->attributes['img_profile'] = asset($value);
+    }
+
+    public function getImgProfileAttribute($value) {
+        return asset($value);
     }
 }

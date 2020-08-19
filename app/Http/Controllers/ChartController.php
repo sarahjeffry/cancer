@@ -102,4 +102,6 @@ class ChartController extends Controller
         $chart -> delete();
         return redirect()->back();
     }
+
+
 }

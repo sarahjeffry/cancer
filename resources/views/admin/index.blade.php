@@ -352,8 +352,8 @@
                 labels: ['Breast', 'Lung', 'Pancreas', 'Skin'],
                 datasets: [{
                     label: 'Number of cancer occurences',
-                    {{--data: [ {{ $patientbreast20 }}, {{ $patientlung20 }},{{ $patientpancreas20 }}, {{ $patientskin20 }}],--}}
-                    data: [2,4,6,3],
+                    data: [ {{ $patientbreast20 }}, {{ $patientlung20 }},{{ $patientpancreas20 }}, {{ $patientskin20 }}],
+                    // data: [2,4,6,3],
                     backgroundColor: [
                         '#FF8DCC',
                         '#6C8DFC',
