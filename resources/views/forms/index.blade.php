@@ -45,7 +45,7 @@
         <div class="row offset-sm-3">
             <!-- Stat Doses -->
             <div class="row-cols-xl-4 col-md-4 mb-3">
-                <a href="/forms/statdoses">
+                <a href="forms/statdoses">
                     <div class="card forms h-100 py-2 bg-gradient-info">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -64,7 +64,7 @@
 
             <!-- Premedication -->
             <div class="row-cols-xl-4 col-md-4 mb-3">
-                <a href="/forms/premedication">
+                <a href="forms/premedication">
                     <div class="card forms h-100 py-2 bg-gradient-info">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -85,7 +85,7 @@
         <div class="row offset-sm-3">
             <!-- Oral -->
             <div class="row-cols-xl-4 col-md-4 mb-3">
-                <a href="/forms/oral">
+                <a href="forms/oral">
                     <div class="card forms h-100 py-2 bg-gradient-info">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -104,7 +104,7 @@
 
             <!-- Infusion -->
             <div class="row-cols-xl-4 col-md-4 mb-3">
-                <a href="/forms/infusion">
+                <a href="forms/infusion">
                     <div class="card forms h-100 py-2 bg-gradient-info">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -127,7 +127,7 @@
     <div class="row offset-sm-3">
         <!-- Injection -->
         <div class="row-cols-xl-4 col-md-4 mb-3">
-            <a href="/forms/injection">
+            <a href="forms/injection">
                 <div class="card forms h-100 py-2 bg-gradient-info">
                     <div class="btn card-body">
                         <div class="row no-gutters align-items-center">
@@ -146,7 +146,7 @@
 
         <!-- Operation Procedure -->
         <div class="row-cols-xl-4 col-md-4 mb-3">
-            <a href="/forms/operation">
+            <a href="forms/operation">
                 <div class="card forms h-100 py-2 bg-gradient-info">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -168,7 +168,7 @@
     <div class="row offset-sm-3">
         <!-- Treatment Changes Charts -->
         <div class="row-cols-xl-4 col-md-4 mb-3">
-            <a href="/forms/chart">
+            <a href="forms/chart">
                 <div class="card forms h-100 py-2 bg-gradient-info">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -187,7 +187,7 @@
 
         <!-- Inhalation -->
         <div class="row-cols-xl-4 col-md-4 mb-3 ">
-            <a href="/forms/inhalation">
+            <a href="forms/inhalation">
                 <div class="card forms h-100 py-2 bg-gradient-info">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
